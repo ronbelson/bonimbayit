@@ -1,0 +1,69 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400);
+@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+* { font-family: 'Roboto', "Alef Hebrew"; font-weight : 300; } 
+
+#logo {
+
+height: 40px;
+margin-top: -19px;
+margin-left: 7px;
+
+}
+
+.navbar {
+   background:rgba(0,0,0,0.5);   /* for latest browsers */
+   background: #000;  /* fallback for older browsers */
+}
+
+.pdl0 {
+	padding-left:0;
+}
+
+.pdr0 {
+	padding-right:0;
+}
+
+ /*-------------------------------------*/
+    
+ /*=======================================
+     GENERAL STYLES
+ ==================================================*/
+  
+ 
+ .text-center {
+     text-align:center;
+ }
+ 
+ .top-pad {
+     padding-top:70px;
+ }
+ .top-margin {
+     margin-top:40px;
+ }
+ 
+ h1, h2, h3, h4, h5, h6 {
+     font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;
+     color:rgb(223, 114, 97);
+ }
+ .green-color {
+     color: rgb(223, 114, 97);
+ }
+ h1 {
+    
+     font-weight:700;
+     font-size:50px;
+    
+ }
+ 
+ p {
+     font-weight:400;
+     line-height:29px;
+     padding-bottom:50px;
+ }
+ .margin-bot {
+     margin-bottom:50px;
+ }
+
+ 
+   
+    

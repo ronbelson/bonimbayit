@@ -1,0 +1,220 @@
+/*!
+ * Start Bootstrap - Business Frontpage HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+
+	background-color: #f2f2f2;
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+.business-header {
+    height: 400px;
+    background: url('/img/home-background/slide5.jpg')  no-repeat left center; background-size: cover;
+    /*background: url('/images/home-background/slide1.jpg') center center no-repeat scroll;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+
+.tagline {
+	margin-top:50px; 
+	margin-right:0px;
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+    font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:55px; color:#F0F0F0;
+    
+}
+
+@media (max-width: 480px) { 
+        .tagline {
+   			 font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:45px; color:#F0F0F0;
+        }
+
+        .hidden-phone {
+           display: block;
+        }
+    }
+
+.tagline2 {
+	margin-top:10px; 
+	margin-right:0px;
+    color: #fff;
+    font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#F0F0F0;
+    
+}
+
+ 
+.img-center {
+    margin: 0 auto;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.search {
+	
+	margin-top:40px;
+}
+
+ .btn-submit{
+
+ 	   overflow: visible;
+       position: relative;
+       float: right;
+       border: 0;
+       padding-left:0;padding-right:0; 
+       cursor: pointer;
+       height: 40px;
+       width: 100%;
+       font: bold 15px/40px ;
+       color: #fff;
+       background: #d83c3c;
+       text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+       font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#fff;
+       
+       
+   }   
+   
+   .btn-submit:hover{		
+           background: #e54040;
+       }	
+       
+   .btn-submit:before {
+           content: '';
+           position: absolute;
+		   border-width: 6px 0 6px 10px;
+           width: 0;
+           height: 0;
+           border-style: solid solid solid solid;
+           border-color: transparent #d83c3c transparent;
+           top: 14px;
+           right: -10px;
+           font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#000;
+           
+          } 
+
+	.btn-area{
+		border-radius: 0;
+		width:100%;
+		height: 40px;
+		border-style: solid solid solid solid;
+		border-color: transparent #fff transparent;
+		background: #fff;
+		font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:gray;
+		
+		
+	}   
+	
+	.search-query	 {
+		width:100%;height: 40px;
+		border-width:0;
+		font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#000;
+	}
+	
+	.search-background {
+		background: #444;
+		background: rgba(0,0,0,.4);
+		padding: 14px 14px 14px 14px;
+		height: 100%;
+		border-radius: 4%;
+	}
+
+	.get-background {
+		background: #EB1543;
+		background: rgba(230, 36, 32,.8);
+		padding: 14px 14px 14px 14px;
+		height: 100%;
+		border-radius: 4%;
+	}
+
+	.footer-background {
+		
+		 
+		background: rgba(33,44,33,.2);
+		padding: 14px 14px 14px 14px;
+		height: 100%;
+		
+		font-family: 'Roboto', "Alef Hebrew"; font: bold 15px/40px ;font-size:16px; 
+
+	    
+
+	}
+	
+	.footer-background a:hover, a:visited{
+		color:#d83c3c;
+		border-width:0;
+		font-family: 'Roboto', "Alef Hebrew"; font: bold 15px/40px ;font-size:16px; 
+	}
+	 	#testimonials{
+
+		height: 150px;
+	  	background: rgba(59, 59, 32, 0.5);
+	  
+	  	border-radius: 4%;
+
+	  
+	  
+		
+	}
+	 
+	#testimonials li{ 
+	  display:none;
+	  padding: 20px;
+	}
+	#testimonials ul{
+	  list-style:none;
+	  padding-right: 50px ;
+	  padding-left: 20px ;
+	  	  
+	  
+	}
+	#testimonials p.author{
+		 font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:12px; color:#f6f5f5;
+	}
+	#testimonials p.author a,
+	#testimonials p.author a:hover,
+	#testimonials p.author a:visited{
+		color:#f6f5f5;
+	}
+	testimonials{
+			 
+						
+	  	font-family: 'Roboto', "Alef Hebrew"; font-weight:normal;
+		;font-size:15px; color: #e6f34e;
+	  			}
+	 
+		.circle {
+		line-height: 0;		/* remove line-height */ 
+		display: inline-block;	/* circle wraps image */
+		margin: 5px;
+	  border: 2px solid rgba(255,255,255,0.4);
+		border-radius: 50%;	/* relative value */
+		/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+		transition: linear 0.25s;
+	  height: 50px;
+	  width: 50px;
+	}
+	.circle img {
+		border-radius: 50%;	/* relative value for
+					   adjustable image size */
+	}
+
+
+	.circle:hover {
+		transition: ease-out 0.2s;
+	  border: 2px solid rgba(255,255,255,0.8);
+	  -webkit-transition: ease-out 0.2s;
+	}
+	a.circle {
+	  color: transparent;
+	} /* IE fix: removes blue border */	
+
