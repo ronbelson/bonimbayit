@@ -8,6 +8,11 @@ body {
 
 	background-color: #f2f2f2;
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #fff; 
+	background-image: 
+		linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+		linear-gradient(#eee .1em, transparent .1em);
+		background-size: 100% 1.2em;
 }
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
