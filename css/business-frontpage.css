@@ -714,4 +714,5 @@ hr.section-divider {
   content: "\f194";
 }
 
+#home-stats{background:#fff;border-bottom:1px dashed rgba(0,0,0,.1);overflow:hidden;position: relative;}#home-stats ul:before,#home-stats ul:after{border-radius:1400px;box-shadow:0 0 20px rgba(0,0,0,.15);content:'';display:block;height:1400px;left:50%;margin-left:-1100px;position:absolute;top:100%;width:2200px}#home-stats ul:after{top:100%}#home-stats ul:before{top:-1400px}#home-stats ul{list-style:none;padding:20px 0;margin:0;overflow:hidden;margin:0 auto}#home-stats li{display:block;float:left;white-space:nowrap;margin:0;padding:0;text-align:center}#home-stats li:first-child{text-align:left}#home-stats li:last-child{text-align:right}#home-stats li,#home-stats li *{font-family:Georgia;font-style:italic;font-weight:400;font-size:18px;color:#626262}
 
