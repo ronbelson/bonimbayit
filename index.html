@@ -841,21 +841,15 @@ CONTACT
     <div class="container">
         <div class="row">
             <div class="heading col-md-8 col-md-offset-2 animate" data-animate="fadeIn">
-                <span class="section-name">
-                    צור קשר
-                </span>
-
-                <h2 style="direction: rtl">
-                    צרו איתנו קשר -
+                <h2 style="textcenter">
+                    צרו עמנו קשר -
                     <em>בונים בית</em></h2>
                 <span class="line"></span>
 
                 <p>
-
-
-                   בלה בלה בלה בלה?
+זקוקים ליעוץ?
                     <br>
-                    בלה בלה בלה
+                    מחפשים את הקבלן הטוב
 
                 </p>
             </div>
@@ -866,31 +860,33 @@ CONTACT
             <div class="col-md-10 col-md-offset-1 animate" data-animate="flipInY">
 
                 <div id="contactform">
+                    <form>
                     <div class="col-md-4">
-                        <input type="text" id="c-name" name="name" class="form-control" placeholder="שם">
+
+                        <input required type="text" id="c-name" name="name" class="form-control" placeholder="שם" >
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" id="c-mail" name="email" class="form-control" placeholder="אימייל">
+                        <input  required type="text" id="c-mail" name="email" class="form-control" placeholder="אימייל">
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" id="c-phone" name="phone" class="form-control" placeholder="מספר טלפון">
+                        <input  type="text" id="c-phone" name="phone" class="form-control" placeholder="מספר טלפון">
                     </div>
 
                     <div class="col-md-12">
-                        <textarea name="message" id="c-msg" rows="5" class="form-control"
+                        <textarea required name="message" id="c-msg" rows="5" class="form-control"
                                   placeholder="טקסט חופשי"></textarea>
                     </div>
 
                     <div class="col-md-12 send-div">
-                        <button class="btn btn-default button-send" style="float: right" id="send-btn">
+                        <button  type="submit" class="btn-submit"  id="send-btn">
                             שלח
                         </button>
                         <div class="error-message-2"></div>
                     </div>
                 </div>
-
+                </form>
                 <div class="success-message-2"></div>
             </div>
         </div>
