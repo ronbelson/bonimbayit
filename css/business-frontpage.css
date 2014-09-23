@@ -38,6 +38,11 @@ body {
     
 }
 
+.construction-report-img img {
+	 max-width: 100%;
+	 float: right;
+		 }
+
 @media (max-width: 480px) { 
         .tagline {
    			 font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:45px; color:#F0F0F0;
@@ -222,4 +227,80 @@ footer {
 	a.circle {
 	  color: transparent;
 	} /* IE fix: removes blue border */	
+
+subheadertitle h1 {
+		color:  rgb(220,20,60);
+		font-weight : 50;font-size:42px; 
+}
+
+subheadertitle h2 {
+		color:  rgb(220,20,60);
+		font-weight : 50;font-size:25px; 
+}
+
+subheadertitle p {
+		
+		font-weight : 50;font-size:20px; 
+}
+
+section {
+	/*background: red;*/
+    padding: 0, 10px, 0, 10px;
+    width: 100%;
+    text-align: center;
+    
+
+}
+section h2 {
+		color:  rgb(220,20,60);
+		font-weight : 50;font-size:42px; 
+
+	}
+
+section h3 {
+		padding-bottom:33px; 
+
+	}
+select.frecuency {
+    border: none;
+    font-style: italic;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform .35s ease-in;
+    transition: -webkit-transform .35s ease-in;
+    border-bottom: none;
+}
+select.frecuency:focus {
+    outline: none;
+    border-bottom: 5px solid #39b3d7;
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    -webkit-transition: -webkit-transform .35s ease-in;
+    transition: -webkit-transform .35s ease-in;
+}
+ 
+.input-group {
+    margin: 20px auto;
+    width: 100%;
+}
+input.btn.btn-lg,
+input.btn.btn-lg:focus {
+    outline: none;
+    width: 60%;
+    height: 60px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+section button.btn {
+    width: 40%;
+    height: 60px;
+    
+    
+}
+.promise {
+    color: #999;
+}
+
 
