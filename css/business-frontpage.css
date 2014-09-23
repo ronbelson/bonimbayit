@@ -222,8 +222,8 @@ footer {
 		border-radius: 50%;	/* relative value */
 		/*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
 		transition: linear 0.25s;
-	  height: 150px;
-	  width: 150px;
+	  height: 168px;
+	  width: 168px;
 	}
 	.circle img {
 		border-radius: 50%;	/* relative value for
