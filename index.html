@@ -16,7 +16,9 @@
     
 
     <!-- Custom CSS -->
+    
     <link href="css/business-frontpage.css" rel="stylesheet">
+    <link href="css/bootstrap-table.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen"/>
@@ -767,6 +769,70 @@
   </div>       
             <br><br>
 
+<!-- ==============================================
+tabels data
+=============================================== -->
+<div class="container" >
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>עלויות מרכזיות יוני 2014(ללא מע"מ)</h3>
+              <table data-toggle="table" data-url="data1.json" data-cache="false" data-height="299">
+                <thead>
+                    <tr>
+                        <th data-field="name" class="textcenter">מוצר</th>
+                        <th data-field="price" class="textcenter">עלות</th>
+                    </tr>
+                </thead>
+               </table>
+        </div>
+           
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>כמויות חומרים ממוצעות לבית 200 מטר</h3>
+              <table data-toggle="table" data-url="data1.json" data-cache="false" data-height="299">
+                <thead>
+                    <tr>
+                        <th data-field="name" class="textcenter">מוצר</th>
+                        <th data-field="price" class="textcenter">עלות</th>
+                    </tr>
+                </thead>
+               </table>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>טסים לסין ? מצ"ב עלויות קבועות ושילוח מסין</h3>
+              <table data-toggle="table" data-url="data1.json" data-cache="false" data-height="299">
+                <thead>
+                    <tr>
+                        <th data-field="name" class="textcenter">מוצר</th>
+                        <th data-field="price" class="textcenter">עלות</th>
+                    </tr>
+                </thead>
+               </table>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>עלויות בעלי מקצוע ממוצעות (כולל+לא כולל חומר) למטר</h3>
+              <table data-toggle="table" data-url="data1.json" data-cache="false" data-height="299">
+                <thead>
+                    <tr>
+                        <th data-field="name" class="textcenter">מוצר</th>
+                        <th data-field="price" class="textcenter">עלות</th>
+                    </tr>
+                </thead>
+               </table>
+        </div>
+
+         
+
+    </div>
+</div>
+
+<!-- ==============================================
+end tabels data
+=============================================== -->
+
+
+<br><br><br><br>
 <div class="container text-center ">
 <!-- ==============================================
 CONTACT
@@ -864,8 +930,8 @@ FOOTER
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.bootstrap.newsbox.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap-table.js" type="text/javascript"></script>
    
-
 
   <script>
 	$(function(){
