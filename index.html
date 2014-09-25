@@ -18,16 +18,12 @@
     <!-- Custom CSS -->
     
     <link href="css/business-frontpage.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
     <link href="css/bootstrap-table.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/campaign.css" type="text/css" media="screen"/>
-    
-
-
-
-   
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,9 +59,7 @@
                     <li>
                         <a href="1.html">עלויות בניה</a>
                     </li>
-                    <li>
-                        <a href="1.html">הוסף המלצה</a>
-                    </li>
+                   
                     <li>
                         <a href="1.html">היתחבר או הירשם</a>
                     </li>
@@ -85,93 +79,114 @@
     <!-- Note: The background image is set within the business-casual.css file. -->
     <header class="business-header">
         <div class="container">
-           <div class="row">
+           <div class="row" >
                 <div class="col-xs-12">
                     <h1 class="tagline ">קבל המלצות על קבלנים מקהילת הבונים והמשפצים</h1>
-                    <h1 class="tagline2 visible-md visible-lg">קבלן שלד, קבלן חשמל, קבלן אניסטלציה , קבלן איטום, קבלן צבע, ועוד</h1>
+                  <h1 class="tagline2 visible-md visible-lg">קבלן שלד, קבלן חשמל, קבלן אניסטלציה , קבלן איטום, קבלן צבע, ועוד</h1>
                 </div>
             </div>  
-           <div class="row">
-           		<form class="form-wrapper" >
-           		<div class="col-md-6 search-background" >
-           			<div class="row" style="padding: 10px 20px 10px 20px;">
-           				<div class="col-md-6 pdl0  pdr0">
-           					 <input class="search-query" placeholder=" איזה קבלן אתה מחפש? (שלד,גמר)" required>
-           				</div>
-           				<div class=" col-md-3 pdr0 pdl0">
-           					   
-           					    <button type="button" class="btn btn-default btn-area dropdown-toggle " data-toggle="dropdown">
-           					      אזור <span class="caret"></span	>								
-           					    </button>
-           					    
-           					      <ul style="" class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
-           					         <li><a tabindex="-1" href="#">צפון</a></li>
-           					         <li><a tabindex="-1" href="#">דרום</a></li>
-           					         <li><a tabindex="-1" href="#">מזרח</a></li>
-           					         <li class="divider"></li>
-           					         <li><a tabindex="-1" href="#">הוסף אזור</a></li>
-           					       </ul>
-           					                      					     
-           				</div>
-           				<div class="col-md-3 pdl0 pdr0" >
-           					 <button type="submit" class="btn-submit ">קבל המלצות</button> 
-           				</div>
-           			</div>
-           		</div>
-           		<div class="col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1 visible-md visible-lg pdl0 pdr0" id="testimonials" style="">
-           		
-           		 
-           		         <ul class="pdl0 pdr0">           		 			
-           		         	<li >
-           		 				<testimonials >"רעיון כביר תומר!שאפו!המלצתי על קבלן שלד מצוין מהדרום שעשה לי עבודה נפלאה .כל הכבוד ובהצלחה!"
-           		 				
-           		 					<p  style="" class="author">
-           		 					
-           		 					
-           		 						<a href="http://twitter.com/bradenhamm" class="circle">
-           		 							<img height="50" width="50" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p160x160/10487177_899517623411660_310410518165540586_n.jpg?oh=e29c4600351fc8303c523f35c9d8b330&oe=54C7FFFF&__gda__=1421898432_073c344cd56c1ca930df0dcc41e42d20" alt="Braden Hamm">
-           		 						</a>
-           		 						רון בלסון, בית יהושע
-           		 					</p>
-           		 					
-           		 				</testimonials>
-           		 				
-           		 			</li>
-           		 			 
-           		 			<li >
-           		 				<testimonials >כל הכבוד , איזה יופי לראות כל כך הרבה תמונות על התהליך.תודה רבה על המאמץ ,ההשקעה וההסברים!
-           		 				
-           		 					<p class="author">
-           		 						<a href="http://twitter.com/bradenhamm" class="circle">
-           		 							<img height="50" width="50" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c0.0.160.160/p160x160/1377522_10151885675297427_1177857444_n.jpg?oh=194a46195b19660bbca973368a72bd84&oe=54861743&__gda__=1418994857_801ed4a00672b7940c5559804ba67c01" alt="Braden Hamm">
-           		 							
-           		 						</a>
-           		 						תומר חן ריחאנה‏, חדרה 
-           		 					</p>
-           		 					
-           		 				</testimonials>
-           		 				
-           		 			</li>
-           		 			<li >
-           		 				<testimonials >תומר שלום,אני מצטרפת לשאר האנשים ומודה לך על האתר המדהים והמלמד הזה!! באמת כל הכבוד...אשמח לקבל את ק.
-           		 				
-           		 					<p class="author">
-           		 						<a href="http://twitter.com/bradenhamm" class="circle">
-           		 							<img height="50" width="50" src="https://scontent-b-lhr.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10403724_10152452720149634_6723757157309669656_n.jpg?oh=c81e295c36bf35fceebf17f989e85ab7&oe=549200D1" alt="Braden Hamm">
-           		 							
-           		 						</a>
-           		 						הנדלר רויטל,  מושב בארותיים
-           		 					</p>
-           		 					
-           		 				</testimonials>
-           		 				
-           		 			</li>
-           		 			       		         </ul>
-           		     
-           		</div>
-           		</form>
-           </div>
          </div>
+        </div>
+       
+        <div class="container">
+              <div class="col-md-7 bgcolor-white " >
+                <form class="form-wrapper" >
+                <div class="row " >
+                  <div class="row">
+                    <div class="xs12">
+                        <div class="col-md-6 "  >
+                            <button type="button" class="  btn btn-lg btn-search  dropdown-toggle " data-toggle="dropdown">
+                              על איזה קבלן תרצה לקבל המלצות? <span class="caret"></span >               
+                           </button>
+                            
+                            <ul style="width:100%" class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
+                                 <li style=""><a tabindex="-1" href="#">שלד</a></li>
+                                 <li><a tabindex="-1" href="#">אינסלצי</a></li>
+                                 <li><a tabindex="-1" href="#">חשמל</a></li>
+                                 <li class="divider"></li>
+                                 
+                             </ul>
+                        </div>
+                        <div class="col-md-3  " style="" >
+                            <button type="button" class="btn  btn-search dropdown-toggle " data-toggle="dropdown">
+                              אזור <span class="caret"></span >               
+                           </button>
+                            
+                            <ul style="" class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
+                                 <li><a tabindex="-1" href="#">צפון</a></li>
+                                 <li><a tabindex="-1" href="#">דרום</a></li>
+                                 <li><a tabindex="-1" href="#">מזרח</a></li>
+                                 <li class="divider"></li>
+                          
+                             </ul>
+                        </div>
+                        <div class="col-md-3  " >
+                             <button type="submit" class="btn-submit ">קבל המלצות</button> 
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                   
+                </form>
+              </div>
+
+              <div class="col-md-5" >
+                <div class="row">
+                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 visible-md visible-lg pdl0 pdr0" id="testimonials" style="">
+              
+               
+                       <ul class="pdl0 pdr0">                     
+                        <li >
+                      <testimonials >"רעיון כביר תומר!שאפו!המלצתי על קבלן שלד מצוין מהדרום שעשה לי עבודה נפלאה .כל הכבוד ובהצלחה!"
+                      
+                        <p  style="" class="author">
+                        
+                        
+                          <a href="http://twitter.com/bradenhamm" class="circle">
+                            <img height="50" width="50" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p160x160/10487177_899517623411660_310410518165540586_n.jpg?oh=e29c4600351fc8303c523f35c9d8b330&oe=54C7FFFF&__gda__=1421898432_073c344cd56c1ca930df0dcc41e42d20" alt="Braden Hamm">
+                          </a>
+                          רון בלסון, בית יהושע
+                        </p>
+                        
+                      </testimonials>
+                      
+                    </li>
+                     
+                    <li >
+                      <testimonials >כל הכבוד , איזה יופי לראות כל כך הרבה תמונות על התהליך.תודה רבה על המאמץ ,ההשקעה וההסברים!
+                      
+                        <p class="author">
+                          <a href="http://twitter.com/bradenhamm" class="circle">
+                            <img height="50" width="50" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c0.0.160.160/p160x160/1377522_10151885675297427_1177857444_n.jpg?oh=194a46195b19660bbca973368a72bd84&oe=54861743&__gda__=1418994857_801ed4a00672b7940c5559804ba67c01" alt="Braden Hamm">
+                            
+                          </a>
+                          תומר חן ריחאנה‏, חדרה 
+                        </p>
+                        
+                      </testimonials>
+                      
+                    </li>
+                    <li >
+                      <testimonials >תומר שלום,אני מצטרפת לשאר האנשים ומודה לך על האתר המדהים והמלמד הזה!! באמת כל הכבוד...אשמח לקבל את ק.
+                      
+                        <p class="author">
+                          <a href="http://twitter.com/bradenhamm" class="circle">
+                            <img height="50" width="50" src="https://scontent-b-lhr.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10403724_10152452720149634_6723757157309669656_n.jpg?oh=c81e295c36bf35fceebf17f989e85ab7&oe=549200D1" alt="Braden Hamm">
+                            
+                          </a>
+                          הנדלר רויטל,  מושב בארותיים
+                        </p>
+                        
+                      </testimonials>
+                      
+                    </li>
+                                       </ul>
+                   
+              </div>
+              </div>
+            </div>
+          </div>
+       
     </header>
 
     <div id="home-stats" class="container-fluid hidden-sm  hidden-xs   ">
@@ -205,7 +220,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
                                 <i class="fa fa-ils fa-5x green-color"></i>
-                                <h4>1. קבל דוח עלויות בניה</h4>
+                                <h2>1. קבל דוח עלויות בניה</h2>
                                 <p>
                                     חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה.
                                 </p>
@@ -214,7 +229,7 @@
                         <div class="col-md-3 col-sm-6" >
                             <div class="text-center">
                                 <i class="fa fa-thumbs-up fa-5x green-color"></i>
-                                <h4>2. צפה בקבלנים מומלצים</h4>
+                                <h2>2. צפה בקבלנים מומלצים</h2>
                                 <p>
                                    
                                     חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה.
@@ -225,7 +240,7 @@
                         <div class="col-md-3 col-sm-6" >
                             <div class="text-center">
                                 <i class="fa fa-puzzle-piece fa-5x green-color"></i>
-                                <h4>3. למד ממדריך הבניה השלם</h4>
+                                <h2>3. למד ממדריך הבניה השלם</h2>
                                 <p>
                                    
                                     חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה.
@@ -235,7 +250,7 @@
                         <div class="col-md-3 col-sm-6" >
                             <div class="text-center">
                                 <i class="fa fa-share-alt fa-5x green-color"></i>
-                                <h4>4. שתף הצלחות לקהילה</h4>
+                                <h2>4. שתף הצלחות לקהילה</h2>
                                 <p>
                                    
                                     חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה.
@@ -294,7 +309,7 @@
   <!-- end list of building report -->           
 
   
-<br><br><br>
+
 
   <div class="container">
      <div class="row" >
@@ -937,6 +952,8 @@ FOOTER
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.bootstrap.newsbox.min.js" type="text/javascript"></script>
     <script src="js/bootstrap-table.js" type="text/javascript"></script>
+    <script src="js/bootstrap-select.js" type="text/javascript"></script>
+
    
 
   <script>

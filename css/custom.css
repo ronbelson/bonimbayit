@@ -2,6 +2,18 @@
 @import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
 * { font-family: 'Roboto', "Alef Hebrew"; font-weight : 300; } 
 
+body {
+
+    background-color: #f2f2f2;
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #fff; 
+    background-image: 
+        linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+        linear-gradient(#eee .1em, transparent .1em);
+        background-size: 100% 1.2em;
+}
+
+
 #logo {
 
 height: 40px;
@@ -79,5 +91,7 @@ hr {
  
 }
 
-.font-default {color: #d83c3c;}
+.font-default {color: rgb(89,54,47);}
+
+.bgcolor-white {background:#fff;}
     

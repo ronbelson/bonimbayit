@@ -4,16 +4,7 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-body {
 
-	background-color: #f2f2f2;
-    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-color: #fff; 
-	background-image: 
-		linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-		linear-gradient(#eee .1em, transparent .1em);
-		background-size: 100% 1.2em;
-}
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
@@ -51,6 +42,8 @@ body {
         .hidden-phone {
            display: block;
         }
+
+
     }
 
 .tagline2 {
@@ -75,7 +68,7 @@ footer {
 	margin-top:40px;
 }
 
- .btn-submit{
+.btn-submit{
 
  	   overflow: visible;
        position: relative;
@@ -83,7 +76,7 @@ footer {
        border: 0;
        padding-left:0;padding-right:0; 
        cursor: pointer;
-       height: 40px;
+       height: 60px;
        width: 100%;
        font: bold 15px/40px ;
        color: #fff;
@@ -106,16 +99,17 @@ footer {
            height: 0;
            border-style: solid solid solid solid;
            border-color: transparent #d83c3c transparent;
-           top: 14px;
+           top: 25px;
            right: -10px;
            font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#000;
            
-          } 
+          }
+  
 
-	.btn-area{
+	.btn-search{
 		border-radius: 0;
 		width:100%;
-		height: 40px;
+		height: 60px;
 		border-style: solid solid solid solid;
 		border-color: transparent #fff transparent;
 		background: #fff;
@@ -123,7 +117,8 @@ footer {
 		
 		
 	}   
-	
+
+	 .form-wrapper ul li a {font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#000;}
 	.search-query	 {
 		width:100%;height: 40px;
 		border-width:0;
@@ -133,7 +128,7 @@ footer {
 	.search-background {
 		background: #444;
 		background: rgba(0,0,0,.4);
-		padding: 14px 14px 14px 14px;
+		/*padding: 14px 14px 14px 14px;*/
 		height: 100%;
 		border-radius: 4%;
 	}
