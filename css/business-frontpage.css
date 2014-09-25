@@ -57,6 +57,7 @@
  
 .img-center {
     margin: 0 auto;
+    text-align: center;
 }
 
 footer {
@@ -247,7 +248,7 @@ subheadertitle h2 {
 
 subheadertitle p {
 		
-		font-weight : 30;font-size:16px; color:gray; 
+		font-weight : 30;font-size:20px; color:gray; 
 }
 
 section {
@@ -314,6 +315,12 @@ section button.btn {
     position: relative;
     padding: 0px;
     margin-bottom: 10px;
+    font-weight : 50;font-size:18px; 
+}
+
+.thumbnail  p a {
+     
+    font-weight : 50;font-size:20px; 
 }
 
 .thumbnail:hover {
@@ -322,11 +329,7 @@ section button.btn {
 
 	}
 
-.votes {
-    font-size: 47px;    
-    color:#197BB5;
-    padding:10px;
-}
+ 
 
 .textcenter{text-align: center;}
 
@@ -559,6 +562,7 @@ hr.section-divider {
   background-position: center center;
   background-repeat: no-repeat;
   overflow: hidden;
+
 }
 .popular-posts-wrapper .post .post-image img {
   border-radius: 4px;
@@ -579,9 +583,15 @@ hr.section-divider {
 }
 #secondary .widget .post-content a {
   color: #DA4453;
+  font-size:20px;
+   text-decoration: none;
 }
+
+#secondary .widget  .widget-title {font-size:24px;}
+
 #secondary .widget .post-content a:hover {
-  color: #DADADA;
+  color: #000;
+  font-style: 
 }
 .widget .post-content span {
     font-size: 12px;
