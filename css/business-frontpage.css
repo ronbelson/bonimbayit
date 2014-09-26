@@ -9,9 +9,10 @@
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .business-header {
-    height: 400px;
+	padding-top: 50px;
+    height: 600px;
     background: url('/img/home-background/slide5.jpg')  no-repeat left center; background-size: cover;
-    /*background: url('/images/home-background/slide1.jpg') center center no-repeat scroll;*/
+    /*background: url('/img/home-background/slide5.jpg') center center no-repeat scroll;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
