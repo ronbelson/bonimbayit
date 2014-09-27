@@ -11,6 +11,8 @@
     <title>בונים בית,יומן הבנייה המקיף בישראל</title>
 
     <link href='http://bonimbayit.co.il/favicon.ico' rel='icon' type='image/x-icon'/>
+
+     <link rel="stylesheet" href="css/animate.css" type="text/css" media="screen"/>
     <!-- Bootstrap Core CSS RTL -->
     <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
     
@@ -26,7 +28,9 @@
     <link rel="stylesheet" href="css/campaign.css" type="text/css" media="screen"/>
     <link href="css/bootstrap-modal-bs3patch.css" rel="stylesheet" />
     <link href="css/bootstrap-modal.css" rel="stylesheet" />
-    
+
+         
+     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -116,7 +120,7 @@
                               אזור <span class="caret"></span >               
                            </button>
                             
-                            <ul style="" class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
+                            <ul style="width:100%" class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu">
                                  <li><a tabindex="-1" href="#">צפון</a></li>
                                  <li><a tabindex="-1" href="#">דרום</a></li>
                                  <li><a tabindex="-1" href="#">מזרח</a></li>
@@ -190,7 +194,13 @@
               </div>
             </div>
           </div>
-       
+         <div class="row scroll-down visible-lg" id="scroll-down">
+           <div class="col-lg-12">
+             <a href="#features" title="">
+                <i class="fa fa-chevron-down fa-5x pink-color"></i>
+             </a>
+            </div>
+          </div>
     </header>
 
     <div id="home-stats" class="container-fluid hidden-sm  hidden-xs   ">
@@ -208,7 +218,7 @@
     <subheadertitle>
      <div class="container"  style="">
                 
-                <div class="row" >
+                <div class="row" id="features">
                     <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 "  >
                         <div class="text-center top-margin" >
                            <h1>יחד נבנה את החלום</h1>
