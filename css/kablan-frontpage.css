@@ -966,7 +966,7 @@ position: relative;
 }
 .block-text {
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 0px;
     box-shadow: 0 3px 0 #2c2222;
     color: #626262;
     font-size: 14px;
