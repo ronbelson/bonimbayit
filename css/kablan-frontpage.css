@@ -222,6 +222,19 @@ footer {
 	  height: 168px;
 	  width: 168px;
 	}
+
+
+  .circle_big_plus {
+    line-height: 0;   /* remove line-height */ 
+    display: inline-block;  /* circle wraps image */
+    margin: 5px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 50%; /* relative value */
+    /*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+    transition: linear 0.25s;
+    height: 250px;
+    width: 250px;
+  }
 	.circle img {
 		border-radius: 50%;	/* relative value for
 					   adjustable image size */
@@ -940,8 +953,8 @@ position: relative;
 
 
 .carousel-control.left,.carousel-control.right  {background:none;width:25px;}
-.carousel-control.left {left:-25px;}
-.carousel-control.right {right:-25px;}
+.carousel-control.left {left:-35px;}
+.carousel-control.right {right:-35px;}
 .broun-block {
     padding-bottom: 34px;
     /*border-radius: 5px;*/
