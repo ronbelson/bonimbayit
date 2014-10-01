@@ -38,6 +38,21 @@ margin-left: 7px;
 	padding-right:0;
 }
 
+.pdr10  {
+  padding-right:10px;
+}
+
+.pdt10  {
+  padding-top:10px;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=tel] {
+    height: 50px !important;
+}
+
+.verticle-middle {display:flex;
+                justify-contents:center;
+                align-items:center;}
  /*-------------------------------------*/
     
  /*=======================================
