@@ -3,7 +3,7 @@
 * { font-family: 'Roboto', "Alef Hebrew"; font-weight : 300; } 
 
 body {
-  
+
 
     background-color: #f2f2f2;
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
@@ -102,6 +102,8 @@ hr {
 }
 
 .font-default {color: #d83c3c;}
+
+.font-white {color: #fff;}
 
 .bgcolor-white {background:#fff;}
 
