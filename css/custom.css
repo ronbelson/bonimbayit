@@ -25,6 +25,7 @@ margin-left: 7px;
 .navbar {
    background:rgba(0,0,0,0.5);   /* for latest browsers */
    background: #000;  /* fallback for older browsers */
+
 }
 
 .pdl0 {
@@ -141,10 +142,10 @@ body.modal-open,
 
 
 /* Red */
-$bgDefault      : #e74c3c;
-$bgHighlight    : #c0392b;
-$colDefault     : #ecf0f1;
-$colHover       : #ffbbbc; 
+$bgDefault      : #fff;
+$bgHighlight    : #fff;
+$colDefault     : #fff;
+$colHover       : #fff; 
 /* Green * /
 $bgDefault      : #2ecc71;
 $bgHighlight    : #27ae60;
@@ -163,50 +164,4 @@ $colHover       : #ffe6d1; /*/
 
 
 /* --- Style --- */
-.navbar-default {
-    background-color: $bgDefault;
-    border-color: $bgHighlight;
-    .navbar-brand {
-        color: $colDefault;
-        &:hover, &:focus {
-            color: $colHover; }}
-    .navbar-nav {
-        > li {
-            > a {
-                color: $colDefault;
-                &:hover, &:focus {
-                    color: $colHover;   }}}
-        .active {
-            > a, > a:hover, > a:focus {
-                color: $colHover;
-                background-color: $bgHighlight; }}
-        .open {
-            > a, > a:hover, > a:focus {
-                color: $colHover;
-                background-color: $bgHighlight;
-                .caret {
-                    border-top-color: $colHover;
-                    border-bottom-color: $colHover; }}}
-        > .dropdown {
-            > a {
-                .caret {
-                    border-top-color: $colDefault;
-                    border-bottom-color: $colDefault; }
-                &:hover, &:focus {
-                    .caret {
-                        border-top-color: $colHover;
-                        border-bottom-color: $colHover; }}}}}
-    .navbar-toggle {
-        border-color: $bgHighlight;
-        &:hover, &:focus {
-            background-color: $bgHighlight; }
-        .icon-bar {
-            background-color: $colDefault; }}}
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: $colDefault;
-        &:hover, &:focus {
-            color: $colHover;
-            background-color: $bgHighlight; }}
-}
-    
+ 
