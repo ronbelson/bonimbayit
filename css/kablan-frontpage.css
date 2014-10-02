@@ -11,8 +11,7 @@
 .business-header {
 	padding-top: 50px;
     height: 600px;
-    background: url('/img/home-background/kablan1.jpg')  no-repeat left center; background-size: cover;
-    /*background: url('/img/home-background/slide5.jpg') center center no-repeat scroll;*/
+   
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -1199,11 +1198,103 @@ span.tags
  */.ekko-lightbox-container{position:relative}.ekko-lightbox-nav-overlay{position:absolute;top:0;left:0;z-index:100;width:100%;height:100%}.ekko-lightbox-nav-overlay a{z-index:100;display:block;width:49%;height:100%;padding-top:45%;font-size:30px;color:#fff;text-shadow:2px 2px 4px #000;opacity:0;filter:dropshadow(color=#000000,offx=2,offy=2);-webkit-transition:opacity .5s;-moz-transition:opacity .5s;-o-transition:opacity .5s;transition:opacity .5s}.ekko-lightbox-nav-overlay a:empty{width:49%}.ekko-lightbox a:hover{text-decoration:none;opacity:1}.ekko-lightbox .glyphicon-chevron-left{left:0;float:left;padding-left:15px;text-align:left}.ekko-lightbox .glyphicon-chevron-right{right:0;float:right;padding-right:15px;text-align:right}.ekko-lightbox .modal-footer{text-align:left}
 
 
- .vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+.product-title-recent:before {
 
-  display: flex;
-  align-items: center;
+  border-bottom: 1px solid #d4d4d4;
+
+  margin-bottom: 2px;
+
+  content: "";
+
+  position: absolute;
+
+  width: 100%;
+
+  height: 0;
+
+  left: 0;
+
+  bottom: 0;
+
 }
+
+
+
+.product-title-recent h2 {
+
+  font-size: 24px;
+
+}
+
+
+
+.product-title-icon {
+
+  position: absolute;
+
+  left: 47.5%;
+
+  bottom: -23px;
+
+}
+
+
+
+.product-title-icon i:before {
+
+    /*background: none repeat scroll 0 0 #FB6C64;*/
+
+    border-radius: 65%;
+
+    display: block;
+
+    line-height: 45px;
+
+    padding: 0 4px;
+
+    width: 45px;
+
+}
+
+
+
+.product-title-icon i {
+
+  background: none repeat scroll 0 0 #FFFFFF;
+
+    border: 1px solid #D4D4D4;
+
+    border-radius: 50%;
+
+    color: #FFFFFF;
+
+    display: inline-block;
+
+    height: 53px;
+
+    padding: 3px;
+
+    width: 53px;
+
+}
+
+
+
+.product-title-recent {
+
+  width: 100%;
+
+  text-align: center;
+
+  margin-bottom: 50px;
+
+  border-bottom: 1px solid #d4d4d4;
+
+  position: relative;
+
+  padding-bottom: 40px;
+
+}
+
+
 
