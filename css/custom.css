@@ -4,14 +4,16 @@
 
 body {
 
-    font-family: 'Roboto', "Alef Hebrew"; color:#F0F0F0;
+    font-family: 'Roboto', "Alef Hebrew"; color:#d83c3c;
     background-color: #f2f2f2;
-    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /*padding-top: 50px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background-color: #fff; 
-    background-image: 
+    /*background-image: 
         linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
         linear-gradient(#eee .1em, transparent .1em);
-        background-size: 100% 1.2em;
+        background-size: 100% 1.2em;*/
+    background: url('/img/home-background/white_brick_wall.png')  
+        
 }
 
 
@@ -31,11 +33,11 @@ margin-left: 7px;
 }
 
 .pdl0 {
-	padding-left:0;
+  padding-left:0;
 }
 
 .pdr0 {
-	padding-right:0;
+  padding-right:0;
 }
 
 .pdr10  {
@@ -44,6 +46,18 @@ margin-left: 7px;
 
 .pdt10  {
   padding-top:10px;
+}
+
+.pdt20  {
+  padding-top:20px;
+}
+
+.pdt30  {
+  padding-top:30px;
+}
+
+.pdt40  {
+  padding-top:40px;
 }
 
 input[type=text], input[type=password], input[type=email], input[type=tel] {
