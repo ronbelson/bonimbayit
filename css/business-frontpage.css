@@ -26,6 +26,7 @@
   margin-right:0px;
     text-shadow: 0 0 10px #000;
     color: #fff;
+    font: bold 15px/40px ;
     font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:55px; color:#F0F0F0;
     
 }
@@ -38,7 +39,7 @@
 
 @media (max-width: 480px) { 
         .tagline {
-         font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:45px; color:#F0F0F0;
+         font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:45px; color:#f0f0f0;
         }
 
         .hidden-phone {
@@ -51,8 +52,10 @@
 .tagline2 {
   margin-top:10px; 
   margin-right:0px;
-    color: #fff;
-    font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#F0F0F0;
+  color: #f0f0f0;
+  font: bold 15px/40px ;
+  font-family: 'Roboto', "Alef Hebrew"; font-weight : 250;font-size:20px; 
+  text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
     
 }
 
