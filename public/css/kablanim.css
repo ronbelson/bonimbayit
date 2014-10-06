@@ -1,3 +1,4 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 /*!
  * Start Bootstrap - Business Frontpage HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -955,11 +956,11 @@ position: relative;
 .carousel-control.left {left:-35px;}
 .carousel-control.right {right:-35px;}
 .broun-block {
-    padding-bottom: 34px;
+    padding-bottom: 0px;
     /*border-radius: 5px;*/
     border: 0;
     background: rgba(216, 60, 60, 1);
-    padding-top:30px;
+    padding-top:0px;
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -1074,7 +1075,7 @@ figcaption.ratings a:hover
 .emphasis h2
 {
     margin-bottom:0;
-    }
+    } 
 span.tags 
 {
     background: #d83c3c;

@@ -54,10 +54,8 @@ block content
      .row
       .col-md-8.col-lg-10.col-md-offset-1.col-lg-offset-1.visible-md.visible-lg.text-right#testimonials
        include testimonials-front-page
-       block jsfiles
-        script(src="/js/front-page.js")
-
-       //-  site strongs boxes
+       
+  //-  site strongs boxes
  .container
   .row
    .col-sm-6.col-md-3
@@ -103,6 +101,7 @@ block content
 
  include file-costs
  include frontpage-content
- 
+block jsfiles
+ script(src="/js/front-page.js")
  
 

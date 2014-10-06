@@ -8,8 +8,8 @@ router.get('/', function(req, res) {
 });
 
 /* GET home page. */
-router.get('/belson', function(req, res) {
-  res.render('index', { title: 'belson' });
+router.get('/kablanim', function(req, res) {
+  res.render('kablanim', { title: 'התקבלו 8 קבלנים בשרון' });
 
 
 });

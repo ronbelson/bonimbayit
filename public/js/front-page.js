@@ -1,4 +1,3 @@
-
 $(function(){
 var items = (Math.floor(Math.random() * ($('#testimonials li').length)));
 $('#testimonials li').hide().eq(items).show();
@@ -10,6 +9,12 @@ function next(){
   });
  }
 next();
+});
+
+$(document).ready(function () {
+
+    $(".player").mb_YTPlayer();
+
 });
 
 

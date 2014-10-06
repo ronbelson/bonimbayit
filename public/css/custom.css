@@ -28,6 +28,43 @@ margin-left: 7px;
 
 }
 
+.btn-submit{
+
+     overflow: visible;
+       position: relative;
+       float: right;
+       border: 0;
+       padding-left:0;padding-right:0; 
+       cursor: pointer;
+       height: 60px;
+       width: 100%;
+       font: bold 15px/40px ;
+       color: #f1c40f;
+       background: #e74c3c;
+       text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+       font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#f1c40f;
+       
+       
+   }   
+   
+   .btn-submit:hover{   
+
+           background: #d83c3c;
+       }  
+       
+   .btn-submit:before {
+           content: '';
+           position: absolute;
+       border-width: 6px 0 6px 10px;
+           width: 0;
+           height: 0;
+           border-style: solid solid solid solid;
+           border-color: transparent #d83c3c transparent;
+           top: 25px;
+           right: -10px;
+           font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#000;
+           
+          }
 .navbar {
    background:rgba(0,0,0,0.5);   /* for latest browsers */
    background: #000;  /* fallback for older browsers */
@@ -38,12 +75,25 @@ margin-left: 7px;
   padding-left:0;
 }
 
+
+
+.pdl10 {
+  padding-left:10px;
+}
+
+.pdl20 {
+  padding-left:20px;
+}
+
 .pdr0 {
   padding-right:0;
 }
 
 .pdr10  {
   padding-right:10px;
+}
+.pdr20 {
+  padding-right:20px;
 }
 
 .pdt10  {
@@ -62,6 +112,19 @@ margin-left: 7px;
   padding-top:40px;
 }
 
+.pdb10  {
+  padding-bottom:10px;
+}
+.pdb20  {
+  padding-bottom:20px;
+}
+.pdb30  {
+  padding-bottom:30px;
+}
+.pdb40  {
+  padding-bottom:40px;
+}
+
 input[type=text], input[type=password], input[type=email], input[type=tel] {
     height: 50px !important;
 }
@@ -70,11 +133,104 @@ input[type=text], input[type=password], input[type=email], input[type=tel] {
                 justify-contents:center;
                 align-items:center;}
  /*-------------------------------------*/
-    
+ /* =Social icons
+----------------------------------------------- */
+#secondary .widget .social-icons a {
+  color: #fff;
+}
+.social-icons {
+  position: relative;
+  text-align: center;
+}
+#secondary .widget .social-icons {
+  text-align: right;
+}
+.social-icons a {
+
+  font-size: 18px;
+  line-height: 40px;
+  list-style: none;
+  display: inline-block;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  background-color: #DADADA;
+  -webkit-transition: background-color  0.5s;
+     -moz-transition: background-color  0.5s;
+       -o-transition: background-color  0.5s;
+          transition: background-color  0.5s;
+}
+#footer-area .social-icons a {
+  margin-right: 7px;
+  background-color: #363636;
+  color: #fff;
+}
+
+.social-icons a.facebook:hover {
+  background-color: #4265b9 !important;
+}
+.social-icons a.twitter:hover {
+  background-color: #55ACEE !important;
+}
+.social-icons a.dribbble:hover {
+  background-color: #ea4c89 !important;
+}
+.social-icons a.flickr:hover {
+  background-color: #ff0084 !important;
+}
+.social-icons a.googleplus:hover {
+  background-color: #d62408 !important;
+}
+.social-icons a.skype:hover {
+  background-color: #0bbff2 !important;
+}
+.social-icons a.pinterest:hover {
+  background-color: #c31e26 !important;
+}
+.social-icons a.linkedin:hover {
+  background-color: #005987 !important;
+}
+.social-icons a.vimeo:hover {
+  background-color: #1bb6ec !important;
+}
+.social-icons a.tumblr:hover {
+  background-color: #35506b !important;
+}
+.social-icons a.youtube:hover {
+  background-color: #df3333 !important;
+}
+.social-icons a.instagram:hover {
+  background-color: #F95B60 !important;
+}
+.social-icons a.rss:hover {
+  background-color: #f39c12 !important;
+}
+.social-icons a.foursquare:hover {
+  background-color: #2398C9 !important;
+}
+.social-icons a.soundcloud:hover {
+  background-color: #F50 !important;
+}
+.fa-googleplus:before {
+  content: "\f0d5";
+}
+.fa-vimeo:before {
+  content: "\f194";
+}
  /*=======================================
      GENERAL STYLES
  ==================================================*/
-  
+#secondary .widget  .widget-title {font-size:24px;}
+
+#secondary .widget .post-content a:hover {
+  color: #000;
+  font-style: 
+}
+
+
  
  .text-center {
      text-align:center;
