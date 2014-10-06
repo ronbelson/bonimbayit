@@ -1,7 +1,40 @@
 doctype html
-html
+html(lang="he")
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    meta(ttp-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='בונים בית|תגלו לפרטי פרטים את כל תהליכי הבנייה והעלויות האמיתיות לבניית הבית שלכם.')
+    meta(name='author', content='בונים בית')
+
+    include cssfiles
+    block css
+
+    //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
+    //- WARNING: Respond.js doesn't work if you view the page via file:// 
+    // [if gt IE 9]>
+     script(src="/js/html5shiv.js")
+     script(src="/js/respond.min.js" )
+    // [endif]>
+
+
   body
+    include navbar
     block content
+    include footer     
+    block footer
+    include login_modal
+    include jsfiles
+    block jsfiles
+
+
+    
+
+
+
+
+
+
+
+

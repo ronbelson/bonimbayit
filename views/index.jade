@@ -1,5 +1,108 @@
-extends layout
+extends layout	
+
+block css
+ link(href="/css/business-frontpage.css" rel="stylesheet")
 
 block content
-  h1= title
-  p Welcome to number 1 #{title}
+ header.business-header
+  .container
+   .row
+    .col-xs-12
+     h1.tagline קבל\י המלצות על קבלנים מבונים שסיימו בניה
+     h2.tagline2.visible-lg קבל\י חינם את יומן הבנייה המקיף בישראל,דוח עלויות בנייה כגון עלויות שלד,ברזל,בטון,ריצוף,טיח ושאר עלויות בנייה
+     br
+   .row
+    .col-md-7
+     form.bgcolor-white
+      .row
+       .col-md-6 
+        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown") על איזה קבלן תרצה לקבל המלצות? 
+         span.caret
+        ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
+         li
+         a.text-right(href="#" tabindex="-1") שלד
+         li.divider
+         li
+         a.text-right(href="#") שלד
+         li.divider
+         li
+         a.text-right(href="#") שלד
+         li.divider
+         li
+         a(href="#") שלד
+         li.divider
+       .col-md-3
+        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown") אזור
+         span.caret         
+        ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
+         li
+         a.text-right(href="#" tabindex="-1") שלד
+         li.divider
+         li
+         a.text-right(href="#") שלד
+         li.divider
+         li
+         a.text-right(href="#") שלד
+         li.divider
+         li
+         a(href="#") שלד
+         li.divider                         
+       .col-md-3
+        button.btn-submit קבל המלצות 
+         i.fa.fa-heart
+    .col-md-5
+     .row
+      .col-md-8.col-lg-10.col-md-offset-1.col-lg-offset-1.visible-md.visible-lg.text-right#testimonials
+       include testimonials-front-page
+       block jsfiles
+        script(src="/js/front-page.js")
+
+       //-  site strongs boxes
+ .container
+  .row
+   .col-sm-6.col-md-3
+    .dl
+     .discount.alizarin יומן הבניה המקיף בישראל
+     .descr
+      div
+       strong ריכזנו עבורך את כל עלויות הבניה עם יומן הבניה המקיף בישראל!
+      div עלויות שלד ,ברזל,בטון,ריצוף,טיח ושאר עלויות הבנייה. 
+     .text-left 
+      a(href="#code-1")ליומן הבניה המלא&nbsp;
+       i.fa.fa-arrow-left&nbsp;
+   .col-sm-6.col-md-3
+    .dl
+     .discount.amethyst עלויות בניה, שלד ברזל ועוד 
+     .descr
+      div
+       strong ריכזנו עבורך את כל עלויות הבניה עם יומן הבניה המקיף בישראל!
+      div עלויות שלד ,ברזל,בטון,ריצוף,טיח ושאר עלויות הבנייה. 
+     .text-left 
+      a(href="#code-1")כל עלויות הבניה&nbsp;
+       i.fa.fa-arrow-left&nbsp;
+   .col-sm-6.col-md-3
+    .dl
+     .discount.emerald קבלנים מומלצי קהילת הבונים
+     .descr
+      div
+       strong ריכזנו עבורך את כל עלויות הבניה עם יומן הבניה המקיף בישראל!
+      div עלויות שלד ,ברזל,בטון,ריצוף,טיח ושאר עלויות הבנייה. 
+     .text-left 
+      a(href="#code-1")חפש קבלנים מומלצים&nbsp;
+       i.fa.fa-arrow-left&nbsp;
+   .col-sm-6.col-md-3
+    .dl
+     .discount.peter-river צוות מומחים לכל שאלה
+     .descr
+      div
+       strong ריכזנו עבורך את כל עלויות הבניה עם יומן הבניה המקיף בישראל!
+      div עלויות שלד ,ברזל,בטון,ריצוף,טיח ושאר עלויות הבנייה. 
+     .text-left 
+      a(href="#code-1")צוות המומחים בפייסבוק &nbsp;
+       i.fa.fa-arrow-left&nbsp;
+
+ include file-costs
+ include frontpage-content
+ 
+ 
+

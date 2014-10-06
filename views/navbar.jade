@@ -1,0 +1,22 @@
+//-Navigation
+nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+ .container
+  //- Brand and toggle get grouped for better mobile display -->
+  .navbar-header
+   button.navbar-toggle(type='button', data-toggle='collapse',data-target='#bs-example-navbar-collapse-1')
+    span.sr-only Toggle navigation
+    span.icon-bar
+    span.icon-bar
+    span.icon-bar
+   a.navbar-brand(title="בונים בית - דף הבית" href="/")
+    img#logo(src="/img/bonimbayit-logo.png")
+    small בונים בית - יחד נבנה את החלום
+  //- Collect the nav links, forms, and other content for toggling  
+  .collapse.navbar-collapse#bs-example-navbar-collapse-1
+   ul.nav.navbar-nav.navbar-left
+    li
+     a(href="#")יומן הבניה השלם
+    li
+     a(data-toggle="modal" href="#responsive")היתחבר או הירשם
+    li
+     a(href="#")קבלן\ספק?
