@@ -11,11 +11,13 @@ function next(){
 next();
 });
 
-$(document).ready(function () {
-
-    $(".player").mb_YTPlayer();
-
-});
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/he_IL/sdk.js#xfbml=1&appId=182829178418239&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 
   
