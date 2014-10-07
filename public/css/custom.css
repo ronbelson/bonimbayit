@@ -424,5 +424,6 @@ $colHover       : #ffe6d1; /*/
 
 /* --- Style --- */
 
+.fb-like-box, .fb-like-box span, .fb-like-box span iframe[style] { width: 100% !important; }
 
 
