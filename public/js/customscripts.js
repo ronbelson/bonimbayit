@@ -5,9 +5,9 @@ window.fbAsyncInit = function() {
       version    : 'v2.1'
     });
 
-      if ($(this).width() > 768 && $.cookie("fb-back12")==undefined)  {
+      if ($(this).width() > 768 && $.cookie("fb-back")==undefined)  {
 
-        $.cookie("fb-back1", "Aurelio", {expires: new Date(2029, 10, 29, 11, 00, 00)});
+        $.cookie("fb-back", "Aurelio", {expires: new Date(2029, 10, 29, 11, 00, 00)});
         setTimeout(function() {
           $('#fb-back').modal('show');
         }, 13000); // milliseconds
