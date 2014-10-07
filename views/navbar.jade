@@ -1,5 +1,5 @@
 //-Navigation
-nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
+nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
  .container
   //- Brand and toggle get grouped for better mobile display -->
   .navbar-header
@@ -14,10 +14,28 @@ nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
   //- Collect the nav links, forms, and other content for toggling  
   .collapse.navbar-collapse#bs-example-navbar-collapse-1
    ul.nav.navbar-nav.navbar-left
-    li
-     a(href="#")יומן הבניה השלם
+    li.dropdown
+     a.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown') יומן הבניה השלם
+      i.fa.fa-arrow-down.pdr10
+      ul.dropdown-menu.pdr10.pdl10
+        li
+          a.text-right(href='javascript:void(0)') עלויות בניה
+
+        li
+          a.text-right(href='javascript:void(0)') עלויות שלד
+        li
+          a.text-right(href='javascript:void(0)') עלויות תומר
+        li.divider
+        li
+          a.text-right(href='javascript:void(0)') כל הקטגוריות הראשויות
+    
     li
      a(data-toggle="modal" href="#responsive")היתחבר או הירשם
+      i.fa.fa-sign-in(style="padding-right:3px;")
     li
      a(href="#")קבלן\ספק?
-   
+    li     
+     a(href="#")המלץ על קבלן
+      i.fa.fa-star(style="padding-right:3px;")
+
+
