@@ -10,7 +10,7 @@ window.fbAsyncInit = function() {
         $.cookie("fb-back1", "Aurelio", {expires: new Date(2029, 10, 29, 11, 00, 00)});
         setTimeout(function() {
           $('#fb-back').modal('show');
-        }, 1000); // milliseconds
+        }, 13000); // milliseconds
 
     };
       
