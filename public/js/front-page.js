@@ -11,13 +11,7 @@ function next(){
 next();
 });
 
-$(document).ready(function () {
 
-    //setTimeout(function() {
-      //$('#fb-back').modal('show');
-    //}, 1000); // milliseconds
-
-});
 
 
   
