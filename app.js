@@ -10,10 +10,10 @@ var routes = require('./routes/index');
 var app = express();
 
 //ghost start
-//var ghost = require('ghost');
-//ghost().then(function (ghostServer) {
- //   ghostServer.start();
-//});
+var ghost = require('ghost');
+ghost().then(function (ghostServer) {
+    ghostServer.start();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
