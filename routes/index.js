@@ -11,8 +11,6 @@ var router = express.Router();
   //  blogProxy.web(req, res, { target: 'http://127.0.0.1:2368' });
 //});
 
- 
-
 
 /* GET home page. */
 router.get('/', function(req, res) { 
@@ -25,6 +23,9 @@ router.get('/kablanim/:type/:area', function(req, res) {
   res.render('kablanim', { title: 'התקבלו 8 קבלנים בשרון' });
 
  
+//router.use(express.urlencoded()); 
+//router.use(express.json()); 
+
 
 });
 module.exports = router;
