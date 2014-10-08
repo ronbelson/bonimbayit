@@ -39,61 +39,7 @@
         "name": "test7",
         "price": "$7"
     },
-    {
-        "id": 8,
-        "name": "test8",
-        "price": "$8"
-    },
-    {
-        "id": 9,
-        "name": "test9",
-        "price": "$9"
-    },
-    {
-        "id": 10,
-        "name": "test10",
-        "price": "$10"
-    },
-    {
-        "id": 11,
-        "name": "test11",
-        "price": "$11"
-    },
-    {
-        "id": 12,
-        "name": "test12",
-        "price": "$12"
-    },
-    {
-        "id": 13,
-        "name": "test13",
-        "price": "$13"
-    },
-    {
-        "id": 14,
-        "name": "test14",
-        "price": "$14"
-    },
-    {
-        "id": 15,
-        "name": "test15",
-        "price": "$15"
-    },
-    {
-        "id": 16,
-        "name": "test16",
-        "price": "$16"
-    },
-    {
-        "id": 17,
-        "name": "test17",
-        "price": "$17"
-    },
-    {
-        "id": 18,
-        "name": "test18",
-        "price": "$18"
-    },
+    
     {
         "id": 19,
         "name": "test19",
