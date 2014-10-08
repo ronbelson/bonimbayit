@@ -12,6 +12,7 @@ var app = express();
 //ghost start
 var ghost = require('ghost');
 ghost().then(function (ghostServer) {
+    
     ghostServer.start();
 });
 

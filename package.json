@@ -16,7 +16,8 @@
     "mongodb": "*",
     "monk": "*",
     "ghost": "0.5.2",
-    "pg": "latest"
+    "pg": "latest",
+    "http-proxy":"latest"
 
   }
 }
