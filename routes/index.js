@@ -1,15 +1,15 @@
 var express = require('express');
-//var httpProxy = require('http-proxy');
+var httpProxy = require('http-proxy');
 
 var router = express.Router();
 
-//var blogProxy = httpProxy.createProxyServer();
+var blogProxy = httpProxy.createProxyServer();
 
 
 // Route /blog* to Ghost
-//router.get("/blog*", function(req, res){ 
-//    blogProxy.web(req, res, { target: 'http://127.0.1:2368' });
-//});
+router.get("/blog*", function(req, res){ 
+    blogProxy.web(req, res, { target: 'http://127.0.1:' + process.env.PORT });
+});
 
 
 /* GET home page. */
