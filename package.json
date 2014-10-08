@@ -16,5 +16,6 @@
     "mongodb": "*",
     "monk": "*",
     "ghost": "0.5.2"
+    “pg”: “latest”
   }
 }
