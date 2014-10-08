@@ -8,7 +8,7 @@ var blogProxy = httpProxy.createProxyServer();
 
 // Route /blog* to Ghost
 router.get("/blog*", function(req, res){ 
-    blogProxy.web(req, res, { target: 'http://127.0.0.1:' + process.env.PORT });
+    blogProxy.web(req, res, { target: '0.0.0.0' + process.env.PORT });
 });
 
 
