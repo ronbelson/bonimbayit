@@ -11,6 +11,18 @@ var router = express.Router();
   //  blogProxy.web(req, res, { target: 'http://127.0.0.1:2368' });
 //});
 
+ 
+
+var httpProxy = require('http-proxy');  
+var proxy = new httpProxy.createProxyServer();
+
+router.get('/blog*', function (req, res, next) {  
+    req.headers.host = '{site-blog}.herokuapp.com';
+    proxy.web(req, res, {
+        target: 'bonimbayit.herokuapp.com'
+    });
+});
+ 
 
 /* GET home page. */
 router.get('/', function(req, res) { 
