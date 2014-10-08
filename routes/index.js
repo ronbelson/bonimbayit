@@ -17,7 +17,7 @@ var httpProxy = require('http-proxy');
 var proxy = new httpProxy.createProxyServer();
 
 router.get('/blog*', function (req, res, next) {  
-    req.headers.host = '{site-blog}.herokuapp.com';
+    req.headers.host = 'bonimbayit.herokuapp.com';
     proxy.web(req, res, {
         target: 'bonimbayit.herokuapp.com'
     });
