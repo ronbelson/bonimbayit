@@ -19,7 +19,7 @@ var proxy = new httpProxy.createProxyServer();
 router.get('/blog*', function (req, res, next) {  
     req.headers.host = 'blog-bonimbayit.herokuapp.com';
     proxy.web(req, res, {
-        target: 'blog-onimbayit.herokuapp.com'
+        target: 'blog-bonimbayit.herokuapp.com'
     });
 });
  
