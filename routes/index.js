@@ -17,9 +17,10 @@ var httpProxy = require('http-proxy');
 var proxy = new httpProxy.createProxyServer();
 
 router.get('/blog*', function (req, res, next) {  
-    req.headers.host = 'blog-bonimbayit.herokuapp.com';
+    req.headers.host = '0.0.0.0';
     proxy.web(req, res, {
-        target: 'blog-bonimbayit.herokuapp.com'
+        target: '0.0.0.0',
+        port:2368
     });
 });
  
