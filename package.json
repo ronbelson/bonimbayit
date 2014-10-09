@@ -15,8 +15,6 @@
     "jade": "~1.6.0",
     "mongodb": "*",
     "monk": "*",
-    //"ghost": "0.5.2",
-    //"pg": "latest",
     "http-proxy":"latest"
 
   }

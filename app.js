@@ -14,8 +14,7 @@ var app = express();
 //ghost().then(function (ghostServer) {
     
   //  ghostServer.start();
-//});
-
+//});             
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
