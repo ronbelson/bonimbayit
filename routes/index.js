@@ -21,7 +21,7 @@ router.use(bodyParser.json());
 
 
 router.get('/blog*', function (req, res, next) {  
-    req.headers.host = app_proxy_url();
+    req.headers.host = 'http://blog-bonimbayit.herokuapp.com';
     proxy.web(req, res, {
          target: 'http://blog-bonimbayit.herokuapp.com'
      
