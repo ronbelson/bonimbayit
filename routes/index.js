@@ -15,7 +15,7 @@ var app_proxy_url = function() {
     	return 'http://blog-bonimbayit.herokuapp.com'
 };
 
- console.log(app_proxy_url);
+  
 router.use(bodyParser.urlencoded({ extended: false })); 
 router.use(bodyParser.json()); 
 
@@ -23,7 +23,7 @@ router.use(bodyParser.json());
 router.get('/blog*', function (req, res, next) {  
     req.headers.host = app_proxy_url();
     proxy.web(req, res, {
-         target: app_proxy_url()
+         target: 'http://blog-bonimbayit.herokuapp.com'
      
         
     });
