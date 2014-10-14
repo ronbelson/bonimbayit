@@ -22,13 +22,22 @@
 
 /* Customize the text color and shadow color and to optimize text legibility. */
 
-.tagline {
+h1.tagline {
   margin-top:50px; 
-  margin-right:0px;
-    text-shadow: 0 0 10px #000;
-    color: #fff;
-    font: bold 15px/40px ;
-    font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:55px; color:#F0F0F0;
+  margin-right:0px; 
+  color: #f0f0f0;
+
+  text-shadow: 0 0 14px #000;
+  font-family: 'Roboto', "Alef Hebrew"; font-weight : 700;  
+    
+}
+
+h5.tagline {
+  margin-right:0px; 
+  color: #f0f0f0;
+
+  text-shadow: 0 0 10px #000;
+  font-family: 'Roboto', "Alef Hebrew"; font-weight : 400;  
     
 }
 
@@ -40,7 +49,7 @@
 
 @media (max-width: 480px) { 
         .tagline {
-         font-family: 'Roboto', "Alef Hebrew"; font-weight : 300;font-size:45px; color:#f0f0f0;
+         
         }
 
         .hidden-phone {
@@ -50,13 +59,7 @@
 
     }
 
-.tagline2 {
-  margin-top:10px; 
-  margin-right:0px;
-  color: #f0f0f0;
-  font: bold 15px/40px ;
-  font-family: 'Roboto', "Alef Hebrew"; font-weight : 250;font-size:20px; 
-  text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+
     
 }
 
