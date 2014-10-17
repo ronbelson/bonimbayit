@@ -22,6 +22,8 @@
 
 /* Customize the text color and shadow color and to optimize text legibility. */
 
+.boldy { font-weight: bold;font-weight: 700;}
+.yellow-text{color:#f1c40f;}
 h1.tagline {
   margin-top:50px; 
   margin-right:0px; 
@@ -32,7 +34,7 @@ h1.tagline {
     
 }
 
-h5.tagline {
+h5.tagline ,h4.tagline {
   margin-right:0px; 
   color: #f0f0f0;
 
