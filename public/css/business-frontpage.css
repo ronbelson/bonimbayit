@@ -22,36 +22,7 @@
 
 
 
-#OPP-div-around-poll
-{ 
-  border: 110px; margin: 0px; padding: 10px ; -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; border-bottom-left-radius: 0px !important; 
-  background-color: #e74c3c !important ;
- 
-}
-#OPP-div-around-poll:hover
-{ 
-  border: 110px; margin: 0px; padding: 10px ; -webkit-box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px; box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; border-bottom-right-radius: 0px !important; border-bottom-left-radius: 0px !important; 
-  background-color: #d83c3c !important ;
- 
-}
 
-
-#OPP-powered-by {
-  display: none;
-}
-
-
-#OPP-div-around-poll div {
-  color:#f0f0f0 !important;
-  opacity: 0.9 !important;
-  font-family: 'Roboto', "Alef Hebrew" !important ; 
-}
-
-
-/* Customize the text color and shadow color and to optimize text legibility. */
-
-.boldy { font-weight: bold;font-weight: 700;}
-.yellow-text{color:#f1c40f;}
 h1.tagline {
   margin-top:50px; 
   margin-right:0px; 
