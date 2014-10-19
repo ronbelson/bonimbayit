@@ -15,7 +15,7 @@ block content
      form.bgcolor-white
       .row
        .col-md-6 
-        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown") קבל מהקהילה את הקבלנים הטובים ביותר
+        div(style="padding-top:15px;").btn.btn-search צפה בהמלצות הקהילה על קבלנים
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
          a.text-right(href="#" tabindex="-1") שלד
@@ -30,20 +30,22 @@ block content
          a (href="#") שלד
          li.divider
        .col-md-3
-        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown") אזור
+        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown") באזור
          span.caret         
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
-         a.text-right(href="#" tabindex="-1") שלד
+         a.text-right(href="#" tabindex="-1") צפון
          li.divider
          li
-         a.text-right(href="#") שלד
+         a.text-right(href="#") מרכז
          li.divider
          li
-         a.text-right(href="#") שלד
+         a.text-right(href="#") שפלה
          li.divider
          li
-         a (href="#") שלד
+         a.text-right(href="#") דרום
+         li.divider  
+         a(href="#") המלצות מכל האזורים
          li.divider                         
        .col-md-3
         button.btn-submit הצג &nbsp;
