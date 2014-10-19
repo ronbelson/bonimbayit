@@ -34,21 +34,21 @@ block content
          span.caret         
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
-         a.text-right(href="#" tabindex="-1") צפון
+         a.text-right(href="#signin" tabindex="-1" data-toggle="modal") צפון
          li.divider
          li
-         a.text-right(href="#") מרכז
+         a.text-right(href="#signin" data-toggle="modal") מרכז
          li.divider
          li
-         a.text-right(href="#") שפלה
+         a.text-right(href="#signin" data-toggle="modal") שפלה
          li.divider
          li
-         a.text-right(href="#") דרום
+         a.text-right(href="#signin" data-toggle="modal") דרום
          li.divider  
-         a(href="#") המלצות מכל האזורים
+         a(href="#signin" data-toggle="modal") המלצות מכל האזורים
          li.divider                         
        .col-md-3
-        button.btn-submit הצג &nbsp;
+        button(data-toggle="modal" href="#signin" ).btn-submit הצג &nbsp;
          i.fa.fa-heart
      
      
