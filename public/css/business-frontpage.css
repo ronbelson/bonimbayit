@@ -136,14 +136,14 @@ h5.tagline ,h4.tagline {
     #testimonials{
     height: 100%;
     background: rgba(59, 59, 32, 0.5);
-    border-radius: 4%;
+    border-radius: 0%;
   }
 
    
    
   #testimonials li{ 
     
-    padding: 20px;
+    padding-top: 20px;
 
   }
   #testimonials ul{
@@ -164,9 +164,10 @@ h5.tagline ,h4.tagline {
     color:#f6f5f5;
   }
   #testimonials p.author span{ padding-right: 10px;}
+  
   testimonials{
     font-family: 'Roboto', "Alef Hebrew"; font-weight:normal;font-weight : 150;font-size:16px;color: #e6f34e;
-  
+     
           }
    
     .circle {
@@ -841,13 +842,18 @@ position: relative;
 
 .dl {
     background: #f0f0f0;
-    padding: 30px 0;
+    border: transparent 1px solid;
+    border-color:#3498db;
+    padding-bottom: 6px ;
+    margin-bottom: 20px ;
+    /*padding: 30px 0;
+
     border-radius: 20px;
-    position: relative;
+    position: relative;*/
 }
 
 .dl:before {
-    content: " ";
+    /*content: " ";
     height: 20px;
     width: 20px;
     background: #ddd;
@@ -855,7 +861,7 @@ position: relative;
     position: absolute;
     left: 50%;
     top: 20px;
-    margin-left: -10px;
+    margin-left: -10px;*/
 }
     
  
