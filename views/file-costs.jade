@@ -1,6 +1,6 @@
 .container#filecost
  .row.pdt30
- form
+ form#filecosts-form(role="form" data-toggle="validator")
   .col-md-5.col-sm-12.construction-report-img
    img(src="/img/construction-report.png" alt="קבל את קובץ עלויות בניה חינם" title="קבל את קובץ עלויות בניה חינם")
   .col-md-7.col-sm-12
@@ -12,7 +12,9 @@
      .well
       .row
        .col-md-6
-        input.search-query(placeholder="  דואל (לא נשתמש בו למטרה אחרת)     " required)
+
+        input.search-query(dir="rtl" onkeypress="this.dir='ltr'" placeholder="הכנס דואר אלקטרוני" required id="mc-email" type="email" )
+        label(for="mc-email")
        .col-md-6
         button.btn-submit(type="submit") קבל חינם
 

@@ -60,9 +60,28 @@ $(function() {
   $('#mc-form').ajaxChimp({
     url: 'http://bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120',
     callback: function(response) {
-      //$('form .result').text(response.msg);
-      var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
-      window.location.href = '/thankyou/1/' + encodeURIComponent(responsemsg) +'/';
+     if(response.msg.indexOf("כמעט סיימתם") > -1) 
+      {
+        var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
+        window.location.href = '/thankyou/1/' + encodeURIComponent(responsemsg) +'/';  
+      }
+    }
+
+  });
+ 
+});
+
+$(function() {
+
+  $('#filecosts-form').ajaxChimp({
+    url: 'http://bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120',
+    callback: function(response) {
+      if(response.msg.indexOf("כמעט סיימתם") > -1) 
+      {
+        var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
+        window.location.href = '/thankyou/2/' + encodeURIComponent(responsemsg) +'/';  
+      }
+      
     }
 
   });
