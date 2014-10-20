@@ -59,23 +59,24 @@ section#contact.pdt40
   .row
    .col-md-12(data-animate="flipInY")
     div#contactform
-     form
+     form#contactformfooter(role="form" data-toggle="validator")
       .row
        .col-md-4
-        input#c-name.form-control(required type="text" name="name" class="" placeholder="שם")
+        input#c-name.form-control(required type="text" name="name" class="" placeholder="שם מלא")
        .col-md-4
         input#c-mail.form-control(required type="text" name="email"  placeholder="אימייל")
        .col-md-4           
-        input#c-phone.form-control(type="text" name="phone"  placeholder="מספר טלפון")
+        input#c-phone.form-control(type="text" name="phone" required placeholder="מספר טלפון")
       .row
        .col-md-12
-        textarea.form-control(required name="message" id="c-msg" rows="5" placeholder="טקסט חופשי")
+        textarea.form-control(required name="message" id="c-freetext" rows="5" placeholder="טקסט חופשי")
       .row
        .col-md-4.col-md-push-8.send-div.alignleft                         
         br
         button#send-btn.btn-submit(style="float:left" type="submit") שלח
       .row
-       .col-md-4.col-md-push-8.alignleft.error-message-2  
+       .col-md-4.col-md-push-8.pdl10.pdr.alignleft#c-msg 
+        
   .row
    .success-message-2
 

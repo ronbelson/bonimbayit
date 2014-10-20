@@ -58,7 +58,6 @@ window.fbAsyncInit = function() {
 
 $(function() {
   $('#mc-form').ajaxChimp({
-    ////bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120
     url: 'http://bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120',
     callback: function(response) {
       //$('form .result').text(response.msg);
@@ -68,7 +67,31 @@ $(function() {
 
   });
  
-})
+});
+
+  
+
+$("#contactformfooter").submit(function() {
+  
+   $("#c-msg").html('<i class="fa fa-spinner">&nbsp;שולח אנא המתו...</i>');
+   var url  = "/contact/"; 
+   var ajax_data = $("#contactformfooter").serializeJSON();
+   $.ajax({
+           type: "POST",
+           url: url,
+           data: ajax_data, // serializes the form's elements.
+           success: function(data)
+           {
+                
+               $('#c-msg').html('ההודעה נשלחה בהצלחה')
+           }
+         });
+ return false; // avoid to execute the actual submit of the form.
+});
+
+   
+
+
 
 
   
