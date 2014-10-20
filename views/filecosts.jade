@@ -1,0 +1,20 @@
+extends layout	
+
+block css
+ link(href="/css/business-frontpage.css" rel="stylesheet")
+
+block content
+ .container
+  .row(style="padding-top:100px;")
+   .col-xs-12.textcenter.well
+    h3	תודה שאישרתם, להורדת דוח עלויות הבניה אנא לחצו על המקש הימיני ושמור בשם..
+    h4
+     a(href="#") קובץ עלויות בניה להרודה
+      i.pdr10.fa.fa-file-excel-o
+ include frontpage-content
+ 
+ 
+block jsfiles
+ script(src="/js/front-page.js")
+
+

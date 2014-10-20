@@ -55,12 +55,25 @@ window.fbAsyncInit = function() {
 //OPP-poll-id-53a2116be4b0fb42190cb76d', function(e) {
   
 
-$("#OPP-div-around-poll").bind("DOMSubtreeModified", function() {
-    objectHTMLCollection = (document.getElementsByTagName('OPP-div-around-poll'));
-    
-     document.write(objectHTMLCollection);
-});
 
+$(function() {
+  $('#mc-form').ajaxChimp({
+    ////bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120
+    url: 'http://bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120',
+    callback: function(response) {
+      //$('form .result').text(response.msg);
+      var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
+      window.location.href = '/thankyou/1/' + encodeURIComponent(responsemsg) +'/';
+    }
+
+  });
+ 
+})
+
+
+  
+
+  
  
 
 

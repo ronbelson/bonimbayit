@@ -1,0 +1,17 @@
+extends layout	
+
+block css
+ link(href="/css/business-frontpage.css" rel="stylesheet")
+
+block content
+ .container
+  .row(style="padding-top:100px;")
+   .col-xs-12.textcenter.well
+    h3= msg
+ include frontpage-content
+ 
+ 
+block jsfiles
+ script(src="/js/front-page.js")
+
+

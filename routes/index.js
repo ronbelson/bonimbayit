@@ -66,14 +66,21 @@ router.get('/', function(req, res) {
 
 });
 
+/* Thhankyou page. */
+
+router.get('/thankyou/:type/:msg', function(req, res) { 
+  res.render('thankyou', { msg: req.param("msg") , title: 'תודה על הרישום לבונים בית' });
+
+});
+
+router.get('/filecosts/', function(req, res) { 
+  res.render('filecosts', {  title: 'בונים בית - הורדת קובץ עלויות בניה' });
+
+});
+
 /* GET home page. */
 router.get('/kablanim/:type/:area', function(req, res) {
   res.render('kablanim', { title: 'התקבלו 8 קבלנים בשרון' });
-
- 
- 
-
- 
 
 
 });
