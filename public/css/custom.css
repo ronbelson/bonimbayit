@@ -76,6 +76,7 @@ body {
 .navbar-default {
   background-color: #b84b57;
   border-color: #af2e59;
+  height: 38px !important;
 }
 .navbar-default .navbar-brand {
   color: #f1df3c;

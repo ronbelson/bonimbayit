@@ -15,7 +15,7 @@ block content
      form.bgcolor-white
       .row
        .col-md-6 
-        div(style="padding-top:15px;").btn.btn-search צפה בהמלצות הקהילה על קבלנים
+        div(style="padding-top:15px;color:red;text-shadow: 0 0 1px #000;").btn.btn-search צפה בהמלצות הקהילה על קבלנים:
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
          a.text-right(href="#" tabindex="-1") שלד
@@ -30,25 +30,25 @@ block content
          a (href="#") שלד
          li.divider
        .col-md-3
-        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown") באזור
+        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown" style="color:red;text-shadow: 0 0 1px #000;") באזור
          span.caret         
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
-         a.text-right(href="#signin" tabindex="-1" data-toggle="modal") צפון
+         a.text-right(href="#signin" tabindex="-1" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") צפון
          li.divider
          li
-         a.text-right(href="#signin" data-toggle="modal") מרכז
+         a.text-right(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") מרכז
          li.divider
          li
-         a.text-right(href="#signin" data-toggle="modal") שפלה
+         a.text-right(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") שפלה
          li.divider
          li
-         a.text-right(href="#signin" data-toggle="modal") דרום
+         a.text-right(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") דרום
          li.divider  
-         a(href="#signin" data-toggle="modal") המלצות מכל האזורים
+         a(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") המלצות מכל האזורים
          li.divider                         
        .col-md-3
-        button(data-toggle="modal" href="#signin" ).btn-submit הצג &nbsp;
+        button(data-toggle="modal" href="#signin" style="text-shadow: 0 0 1px #000;" ).btn-submit הצג &nbsp;
          i.fa.fa-heart
      
      
@@ -58,57 +58,57 @@ block content
      .row
       .col-md-8.col-lg-10.col-md-offset-1.col-lg-offset-1.visible-md.visible-lg.text-right#testimonials
        include testimonials-front-page
-       
-  //-  site strongs boxes
- .container
-  .row.pdt0(style="margin-top:20px;")
-   .col-sm-6.col-md-3
-    .dl
-     .discount.alizarin בונים מהקהילה ממליצים לך על הקבלנים הטובים ביותר&nbsp;
-      .fa.fa-star
-     .descr
-      div
-       strong  ההצלחה שלך תלויה בניסיון של הבונים
-      div צפה בהמלצות הקהילה על קבלנים הטובים ביותר בישראל. לא צריך לבזבז זמן.
-     .text-left 
-      a(href="/reviews/all/all") צפה בהמלצות בונים&nbsp;
-       i.fa.fa-arrow-left&nbsp;
-   .col-sm-6.col-md-3
-    .dl
-     .discount.peter-river צוות המומחים עוזרים לך בכל שאלה ותהליך בפייסבוק&nbsp
-      .fa.fa-facebook-square
-     .descr
-      div
-       strong אלפי בונים מתייעצים עימנו חינם בפייסבוק ובדואל!
-      div אל תהססו לפנות לשאול ולהגיב, ביחד נגשים את החלום. 
-     .text-left 
-      a(href="https://www.facebook.com/bonimbayit" taget="_blank" title="בונים בית דף הפייסבוק") לדף המומחים בפייסבוק&nbsp;
-       i.fa.fa-arrow-left&nbsp;
-   .col-sm-6.col-md-3
-    .dl
-     .discount.emerald עלויות בניה עדכניות מהשטח מעודכנות ע״י הבונים&nbsp;
-      i.fa.fa-ils
-     .descr
-      div
-       strong אנו מקבלים עלויות בניה היישר מהבונים בשביל שתדעו יותר!
-      div כל רבעיון תוכלו לצפות בעלויות הבניה העדכניות במשק. 
-     .text-left 
-      a(href="#filecost") עלות בניית בית&nbsp;
-       i.fa.fa-arrow-left&nbsp;
-   .col-sm-6.col-md-3
-    .dl
-     .discount.amethyst יומן תהליך הבניה המקיף בישראל עבורך חינם!&nbsp;
-      i.fa.fa-book
-     .descr
-      div
-       strong בשעתיים תוכל ללמוד את כל תהליכי הבניה!
-      div הידע יקנה לך חסכון בכסף, ניהול נגון של הקבלנים והבנת תהליכי הבניה. 
-     .text-left 
-      a(href="/blog"  title="בונים בית - יומן הבניה השלם") ליומן הבניה המקיף בישראל &nbsp;
-       i.fa.fa-arrow-left&nbsp;
+ br
 
- include file-costs
+ .container
+  div.row
+  div.col-md-3
+    div.box
+      div.box-gray.textcenter
+        h4 המלצות מהקהילה
+        div.icon
+          i.fa.fa-heart.fa-3x
+        div בונים מהקהילה ממליצים לך על הקבלנים הטובים ביותר בשביל שתוכל לבנות בהצלחה את הבית שלך 
+      div.box-bottom
+       a(href="/reviews/all/all") צפה בהמלצות בונים&nbsp;
+        i.fa.fa-arrow-left&nbsp;
+  div.col-md-3
+    div.box
+      div.box-gray.textcenter
+        h4 צוות מומחים לעזרתך
+        div.icon
+          i.fa.fa-facebook-square.fa-3x
+        div אלפי בונים מתייעצים עימנו חינם בפייסבוק ובדואל! אל תהססו לפנות לשאול ולהגיב, ביחד נגשים את החלום.
+      div.box-bottom
+        a(href="https://www.facebook.com/bonimbayit" taget="_blank" title="בונים בית דף הפייסבוק") לדף המומחים בפייסבוק 
+         i.fa.fa-arrow-left&nbsp;
+  div.col-md-3
+    div.box
+      div.box-gray.textcenter
+        h4 כל עלויות בניית בית
+        div.icon
+          i.fa.fa-edit.fa-3x
+        div אנחנו מקבלים עלויות בניה היישר מהבונים, כל רבעון תוכלו לצפות בעלויות הבניה העדכניות במשק.
+      div.box-bottom
+        a(href='#filecost') עלות בניית בית
+         i.fa.fa-arrow-left&nbsp;
+  div.col-md-3
+    div.box
+      div.box-gray.textcenter
+        h4 כל תהליכי הבניה
+        div.icon
+          i.fa.fa-home.fa-3x
+        div בשעתיים תוכל ללמוד את כל תהליכי הבניה, יומן הבניה היחיד בישראל, ללא צורך בהשקעה בקורס יקר!
+      div.box-bottom
+        a(href='#') עבור ליומן הבניה השלם
+         i.fa.fa-arrow-left&nbsp;
+
+ 
+
+ 
  include frontpage-content
+ br
+ include file-costs
  
  
  
