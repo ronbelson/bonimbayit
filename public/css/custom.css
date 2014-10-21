@@ -77,10 +77,11 @@ body {
   background-color: #b84b57;
   border-color: #af2e59;
   height: 38px !important;
+  opacity:0.7; 
 }
 .navbar-default .navbar-brand {
-  color: #f1df3c;
-  font-size: 20px;
+  color: #f0f0f0;
+  font-size: 16px;
 
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -88,40 +89,39 @@ body {
 
 }
 .navbar-default .navbar-text {
-  color: #f1df3c;
+  color: #f0f0f0;
   
 }
 .navbar-default .navbar-nav > li > a {
-  color: #f1df3c;
-  font-size: 20px;
+  color: #f0f0f0;
+  font-size: 16px;
 
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #f1df3c;
+  color: gray;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #f1df3c;
+  color: gray;
   background-color: #af2e59;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #f1df3c;
-  background-color: #f1df3c;
+  color: gray;
 }
 .navbar-default .navbar-toggle {
-  border-color: #f1df3c;
+  border-color: #f0f0f0;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #f1df3c;
+  background-color: #f0f0f0;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #f1df3c;
+  background-color: #f0f0f0;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #f1df3c;
+  border-color: #f0f0f0;
 }
 .navbar-default .navbar-link {
-  color: #f1df3c;
+  color: #f0f0f0;
   
 }
 .navbar-default .navbar-link:hover {
@@ -129,18 +129,31 @@ body {
 }
 
 @media (max-width: 900px) {
+  .navbar-default .navbar-text {
+  color: #000;
+  
+}
+.navbar-default .navbar-nav > li > a {
+  color: #000;
+  font-size: 16px;
+
+}
+
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #f1df3c;
-    font-size: 10px;
+    color: #000;
+    font-size: 16px;
+    
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #f1df3c;
-    font-size: 10px;
+    color: #f0f0f0;
+    font-size: 16px;
+    border-color: #f0f0f0;
+    background-color: #000;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #f1df3c;
-    background-color: #af2e59;
-    font-size: 10px;
+    color: #000;
+    background-color: #000;
+    font-size: 16px;
   }
 }
 

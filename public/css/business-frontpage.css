@@ -13,7 +13,7 @@
   padding-top: 50px;
     height: 520px;
     opacity:1; 
-    background:  url('/img/home-background/slide10.jpg')  center no-repeat ; background-size: cover;
+    background:  url('/img/home-background/background.gif')  center no-repeat ; background-size: cover;
     /*background: url('/img/home-background/slide9.jpg') center center no-repeat scroll;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -199,7 +199,7 @@ h5.tagline ,h4.tagline {
   #testimonials p.author span{ padding-right: 10px;opacity:1; }
   
   testimonials{
-   opacity:1;  font-family: 'Roboto', "Alef Hebrew"; font-weight:normal;font-weight : 150;font-size:16px;color: #e6f34e;
+   opacity:0.9;  font-family: 'Roboto', "Alef Hebrew"; font-weight:bold;font-weight :560;font-size:18px;color: #e6f34e;
      
           }
    
