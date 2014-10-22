@@ -1,5 +1,6 @@
-$(function(){
+$( document ).ready(function(){
 var items = (Math.floor(Math.random() * ($('#testimonials li').length)));
+$('#div_testimonials').show();
 $('#testimonials li').hide().eq(items).show();
 
 function next(){
@@ -11,4 +12,4 @@ function next(){
 next();
 });
  
-  
+ 
