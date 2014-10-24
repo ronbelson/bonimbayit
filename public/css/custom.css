@@ -16,6 +16,9 @@ body {
         
 }
 
+ 
+
+
 .OPP-poll-choice-div{
   background-color: #e74c3c !important ;
 }
@@ -74,14 +77,15 @@ body {
 }
 
 .navbar-default {
-  background-color: #030303;
+  background-color: #f3f3f3 !important;
+
   border-color: #af2e59;
   height: 38px !important;
   font-weight: bold;
   opacity:0.8; 
 }
 .navbar-default .navbar-brand {
-  color: #f0f0f0;
+  color: #000 ;
   font-size: 16px;
   font-weight: bold;
 
@@ -92,20 +96,21 @@ body {
 
 }
 .navbar-default .navbar-text {
-  color: #f0f0f0;
+  
   font-weight: bold;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #f0f0f0;
+  color: #000 !important;
   font-size: 16px;
   font-weight: bold;
+
 
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: gray;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: gray;
+  color: gray !important;
   background-color: #af2e59;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -133,8 +138,40 @@ body {
 .navbar-default .navbar-link:hover {
   color: #ff7258;
 }
+.dropdown-menu-posts-navbar a {color:#000  !important; font-weight: bold !important;font-weight: 500 !important;}
+ .dropdown-menu-posts-navbar {
+        margin-right: -200px;
+        opacity: 1 !important;
+        background-color:#f3f3f3 !important;
+        color:#000 !important;
+        font-weight: bolder !important;
+        font-size: 16px !important;
+    }
+.dropdown-menu-posts-navbar a:hover {
+    color:gray !important;
+}
 
+
+.scrollable-menu {
+    height: auto;
+    max-height: 600px;
+    overflow-x: hidden;
+}
 @media (max-width: 900px) {
+
+.dropdown-menu-posts-navbar a {color:#000  !important; font-weight: normal; !important;font-weight: 200 !important;}
+ .dropdown-menu-posts-navbar {
+        margin-right: -30px;
+        opacity: 1 !important;
+        background-color:#f3f3f3 !important;
+        color:#000 !important;
+        font-weight: bolder !important;
+        font-size: 12px !important;
+    }
+.dropdown-menu-posts-navbar a:hover {
+    color:gray !important;
+}
+
   .navbar-default .navbar-text {
   color: #000;
   font-weight: bold;
