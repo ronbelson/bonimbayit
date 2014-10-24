@@ -17,8 +17,7 @@ router.use(function(req, res, next)
 
   if(posts_cache==null) 
   {
-    //console.log('the cache was empty'); 
-    //request('http://127.0.0.1:2368/json/?limit=100', function (error, response, body) 
+    
     if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
     request(blog_url+'/json/?limit=100', function (error, response, body) 
       {
