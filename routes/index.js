@@ -16,14 +16,15 @@ router.use(function(req, res, next)
 
   if(posts_cache==null) 
   {
-    console.log('the cache was empty'); 
+    //console.log('the cache was empty'); 
+    //request('http://127.0.0.1:2368/json/?limit=100', function (error, response, body) 
     request('http://127.0.0.1:2368/json/?limit=100', function (error, response, body) 
       {
   
         if (!error && response.statusCode == 200) 
           {
   
-            cache.put('posts', body, 1000*60*60*3) // Time in ms
+            //cache.put('posts', body, 1000*60*60*3) // Time in ms
             posts = JSON.parse(body);
             next(); 
           } 
