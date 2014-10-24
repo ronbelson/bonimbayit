@@ -18,7 +18,7 @@ router.use(function(req, res, next)
   {
     //console.log('the cache was empty'); 
     //request('http://127.0.0.1:2368/json/?limit=100', function (error, response, body) 
-    request('http://127.0.0.1:2368/json/?limit=100', function (error, response, body) 
+    request('http://178.62.196.54/blog/json/?limit=100', function (error, response, body) 
       {
   
         if (!error && response.statusCode == 200) 
