@@ -7,18 +7,20 @@ var request = require('request');
 var cache = require('memory-cache');
 //var jsonQuery = require('json-query')
 var  posts = { posts: [] }
-
- 
+var blog_url = 'http://127.0.0.1:2368'
+var app = express(); 
 
 router.use(function(req, res, next) 
 {
+  
   posts_cache = cache.get('posts');
 
   if(posts_cache==null) 
   {
     //console.log('the cache was empty'); 
     //request('http://127.0.0.1:2368/json/?limit=100', function (error, response, body) 
-    request('http://178.62.196.54/blog/json/?limit=100', function (error, response, body) 
+    if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
+    request(blog_url+'/json/?limit=100', function (error, response, body) 
       {
   
         if (!error && response.statusCode == 200) 
@@ -41,7 +43,7 @@ router.use(function(req, res, next)
 
 /* GET home page. */
 router.get('/', function(req, res) { 
-  console.log('render the page')
+  //console.log('render the page')
   res.render('index', { title: 'בונים בית,יומן הבנייה המקיף בישראל' , posts: posts});
   //res.send(posts);
 });

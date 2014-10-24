@@ -2,6 +2,7 @@
 var debug = require('debug')('bonimbayit.herokuapp.com');
 var app = require('../app');
 
+app.set('node_env', process.env.NODE_ENV || 'development');
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
