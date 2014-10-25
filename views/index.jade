@@ -15,38 +15,76 @@ block content
      form.bgcolor-white
       .row
        .col-md-6 
-        div(style="padding-top:15px;color:red;text-shadow: 0 0 1px #000;").btn.btn-search צפה בהמלצות הקהילה על קבלנים:
+        button#profession_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" style="color:red;text-shadow: 0 0 1px #000;") בחר קבלן שהומלץ ע״י הקהילה
+         span.caret
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
-         a.text-right(href="#" tabindex="-1") שלד
+         a#a_profession1.a_profession.text-right(href="#" tabindex="-1") אינסטלציה
          li.divider
          li
-         a.text-right(href="#") שלד
+         a#a_profession2.a_profession.text-right(href="#") חשמל
          li.divider
          li
-         a.text-right(href="#") שלד
+         a#a_profession3.a_profession.text-right(href="#") שלד
          li.divider
          li
-         a (href="#") שלד
+         a#a_profession4.a_profession.text-right(href="#") גבס
+         li.divider
+         li
+         a#a_profession5.a_profession.text-right(href="#") טיח
+         li.divider
+         li
+         a#a_profession6.a_profession.text-right(href="#") גמר
+         li.divider
+         li
+         a#a_profession7.a_profession.text-right(href="#") יבוא מסין
+         li.divider
+         li
+         a#a_profession8.a_profession.text-right(href="#") עפר
+         li.divider
+         li
+         a#a_profession9.a_profession.text-right(href="#") מפקח
+         li.divider
+         li
+         a#a_profession12.a_profession.text-right(href="#") קידוח
+         li.divider
+         li
+         a#a_profession13.a_profession.text-right(href="#") מיזוג אוויר
+         li.divider
+         li
+         a#a_profession14.a_profession.text-right(href="#") מהנדס בניין
+         li.divider
+         li
+         a#a_profession15.a_profession.text-right(href="#") ריצוף
+         li.divider
+         li
+         a#a_profession16.a_profession.text-right(href="#") צבע
+         li.divider
+         li
+         a#a_profession17.a_profession.text-right(href="#") בניה קלה
          li.divider
        .col-md-3
-        button.btn.btn-search.dropdown-toggle(data-toggle="dropdown" style="color:red;text-shadow: 0 0 1px #000;") באזור
+        button#area_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" ) באזור
          span.caret         
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
-         a.text-right(href="#signin" tabindex="-1" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") צפון
+         a#a_area1.text-right.a_area(href="#" tabindex="-1" data-toggle="modal" ) צפון
          li.divider
          li
-         a.text-right(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") מרכז
+         a#a_area2.a_area.text-right(href="#" data-toggle="modal" ) מרכז
          li.divider
          li
-         a.text-right(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") שפלה
+         a#a_area3.a_area.text-right(href="#" data-toggle="modal" ) שפלה
          li.divider
          li
-         a.text-right(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") דרום
+         a#a_area4.a_area.text-right(href="#" data-toggle="modal" ) השרון
          li.divider  
-         a(href="#signin" data-toggle="modal" style="text-shadow: 0 0 1px #000;color:red;font-size:18px;") המלצות מכל האזורים
-         li.divider                         
+         li
+         a#a_area5.a_area.text-right(href="#" data-toggle="modal" ) דרום
+         li.divider  
+         a#a_area6.a_area(href="#" data-toggle="modal" ) כל הארץ
+         li.divider  
+
        .col-md-3
         button(data-toggle="modal" href="#signin" style="text-shadow: 0 0 1px #000;" ).btn-submit הצג &nbsp;
          i.fa.fa-heart

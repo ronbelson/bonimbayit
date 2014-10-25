@@ -1,20 +1,27 @@
-div(tabindex="-1" data-width="760")#signin.container.modal.fade
+div(tabindex="-1" data-width="760")#signin.container.modal.fade.well
  .page-header
   button(type="button" data-dismiss="modal").btn.btn-default X
-  h3.textcenter.font-default.pdt20 שניה אנחנו עוד לא מוכנים 
-   i.social_icon.fa.fa-wrench.fa-3x.pdr10 
+  h5.textcenter.font-default.pdt0 שימ\י לב
+   i.social_icon.fa.fa-heart.fa-3x.pdr10 
  
  .row
   .col-xs-12
-   h4.well אנחנו עובדים במרץ יום ולילה בשביל לאסוף מקהילת הבונים את את כל ההמלצות על קבלנים הכי טובים בישראל ישר מהשטח, בנתיים תוכל להשאיר את הדואל שלך בכדי שנוכל להודיע לך על כך שההמלצות מוכנות עבורך, וגם ממש עכשיו נשלח לך לדואל את דוח עלויות הבניה המעודכן לשנת 2014. אז בוא תצטרף לקהילת הבונים. הכנס דוא״ל
-
- hr   
+   h5  עדיין לא סיימתי את דף האינטרנט שאמור להציג את  הקבלנים הטובים ביותר בישראל שהתקבלו מקהילת הבונים של האתר, אבל בנתיים אוכל לשלוח לך לדואל באופן אישי את ההמלצות שברשותי, וגם תקבל\י את דוח עלויות הבניה וגאנט הבניה.
+    p(style="color:#000;") סליחה מראש תומר חן ריחאנה‏, מנהל הבלוג וקהילת הבונים  בישראל
+     img.pdr10(style="border-radius: 50%;" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/e2/c0.0.50.50/p50x50/1377522_10151885675297427_1177857444_n.jpg?oh=75ee8460629ded29ade9fcea834bd7d9&oe=54E3F92C&__gda__=1424198255_45d3043ff76c065ead54013824eabe0f")
+   
  form(id="mc-form")
   .form-group.pdr10.pdl10
    input( dir="rtl" onkeypress="this.dir='ltr'" placeholder="הכנס דואר אלקטרוני" required id="mc-email" type="email" ).form-control.input-lg
+   input( dir="rtl"  placeholder="שם פרטי ומשפחה" required id="name" name="name" ).form-control.input-lg
+   input.hide( dir="rtl"  required id="MMERGE1"  name="MMERGE1"  value="כל האזורים").form-control 
+   input.hide( dir="rtl"  required id="MMERGE2"  name="MMERGE2"  value="כל הקבלנים").form-control 
+   input.hide( dir="rtl"  required id="message"  name="message" ).form-control
+   input.hide( dir="rtl"  required id="subject"  name="subject" value="פניה בנושא קבלן מ").form-control
+   
    label(for="mc-email")
   .modal-footer
-   button.btn-submit.btn.btn-primary(type="submit") קבל את דוח עלויות הבניה 2014
+   button#mc-submit.btn-submit.btn.btn-primary(type="submit") קבל את דוח עלויות הבניה 2014
  
     
 

@@ -56,17 +56,43 @@ window.fbAsyncInit = function() {
 
 //OPP-poll-id-53a2116be4b0fb42190cb76d', function(e) {
   
-
+ 
 
 $(function() {
   $('#mc-form').ajaxChimp({
     url: 'http://bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120',
     callback: function(response) {
-     if(response.msg.indexOf("כמעט סיימתם") > -1) 
-      {
-        var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
-        window.location.href = '/thankyou/1/' + encodeURIComponent(responsemsg) +'/';  
-      }
+     //console.log($('#mc-form #mc-submit').html())
+     $.cookie("name", $('#mc-form #name').val(), {expires: new Date(2029, 10, 29, 11, 00, 00)});
+     $.cookie("email", $('#mc-form #mc-email').val(), {expires: new Date(2029, 10, 29, 11, 00, 00)});
+    
+     $('#mc-form #message').val('מתעניין בקבלן ' + $('#mc-form #MMERGE2').val() + ', באזור ' + $('#mc-form #MMERGE1').val());
+     //console.log($("#mc-form").serializeJSON());
+     //return false;
+     $('#mc-form').find('label[for=mc-email]').html('אנא המתן מעביר נתונים..').show();
+     $.ajax({
+             type: "POST",
+             url: "/contact/",
+             data: $("#mc-form").serializeJSON(), // serializes the form's elements.
+             success: function(data)
+             {
+
+                //alert(JSON.stringify(data))   ;
+                 if(response.msg.indexOf("כמעט סיימתם") > -1) 
+                  { 
+                    var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
+                    window.location.href = '/thankyou/1/' + encodeURIComponent(responsemsg) +'/';  
+                  }
+                  else
+                  {
+                    window.location.href = '/thankyou/3/תודה שהתעניינת, אני יחזור אליך עם המלצות לדואל בשעות הקרובות, תודה תומר';  
+                  }
+
+             }
+           });
+     return false; // avoid to execute the actual submit of the form. 
+
+     
     }
 
   });
@@ -109,6 +135,29 @@ $("#contactformfooter").submit(function() {
          });
  return false; // avoid to execute the actual submit of the form.
 });
+
+$('a[id^="a_area"]').click(function(){
+    $('#MMERGE1').val($(this).text())
+    $('#area_selector').text('באזור '+$(this).text())
+   
+});
+
+$('a[id^="a_profession"]').click(function(){
+    $('#MMERGE2').val($(this).text())
+    $('#profession_selector').text('קבלן '+$(this).text())
+    
+});
+
+
+$(function() {
+  $('#mc-form #mc-email').val($.cookie("email"));
+  $('#mc-form #name').val($.cookie("name"));
+  if($.cookie("email"))
+  {
+    $('#mc-form #mc-submit').html('תומר, שלח לי קבלנים מומלצים')
+  }
+});  
+
 
    
 

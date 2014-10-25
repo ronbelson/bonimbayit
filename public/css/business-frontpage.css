@@ -70,6 +70,9 @@ h5.tagline ,h4.tagline {
     
 }
 
+#area_selector ,.a_area,.a_profession, #profession_selector  * {
+  text-shadow: 0 0 1px #000;color:red;font-size:18px;
+}
 .construction-report-img img {
    padding-top:40px; 
    max-width: 90%;

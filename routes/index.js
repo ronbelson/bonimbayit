@@ -66,6 +66,8 @@ router.get('/kablanim/:type/:area', function(req, res) {
 
 });
 
+
+
 /*  */
 router.post('/contact', function(req, res) {
   //console.log(req);
@@ -74,29 +76,39 @@ router.post('/contact', function(req, res) {
   
   var mandrill = require('mandrill-api/mandrill');
   var mandrill_client = new mandrill.Mandrill('FIuK1588pNxIn1NSyZCE8g');
+  var subject = data_json.subject;
+  var name    = data_json.name;
+  var phone   = data_json.phone;
+
+  if (name === undefined || name === "undefined")     {name = "ללא שם"}
+  if (subject === undefined ||  subject === "undefined")  {subject = "בונים בית - פניה מ";}
+  if (phone === undefined ||  phone === "undefined")  {phone = "לא הועבר";}
+
   var message = {
     //"html":  '<p style="float:right;">התקבלה פניה חדשה מהאתר:</p><p style="float:right;>שם ואימייל:' +  req.param("email") + ',' + req.param("name") + '</p>',
-    "text": "שם ואימייל: " +  data_json.email + " , " + data_json.name + ", טלפןן: " + data_json.phone + ", הודעה: " +  data_json.message  ,
-    "subject": "בונים בית - פניה מ" + req.param("name") ,
-    "from_email": data_json.email,
-    "from_name": data_json.email.name,
+    "text": "שם ואימייל: " +  data_json.EMAIL + " , " + name + ", טלפון: " + phone + ", הודעה: " +  data_json.message  ,
+    "subject": subject + name ,
+    "from_email": data_json.EMAIL,
+    "from_name": name,
     "to": [{
-            "email": "bonimbayit@gmail.com",
+            //"email": "bonimbayit@gmail.com",
+            "email": "ronbelson@gmail.com",
             "name": "בונים בית",
             "type": "to"
         }],
     "headers": {
-        "Reply-To": data_json.email
+        "Reply-To": data_json.EMAIL
     }};
 
-
-    var async = true;
+    
+  var async = true;
 	var ip_pool = "Main Pool";
 	mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
 	    //console.log(result);
 	    //console.log(message);
 	    res.contentType('json');
         res.send({ result: result });
+
 	    /*
 	    [{
 	            "email": "recipient.email@example.com",
