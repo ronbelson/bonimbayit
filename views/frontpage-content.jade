@@ -13,7 +13,7 @@ br
       h3.widget-title יומן הבניה היחיד בישראל.
       .popular-posts-wrapper.pdt10
        each post , i in posts['posts']
-        if i<21
+        if i<22
           .post
            .post-image
             a(href="/blog/#{post.slug}") 
@@ -22,7 +22,7 @@ br
              else
               img(height="60" width="60" src="http://placehold.it/60x60/f3f3f3/0f0f0f&text=bonimbayit.co.il" alt="#{post.title}")
            .post-content
-            a(href="/blog/#{post.slug}")=post.title.substr(0, 70)
+            a(href="/blog/#{post.slug}")=post.title
      aside.widget
       a.text-center(href="/blog").widget-title לכל מאמרי יומן הבניה >>
      
