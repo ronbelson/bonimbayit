@@ -18,11 +18,11 @@ br
            .post-image
             a(href="/blog/#{post.slug}") 
              if post.image
-              img(height="60" width="60" src="/blog#{post.image}" alt="#{post.title}")
+              img(height="60" width="60" src="#{post.image}" alt="#{post.title}")
              else
               img(height="60" width="60" src="http://placehold.it/60x60/f3f3f3/0f0f0f&text=bonimbayit.co.il" alt="#{post.title}")
            .post-content
-            a(href="#")=post.title.substr(0, 70)
+            a(href="/blog/#{post.slug}")=post.title.substr(0, 70)
      aside.widget
       a.text-center(href="/blog").widget-title לכל מאמרי יומן הבניה >>
      
