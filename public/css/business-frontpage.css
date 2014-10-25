@@ -555,7 +555,7 @@ hr.section-divider {
 }
 /* Recent Post widgets */
 .popular-posts-wrapper .post {
-  float: left;
+  float: right;
   clear: both;
   margin-bottom: 20px;
 }

@@ -91,8 +91,8 @@ router.post('/contact', function(req, res) {
     "from_email": data_json.EMAIL,
     "from_name": name,
     "to": [{
-            //"email": "bonimbayit@gmail.com",
-            "email": "ronbelson@gmail.com",
+            "email": "bonimbayit@gmail.com",
+            //"email": "ronbelson@gmail.com",
             "name": "בונים בית",
             "type": "to"
         }],

@@ -12,24 +12,20 @@ br
      aside.widget
       h3.widget-title יומן הבניה היחיד בישראל.
       .popular-posts-wrapper.pdt10
-       for item, i in ['1', '2', '3','1', '2', '3','1', '2']
-        .post
-         .post-image
-          a(href="#") 
-           img(height="60" width="60" src="http://placehold.it/60x60" alt="")
-         .post-content
-          a(href="#") חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל
-     //-  latest articles
+       each post , i in posts['posts']
+        if i<21
+          .post
+           .post-image
+            a(href="/blog/#{post.slug}") 
+             if post.image
+              img(height="60" width="60" src="/blog#{post.image}" alt="#{post.title}")
+             else
+              img(height="60" width="60" src="http://placehold.it/60x60/f3f3f3/0f0f0f&text=bonimbayit.co.il" alt="#{post.title}")
+           .post-content
+            a(href="#")=post.title.substr(0, 70)
      aside.widget
-      h3.widget-title  בניית בית - מאמרים אחרונים
-      .popular-posts-wrapper
-       for item, i in ['1', '2', '3','1', '2', '3','1']
-        .post
-         .post-image
-          a(href="#") 
-           img(height="60" width="60" src="http://placehold.it/60x60" alt="")
-         .post-content
-          a(href="#") חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל
+      a.text-center(href="/blog").widget-title לכל מאמרי יומן הבניה >>
+     
          
   //- left div
   .col-md-8
