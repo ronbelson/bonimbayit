@@ -319,16 +319,39 @@ section button.btn {
     color: #999;
 }
 
+.thumbnail a img {
+   max-width:auto;
+   height:35%;
+ }
 .thumbnail {
     position: relative;
     padding: 0px;
     margin-bottom: 10px;
     font-weight : 50;font-size:18px; 
+    height:550px;
+}
+
+
+.thumbnail img {
+
+ }
+.thumbnail {
+    position: relative;
+    padding: 0px;
+    margin-bottom: 10px;
+    font-weight : 50;font-size:18px; 
+    height:550px;
 }
 
 .thumbnail  p a {
      
     font-weight : 50;font-size:20px; 
+}
+.thumbnail_link {
+   position: absolute;
+   bottom: 10px;
+   padding-left: 10px
+
 }
 
 .thumbnail:hover {
@@ -341,9 +364,7 @@ section button.btn {
 
 .textcenter{text-align: center;}
 
-.thumbnail img {
-    width: 100%;
-}
+ 
 categoriescontent h5 {color:  rgb(220,20,60);text-align: center; }
 categoriescontent a:hover {text-decoration: none;}
 

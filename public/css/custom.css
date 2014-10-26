@@ -437,6 +437,12 @@ input[type=text], input[type=password], input[type=email], input[type=tel] {
  .text-center {
      text-align:center;
  }
+ .text-right {
+     text-align:right;
+ }
+ .text-left {
+     text-align:left;
+ }
  
  .top-pad {
      padding-top:70px;

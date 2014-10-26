@@ -31,91 +31,130 @@ br
   .col-md-8
    .row.textcenter
     .col-xs-12.col-sm-6
-     h4 עלויות מרכזיות יוני 2014(ללא מע״מ)
-     table(data-toggle="table" data-url="/data1.json" data-cache="false" data-height="")
+     h5 עלויות בניה מרכזיות יוני 2014
+      .small (ללא מע״מ)
+
+     table.text-right(data-toggle="table" data-url="/building_cost_7_2014.json" data-cache="true" data-height="900")
       thead
        tr
-        th.text-center(data-field="name") מוצר
-        th.text-center(data-field="price") עלות
+        th(data-field="name") מוצר
+        th(data-field="price") עלות
+
     .col-xs-12.col-sm-6
-     h4 כמויות חומרים ממוצעות לבית 200 מטר
-     table(data-toggle="table" data-url="/data1.json" data-cache="false" data-height="")
+     h5 עלויות בעלי מקצוע ממוצעות למטר
+      .small  (כולל+,לא כולל חומר) 
+     table.text-right(data-toggle="table" data-url="/cost_proff_2014.json" data-cache="false" data-height="900")
       thead
        tr
-        th.text-center(data-field="name") מוצר
-        th.text-center(data-field="price") עלות
-   .row.textcenter
+        th(data-field="name") בעל מקצוע
+        th(data-field="price") מחיר
+   .row.textcenter.pdt20
     .col-xs-12.col-sm-6
-     h4 עלויות מרכזיות יוני 2014(ללא מע״מ)
-     table(data-toggle="table" data-url="/data1.json" data-cache="false" data-height="")
+     h5 בניית בית כמויות חומרים ממוצעות 
+      .small (לבית 200 מטר)
+     table.text-right(data-toggle="table" data-url="/building_for200m_7_2014.json" data-cache="true" data-height="570")
       thead
        tr
-        th.text-center(data-field="name") מוצר
-        th.text-center(data-field="price") עלות
+        th(data-field="name") חומר
+        th(data-field="price") כמות
+     
     .col-xs-12.col-sm-6
-     h4 כמויות חומרים ממוצעות לבית 200 מטר
-     table(data-toggle="table" data-url="/data1.json" data-cache="false" data-height="")
+     h5 קניות בסין לבניית בית, יבוא אישי מסין 
+      .small מצ"ב עלויות קבועות ושילוח מסין
+     table(data-toggle="table" data-url="/china2014.json" data-cache="true" data-height="570")
       thead
        tr
-        th.text-center(data-field="name") מוצר
+        th.text-center(data-field="name") פעולה
         th.text-center(data-field="price") עלות
    //- content boexes
    categoriescontent
     .row.pdt40
      .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-       img(src="http://placehold.it/600x270" alt="")
+       a(href="/blog/tag/bnyyt-shld/" title="בניית שלד - בונים בית")
+        img(src="http://3.bp.blogspot.com/-iotUjL_L2AM/T3jVB9ovZUI/AAAAAAAATL8/R__xtdwHRQs/s1600/DSC_0153.JPG" alt="בניית שלד")
        .caption
-         h4.text-center בניית שלד 
-         p חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה..            
-         div.text-center
-          a(href="#") לכל המאמרים בנושא חשמל
-           i.fa.fa-arrow-left&nbsp;
+         h4
+          a(href="/blog/tag/bnyyt-shld/" title="בניית שלד - בונים בית").text-center בניית שלד 
+         p כל מה שרציתם לדעת על תהליך בניית השלד , כאן תמצאו אלפי תמונות של כל תהליך הבנייה עם הסברים מפורטים לגבי כל תהליך ותהליך. משלב פיתוח השטח ועד שלב סיום השלד
+           
+         div.thumbnail_link.text-left.pdl10
+          a(href="/blog/tag/bnyyt-shld/" title="בניית שלד - בונים בית")
+           .small הסברים על בניית שלד
+            i.fa.fa-arrow-left&nbsp;
      .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-       img(src="http://placehold.it/600x270" alt="")
+       a(href="/blog/tag/bnyyt-mrtp/" title="בניית מרתף - בונים בית")
+        img(src="http://3.bp.blogspot.com/-ZVii94d5_zI/Uweg75L3xgI/AAAAAAAAjJw/vT3tpItFsaU/s1600/20140120_154807.jpg" alt="בניית מרתף")
        .caption
-         h4.text-center בניית שלד 
-         p חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה..            
-         div.text-center
-          a(href="#") לכל המאמרים בנושא חשמל
-           i.fa.fa-arrow-left&nbsp;
+         h4
+          a(href="/blog/tag/bnyyt-mrtp/" title="בניית מרתף - בונים בית").text-center בניית מרתף 
+         p כל התהליכים  והעלויות לבניית מרתף .כאן תמצאו את כל התמונות לתהליך בניית המרתף כולל איטומים ועלויות לקראת בניית המרתף שלכם. 
+           
+
+         div.thumbnail_link.text-left.pdl10
+          a(href="/blog/tag/bnyyt-mrtp/" title="בניית מרתף - בונים בית")
+           .small הסברים על בניית מרתף
+            i.fa.fa-arrow-left&nbsp;
+
      .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-       img(src="http://placehold.it/600x270" alt="")
+       a(href="/blog/cost/" title="עלויות בנייה - בונים בית")
+        img( src="http://4.bp.blogspot.com/-4C8aWZnAb_M/UBR048zOJzI/AAAAAAAAWe0/6vCHOptFY3U/s1600/%D7%A2%D7%9C%D7%95%D7%99%D7%95%D7%AA+%D7%98%D7%99%D7%97.JPG" alt="עלויות בנייה")
        .caption
-         h4.text-center בניית שלד 
-         p חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה..            
-         div.text-center
-          a(href="#") לכל המאמרים בנושא חשמל
-           i.fa.fa-arrow-left&nbsp;
+         
+         h4
+          a(href="/blog/cost/" title="עלויות בנייה - בונים בית").text-center עלויות בניית בית 
+         p רוצים לדעת מהם עלויות הבנייה נכון להיום ? כל העלויות לגבי כל תהליך הבנייה שלכם. כל רבעון יייכנס מאמר נוסף של עלות שלד באזור אחר בארץ וכל זאת הודות לכם שמשתפים את כל הקהילה שלנו.
+         
+         div.thumbnail_link.text-left.pdl10
+          a(href="/blog/cost/" title="עלויות בנייה - בונים בית")
+           .small עלויות בנייה, כל הידע פה
+            i.fa.fa-arrow-left&nbsp;
 
     .row.pdt40
      .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-       img(src="http://placehold.it/600x270" alt="")
+       a(href="/blog/tag/bvnym-mshtpym/" title="בונים משתפים - בונים בית")
+        img( src="http://4.bp.blogspot.com/-2tkrc2Vjgu0/U4-XYbMESPI/AAAAAAABvSg/HjpUv7TjPz0/s1600/218316-20140604.jpg" alt="בונים משתפים")
        .caption
-         h4.text-center בניית שלד 
-         p חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה..            
-         div.text-center
-          a(href="#") לכל המאמרים בנושא חשמל
-           i.fa.fa-arrow-left&nbsp;
+         
+         h4
+          a(href="/blog/tag/bvnym-mshtpym/" title="בונים משתפים - בונים בית").text-center בונים משתפים 
+         p מה בונים כותבים לאחר הבנייה שלהם ? איך התהליך שלהם עובר ? מוזמנים להיכנס ,לעקוב וכמובן לשתף גם ע״י פניה בתחתית הדף
+         
+
+         div.thumbnail_link.text-left.pdl10
+          a(href="/blog/tag/bvnym-mshtpym/" title="בונים משתפים - בונים בית")
+           .small לכל השיתופים של הקהילה
+            i.fa.fa-arrow-left&nbsp;ֿֿֿֿֿֿֿֿֿ
+            ֿֿֿ
      .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-       img(src="http://placehold.it/600x270" alt="")
+       a(href="/blog/tag/qnyyt-tkvlt-byt-bsyn/" title="קניית תכולת בית בסין - בונים בית")
+        img( src="http://3.bp.blogspot.com/-P0P_Zvuumc4/UwkxK5reLjI/AAAAAAAAme4/67zMqIcFRxw/s1600/031.jpg" alt="קונים לבית בסין")
        .caption
-         h4.text-center בניית שלד 
-         p חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה..            
-         div.text-center
-          a(href="#") לכל המאמרים בנושא חשמל
-           i.fa.fa-arrow-left&nbsp;
+         
+         h4
+          a(href="/blog/tag/qnyyt-tkvlt-byt-bsyn/" title="קניית תכולת בית בסין - בונים בית").text-center  תכולת בית מסין
+         p מי היום לא רוצה לשדרג את גמר הבית שלו ? חשבתם לטוס לסין ואתם חוששים מהתהליך ? בונים נפלאים מהקהילה שלנו משתפים את כולנו בחוויה שלהם … תקראו ותחליטו בעצמכם
+         
+         div.thumbnail_link.text-left.pdl10
+          a(href="/blog/tag/qnyyt-tkvlt-byt-bsyn/" title="קניית תכולת בית בסין - בונים בית")
+           .small למדור קניית תכולת בית בסין
+            i.fa.fa-arrow-left&nbsp;ֿֿֿֿֿֿֿֿֿ
+
      .col-xs-12.col-sm-6.col-md-4
       .thumbnail
-       img(src="http://placehold.it/600x270" alt="")
+       a(href="/blog/tag/%60ytsvb-byt/" title="מאמרים קטנים ומועילים לעיצוב הבית - בונים בית")
+        img( src="http://3.bp.blogspot.com/-2-Xbfstuo1s/U4xe_QUG8LI/AAAAAAABu9Y/Ka6NBK4MFIA/s1600/image003+%25282%2529.jpg" alt="מאמרים קטנים ומועילים לעיצוב הבית")
        .caption
-         h4.text-center בניית שלד 
-         p חברים , קל מאוד לחרוג מהתקציב ,תעשו לעצמכם טובה וברגע שהאקסל שלכם סגור תראו בתקציב שלכם תורה מסיני! לא להתפתות כי יהיו לכם הרבה פיתויים בדרך. כאן תראו את  כל הטיפים לעלויות בניה..            
-         div.text-center
-          a(href="#") לכל המאמרים בנושא חשמל
-           i.fa.fa-arrow-left&nbsp;
-                    
+         
+         h4
+          a(href="/blog/tag/%60ytsvb-byt/" title="מאמרים קטנים ומועילים לעיצוב הבית - בונים בית").text-center  מאמרים קטנים ומועילים לעיצוב הבית
+         p פינה חדשה שבה נכניס מידי פעם מאמר קצר ומועיל לעיצוב הבית שלכם. טיפים ונושאים שיסייעו לכם הן במהלך התכנון והן בנושאי העיצוב הבית
+         
+         div.thumbnail_link.text-left.pdl10
+          a(href="/blog/tag/%60ytsvb-byt/" title="מאמרים קטנים ומועילים לעיצוב הבית - בונים בית")
+           .small למדור עיצוב בית
+            i.fa.fa-arrow-left&nbsp;ֿֿֿֿֿֿֿֿֿ
