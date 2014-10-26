@@ -322,6 +322,8 @@ section button.btn {
 .thumbnail a img {
    max-width:auto;
    height:35%;
+   
+   border:1px solid #dadada;
  }
 .thumbnail {
     position: relative;
@@ -484,6 +486,15 @@ hr.section-divider {
     .post-inner-content {
         padding: 20px 25px;
     }
+}
+@media(max-width:900px){
+    .thumbnail a img {
+   max-width:100%;
+   height:auto;
+ }
+  .thumbnail p  {
+   font-size: 20px;
+ }
 }
 
 

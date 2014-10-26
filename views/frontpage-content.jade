@@ -13,7 +13,7 @@ br
       h3.widget-title יומן הבניה היחיד בישראל.
       .popular-posts-wrapper.pdt10
        each post , i in posts['posts']
-        if i<22
+        if i<28
           .post
            .post-image
             a(href="/blog/#{post.slug}") 
@@ -30,45 +30,10 @@ br
   //- left div
   .col-md-8
    .row.textcenter
-    .col-xs-12.col-sm-6
-     h5 עלויות בניה מרכזיות יוני 2014
-      .small (ללא מע״מ)
 
-     table.text-right(data-toggle="table" data-url="/building_cost_7_2014.json" data-cache="true" data-height="900")
-      thead
-       tr
-        th(data-field="name") מוצר
-        th(data-field="price") עלות
-
-    .col-xs-12.col-sm-6
-     h5 עלויות בעלי מקצוע ממוצעות למטר
-      .small  (כולל+,לא כולל חומר) 
-     table.text-right(data-toggle="table" data-url="/cost_proff_2014.json" data-cache="false" data-height="900")
-      thead
-       tr
-        th(data-field="name") בעל מקצוע
-        th(data-field="price") מחיר
-   .row.textcenter.pdt20
-    .col-xs-12.col-sm-6
-     h5 בניית בית כמויות חומרים ממוצעות 
-      .small (לבית 200 מטר)
-     table.text-right(data-toggle="table" data-url="/building_for200m_7_2014.json" data-cache="true" data-height="570")
-      thead
-       tr
-        th(data-field="name") חומר
-        th(data-field="price") כמות
-     
-    .col-xs-12.col-sm-6
-     h5 קניות בסין לבניית בית, יבוא אישי מסין 
-      .small מצ"ב עלויות קבועות ושילוח מסין
-     table(data-toggle="table" data-url="/china2014.json" data-cache="true" data-height="570")
-      thead
-       tr
-        th.text-center(data-field="name") פעולה
-        th.text-center(data-field="price") עלות
-   //- content boexes
+    //- content boexes
    categoriescontent
-    .row.pdt40
+    .row.pdb10
      .col-xs-12.col-sm-6.col-md-4
       .thumbnail
        a(href="/blog/tag/bnyyt-shld/" title="בניית שלד - בונים בית")
@@ -158,3 +123,41 @@ br
           a(href="/blog/tag/%60ytsvb-byt/" title="מאמרים קטנים ומועילים לעיצוב הבית - בונים בית")
            .small למדור עיצוב בית
             i.fa.fa-arrow-left&nbsp;ֿֿֿֿֿֿֿֿֿ
+
+    .col-xs-12.col-sm-6
+     h5 עלויות בניה מרכזיות יוני 2014
+      .small (ללא מע״מ)
+
+     table.text-right(data-toggle="table" data-url="/building_cost_7_2014.json" data-cache="true" data-height="900")
+      thead
+       tr
+        th(data-field="name") מוצר
+        th(data-field="price") עלות
+
+    .col-xs-12.col-sm-6
+     h5 עלויות בעלי מקצוע ממוצעות למטר
+      .small  (כולל+,לא כולל חומר) 
+     table.text-right(data-toggle="table" data-url="/cost_proff_2014.json" data-cache="false" data-height="900")
+      thead
+       tr
+        th(data-field="name") בעל מקצוע
+        th(data-field="price") מחיר
+   .row.textcenter.pdt20
+    .col-xs-12.col-sm-6
+     h5 בניית בית כמויות חומרים ממוצעות 
+      .small (לבית 200 מטר)
+     table.text-right(data-toggle="table" data-url="/building_for200m_7_2014.json" data-cache="true" data-height="570")
+      thead
+       tr
+        th(data-field="name") חומר
+        th(data-field="price") כמות
+     
+    .col-xs-12.col-sm-6
+     h5 קניות בסין לבניית בית, יבוא אישי מסין 
+      .small מצ"ב עלויות קבועות ושילוח מסין
+     table(data-toggle="table" data-url="/china2014.json" data-cache="true" data-height="570")
+      thead
+       tr
+        th.text-center(data-field="name") פעולה
+        th.text-center(data-field="price") עלות
+   
