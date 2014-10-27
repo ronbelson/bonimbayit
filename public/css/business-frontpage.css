@@ -321,16 +321,15 @@ section button.btn {
 
 .thumbnail a img {
    max-width:auto;
-   height:50%;
-   
+   height:45%;
+    
    border:1px solid #dadada;
  }
 .thumbnail {
     position: relative;
-    padding: 0px;
-    margin-bottom: 10px;
+    padding: 0;
     font-weight : 50;font-size:18px; 
-    height:550px;
+    height:600px;
 }
 
 
@@ -339,10 +338,16 @@ section button.btn {
  }
 .thumbnail {
     position: relative;
-    padding: 0px;
-    margin-bottom: 10px;
+    
+    
     font-weight : 50;font-size:18px; 
-    height:550px;
+    
+}
+.thumbnail  p  {
+     height:450px;
+     margin-right: 10px;
+     margin-left: 10px;
+   
 }
 
 .thumbnail  p a {
@@ -351,8 +356,10 @@ section button.btn {
 }
 .thumbnail_link {
    position: absolute;
+   margin-top:10px;
    bottom: 10px;
-   padding-left: 10px
+   text-align: center;
+   width:100%;
 
 }
 

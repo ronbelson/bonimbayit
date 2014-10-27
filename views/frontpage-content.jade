@@ -5,27 +5,7 @@ br
  .row.pdt40
 
   //- right div
-  .col-md-4
-   .col-sm-12.col-md-12.widget-area#secondary(role="complementary")
-    .well
-     //- most view articles
-     aside.widget
-      h3.widget-title יומן הבניה היחיד בישראל.
-      .popular-posts-wrapper.pdt10
-       each post , i in posts['posts']
-        if i<43
-          .post
-           .post-image
-            a(href="/blog/#{post.slug}") 
-             if post.image
-              img(height="60" width="60" src="#{post.image}" alt="#{post.title}")
-             else
-              img(height="60" width="60" src="http://placehold.it/60x60/f3f3f3/0f0f0f&text=bonimbayit.co.il" alt="#{post.title}")
-           .post-content
-            a(href="/blog/#{post.slug}")=post.title
-     aside.widget
-      a.text-center(href="/blog").widget-title לכל מאמרי יומן הבניה >>
-     
+  
          
   //- left div
   .col-md-8
@@ -151,7 +131,7 @@ br
        .caption
          
          h4.text-center
-          a(href="/blog/tag/%60ytsvb-byt/" title="מאמרים קטנים ומועילים לעיצוב הבית - בונים בית").text-center  מאמרים קטנים ומועילים לעיצוב הבית
+          a(href="/blog/tag/%60ytsvb-byt/" title="מאמרים קטנים ומועילים לעיצוב הבית - בונים בית").text-center  מאמרים מועילים לעיצוב הבית
          p פינה חדשה שבה נכניס מידי פעם מאמר קצר ומועיל לעיצוב הבית שלכם. טיפים ונושאים שיסייעו לכם הן במהלך התכנון והן בנושאי העיצוב הבית
          
          div.thumbnail_link.text-left.pdl10
@@ -198,3 +178,24 @@ br
         th.text-center(data-field="name") פעולה
         th.text-center(data-field="price") עלות
    
+  .col-md-4
+   .col-sm-12.col-md-12.widget-area#secondary(role="complementary")
+    .well
+     //- most view articles
+     aside.widget
+      h3.widget-title יומן הבניה היחיד בישראל.
+      .popular-posts-wrapper.pdt10
+       each post , i in posts['posts']
+        if i<46
+          .post
+           .post-image
+            a(href="/blog/#{post.slug}") 
+             if post.image
+              img(height="60" width="60" src="#{post.image}" alt="#{post.title}")
+             else
+              img(height="60" width="60" src="http://placehold.it/60x60/f3f3f3/0f0f0f&text=bonimbayit.co.il" alt="#{post.title}")
+           .post-content
+            a(href="/blog/#{post.slug}")=post.title
+     aside.widget
+      a.text-center(href="/blog").widget-title לכל מאמרי יומן הבניה >>
+     
