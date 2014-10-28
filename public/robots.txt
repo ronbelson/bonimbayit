@@ -1,0 +1,6 @@
+User-agent: Mediapartners-Google
+Disallow: 
+User-agent: *
+Allow: /
+
+Sitemap: http://bonimbayit.co.il/blog/rss
