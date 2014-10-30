@@ -10,7 +10,6 @@ var bodyParser = require('body-parser');
 var app = express();
 var routes = require('./routes/index');
 var admin  = require('./routes/admin');
-if (app.get('env') === 'development') { var config = require('./oauth-dev.js');} else {var config = require('./oauth-production.js');}
 var passport = require('passport')
 
 // view engine setup
@@ -35,7 +34,7 @@ app.use('/admin', admin);
 
 app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res){ });
 
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/admin' }),
+app.get('/auth/facebook/callback', passport.authenticate('facebook',  { failureRedirect: '/',scope : "emails, user_about_me" }),
     function(req, res) {
           res.redirect('/admin/home');
     });

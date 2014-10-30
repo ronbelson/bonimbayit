@@ -8,7 +8,9 @@ var cache = require('memory-cache');
 var  posts = { posts: [] }
 var blog_url = 'http://127.0.0.1:2368'
 var app = express(); 
-if (app.get('env') === 'development') { var config = require('../oauth-dev.js');} else {var config = require('../oauth-production.js');}
+if (app.get('env') === 'development')   
+  { var config = require('../oauth-dev.js');} 
+  else {var config = require('../oauth-production.js');}
 var mongoose = require('mongoose')
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -29,14 +31,40 @@ done(null, obj);
 passport.use(new FacebookStrategy({
  clientID: config.facebook.clientID,
  clientSecret: config.facebook.clientSecret,
- callbackURL: config.facebook.callbackURL
+ callbackURL: config.facebook.callbackURL,
+ profileFields:config.facebook.profileFields
 },
 function(accessToken, refreshToken, profile, done) {
- process.nextTick(function () {
-   return done(null, profile);
- });
-}
-));
+ var User = mongoose.model('Users'); 
+ User.findOne({ fbId: profile.id }, function(err, user) {
+    if(err) { console.log(err); }
+    if (!err && user != null) {
+      done(null, user);
+    } else {
+      var email = profile.emails;
+
+      var user = new User({
+        fbId: profile.id,
+        name: profile.displayName,
+        photo: profile.photos[0].value
+
+      });
+      var email = profile.emails;
+
+      if (email)
+        { user.push({'email':profile.emails[0].value})}
+      user.save(function(err) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log("saving user ...");
+          done(null, user);
+        };
+      });
+    };
+    });
+    }
+    ));
 
 /* GET home page. */
 router.get('/', function(req, res) { 
@@ -54,7 +82,7 @@ router.get('/contractors/:company_name/:phone', function(req, res) {
     // that follows may not (probably will not)
     // retrieve the contractor you're trying to save.
     
-    
+      
     var Contractor = mongoose.model('Contractors');
 
     var contractor  = new Contractor({ 

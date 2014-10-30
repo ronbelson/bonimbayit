@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var app = express(); 
-var db_url = 'mongodb://localhost/production';
+var db_url = 'mongodb://192.169.0.5/production';
 
 if ('development' === app.get('env')) {db_url = 'mongodb://localhost/test';}
 
