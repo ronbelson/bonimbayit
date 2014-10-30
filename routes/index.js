@@ -1,44 +1,42 @@
 var express = require('express');
 var httpProxy = require('http-proxy');
-
 var router = express.Router();
 var bodyParser = require('body-parser')
 var request = require('request');
 var cache = require('memory-cache');
-//var jsonQuery = require('json-query')
+
 var  posts = { posts: [] }
 var blog_url = 'http://127.0.0.1:2368'
 var app = express(); 
+if (app.get('env') === 'development') { var config = require('../oauth-dev.js');} else {var config = require('../oauth-production.js');}
+var mongoose = require('mongoose')
+var passport = require('passport')
+var FacebookStrategy = require('passport-facebook').Strategy;
 
-router.use(function(req, res, next) 
-{
-  
-  posts_cache = cache.get('posts');
+require('../db/db_connect');
+require('../models/init_schema');
 
-  if(posts_cache==null) 
-  {
-    
-    if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
-    request(blog_url+'/json/?limit=100', function (error, response, body) 
-      {
-  
-        if (!error && response.statusCode == 200) 
-          {
-  
-            //cache.put('posts', body, 1000*60*60*3) // Time in ms
-            posts = JSON.parse(body);
-            next(); 
-          } 
 
-      }) 
-  } else {
-           posts = JSON.parse(posts_cache); 
-           next();
-         }   
- 
-  
+// serialize and deserialize
+passport.serializeUser(function(user, done) {
+done(null, user);
+});
+passport.deserializeUser(function(obj, done) {
+done(null, obj);
 });
 
+// config
+passport.use(new FacebookStrategy({
+ clientID: config.facebook.clientID,
+ clientSecret: config.facebook.clientSecret,
+ callbackURL: config.facebook.callbackURL
+},
+function(accessToken, refreshToken, profile, done) {
+ process.nextTick(function () {
+   return done(null, profile);
+ });
+}
+));
 
 /* GET home page. */
 router.get('/', function(req, res) { 
@@ -47,7 +45,72 @@ router.get('/', function(req, res) {
   //res.send(posts);
 });
 
-/* Thhankyou page. */
+
+ 
+router.get('/contractors/:company_name/:phone', function(req, res) {
+
+    // note that since this has a callback, the
+    // save happens asychronously. So, the find
+    // that follows may not (probably will not)
+    // retrieve the contractor you're trying to save.
+    
+    
+    var Contractor = mongoose.model('Contractors');
+
+    var contractor  = new Contractor({ 
+                      company_name: req.param('company_name') ,
+                      phone: req.param('phone') }); 
+
+
+    contractor.save(function (err) {
+      if (err) {
+          // TODO Warning message
+          console.error('could not save ' + err.message);
+          res.send(err.message);     
+        } 
+      else {
+        Contractor.findById(contractor, function (err, contractor) {
+          if (err) {
+            console.error('could not find Contractor after insert new');
+            throw err;
+          } 
+          
+          if ( contractor.length <= 0 ) {
+           res.send({error: 'I have no Contractor'});
+          } 
+          else {
+             res.send(contractor); 
+               }  
+          });
+      }
+        
+      });
+});
+
+router.get('/contractors', function(req, res) {
+  
+   var Contractor = mongoose.model('Contractors'); 
+
+   Contractor.find( function (err, contractor) {
+        if (err) {
+          console.error('could not find Contractor');
+          throw err;
+        } 
+        
+        if ( contractor.length <= 0 ) {
+         res.send({error: 'I have no Contractor'});
+        } 
+        else {
+           res.send(contractor);   
+        }
+         
+
+    });
+  
+});
+
+
+/* Thankyou page. */
 
 router.get('/thankyou/:type/:msg', function(req, res) { 
   res.render('thankyou', { msg: req.param("msg") , title: 'תודה על הרישום לבונים בית' , posts: posts});
@@ -59,7 +122,9 @@ router.get('/filecosts/', function(req, res) {
 
 });
 
-/* GET home page. */
+
+
+
 router.get('/kablanim/:type/:area', function(req, res) {
   res.render('kablanim', { title: 'התקבלו 8 קבלנים בשרון' , posts: posts});
 
@@ -125,8 +190,48 @@ router.post('/contact', function(req, res) {
 	});
 
 
-  
 
+
+//TODO : ignure db schema on pathes
+router.use(function(req, res, next) 
+{
+  console.log(req.path)
+  var postsPaths = ['/','/filecosts/','/thankyou/'];
+  var _ = require('underscore');
+  if ( !  _.contains(postsPaths, req.path) ) return next();
+  
+  //TODO map reduce for small json requuest
+  posts_cache = cache.get('posts');
+
+  if(posts_cache==null) 
+  {
+    
+    if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
+    request(blog_url+'/json/?limit=100', function (error, response, body) 
+      {
+  
+        if (!error && response.statusCode == 200) 
+          {
+  
+            //cache.put('posts', body, 1000*60*60*3) // Time in ms
+            posts = JSON.parse(body);
+            next(); 
+          } 
+
+      }) 
+  } else {
+           posts = JSON.parse(posts_cache); 
+           next();
+         }   
+ 
+  
+});
+
+// test authentication
+function ensureAuthenticated(req, res, next) {
+if (req.isAuthenticated()) { return next(); }
+res.redirect('/')
+}
 
 
 });
