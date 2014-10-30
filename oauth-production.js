@@ -2,7 +2,7 @@ var ids = {
 facebook: {
  clientID: '631527010302196',
  clientSecret: 'e3e66ec6abc6b5aea334319712c3690b',
- callbackURL: 'http://http://178.62.196.54/auth/facebook/callback'
+ callbackURL: 'http://178.62.196.54/auth/facebook/callback'
 },
 twitter: {
  consumerKey: 'get_your_own',
