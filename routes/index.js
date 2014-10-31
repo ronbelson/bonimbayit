@@ -8,9 +8,10 @@ var cache = require('memory-cache');
 var  posts = { posts: [] }
 var blog_url = 'http://127.0.0.1:2368'
 var app = express(); 
-//if (app.get('env') === 'development')   
-  //{ var config = require('../oauth-dev.js');} 
-  //else {var config = require('../oauth-production.js');}
+var config_passport = require('../oauth-production.js');
+
+if (app.get('env') === 'development') config_passport = require('../oauth-dev.js');
+
 var config = require('../oauth-production.js')
 var mongoose = require('mongoose')
 var passport = require('passport')
@@ -30,10 +31,10 @@ done(null, obj);
 
 // config
 passport.use(new FacebookStrategy({
- clientID: config.facebook.clientID,
- clientSecret: config.facebook.clientSecret,
- callbackURL: config.facebook.callbackURL,
- profileFields:config.facebook.profileFields
+ clientID: config_passport.facebook.clientID,
+ clientSecret: config_passport.facebook.clientSecret,
+ callbackURL: config_passport.facebook.callbackURL,
+ profileFields:config_passport.facebook.profileFields
 },
 function(accessToken, refreshToken, profile, done) {
  var User = mongoose.model('Users'); 
