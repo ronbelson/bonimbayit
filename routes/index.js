@@ -8,9 +8,10 @@ var cache = require('memory-cache');
 var  posts = { posts: [] }
 var blog_url = 'http://127.0.0.1:2368'
 var app = express(); 
-if (app.get('env') === 'development')   
-  { var config = require('../oauth-dev.js');} 
-  else {var config = require('../oauth-production.js');}
+//if (app.get('env') === 'development')   
+  //{ var config = require('../oauth-dev.js');} 
+  //else {var config = require('../oauth-production.js');}
+var config = require('../oauth-production.js')
 var mongoose = require('mongoose')
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
