@@ -37,7 +37,11 @@ passport.use(new FacebookStrategy({
 function(accessToken, refreshToken, profile, done) {
  var User = mongoose.model('Users'); 
  User.findOne({ fbId: profile.id }, function(err, user) {
-    if(err) { console.log(err); }
+    if(err) { 
+        console.log(err);
+        var err = new Error(err);
+        throw err;
+         }
     if (!err && user != null) {
       done(null, user);
     } else {
@@ -56,6 +60,8 @@ function(accessToken, refreshToken, profile, done) {
       user.save(function(err) {
         if(err) {
           console.log(err);
+          var err = new Error(err);
+          throw err;
         } else {
           console.log("saving user ...");
           done(null, user);
