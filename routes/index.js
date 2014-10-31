@@ -10,7 +10,7 @@ var blog_url = 'http://127.0.0.1:2368'
 var app = express(); 
 var config_passport = require('../oauth-production.js');
 
-if (app.get('env') === 'development') config_passport = require('../oauth-dev.js');
+if (app.get('env') === 'development') {config_passport = require('../oauth-dev.js');}
 
 var config = require('../oauth-production.js')
 var mongoose = require('mongoose')
