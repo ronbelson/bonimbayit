@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var routes = require('./routes/index');
 var admin  = require('./routes/admin');
+require('./db/db_connect');
 var passport = require('passport')
 
 // view engine setup
