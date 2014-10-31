@@ -72,6 +72,42 @@ function(accessToken, refreshToken, profile, done) {
     }
     ));
 
+//DONT REMOVE DOWN
+//TODO : ignure db schema on pathes
+router.use(function(req, res, next) 
+{
+ 
+  var postsPaths = ['/','/filecosts/','/thankyou/'];
+  var _ = require('underscore');
+  if ( !  _.contains(postsPaths, req.path) ) return next();
+  
+  //TODO map reduce for small json requuest
+  posts_cache = cache.get('posts');
+  
+  if(posts_cache==null) 
+  {
+    
+    if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
+    request(blog_url+'/json/?limit=100', function (error, response, body) 
+      {
+  
+        if (!error && response.statusCode == 200) 
+          {
+  
+            //cache.put('posts', body, 1000*60*60*3) // Time in ms
+            posts = JSON.parse(body);
+            next(); 
+          } 
+
+      }) 
+  } else {
+           posts = JSON.parse(posts_cache); 
+           next();
+         }   
+ 
+  
+});
+
 /* GET home page. */
 router.get('/', function(req, res) { 
   //console.log('render the page')
@@ -226,40 +262,7 @@ router.post('/contact', function(req, res) {
 
 
 
-//TODO : ignure db schema on pathes
-router.use(function(req, res, next) 
-{
-  console.log(req.path)
-  var postsPaths = ['/','/filecosts/','/thankyou/'];
-  var _ = require('underscore');
-  if ( !  _.contains(postsPaths, req.path) ) return next();
-  
-  //TODO map reduce for small json requuest
-  posts_cache = cache.get('posts');
 
-  if(posts_cache==null) 
-  {
-    
-    if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
-    request(blog_url+'/json/?limit=100', function (error, response, body) 
-      {
-  
-        if (!error && response.statusCode == 200) 
-          {
-  
-            //cache.put('posts', body, 1000*60*60*3) // Time in ms
-            posts = JSON.parse(body);
-            next(); 
-          } 
-
-      }) 
-  } else {
-           posts = JSON.parse(posts_cache); 
-           next();
-         }   
- 
-  
-});
 
 // test authentication
 function ensureAuthenticated(req, res, next) {

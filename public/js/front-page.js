@@ -10,6 +10,8 @@ function next(){
   });
  }
 next();
+
+//alert($('#disqus_last_feeds').html())
 });
  
  

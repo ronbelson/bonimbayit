@@ -178,15 +178,20 @@ br
         th.text-center(data-field="name") פעולה
         th.text-center(data-field="price") עלות
    
-  .col-md-4
+  .col-md-4   
    .col-sm-12.col-md-12.widget-area#secondary(role="complementary")
     .well
+     //- lasts fedds
+     h5(style="margin-top:-12px;").pdt0.widget-title תגובות אחרונות מהקהילה
+      i.fa.fa-comments.pdr10
+     .div#disqus_last_feeds(style="margin-right:-30px;").pdt0
+      script(type="text/javascript" src="http://ghost-bonim.disqus.com/recent_comments_widget.js?num_items=10&hide_avatars=1&avatar_size=40&excerpt_length=120")
      //- most view articles
      aside.widget
-      h3.widget-title יומן הבניה היחיד בישראל.
+      h5.widget-title יומן הבניה היחיד בישראל.
       .popular-posts-wrapper.pdt10
        each post , i in posts['posts']
-        if i<46
+        if i<27
           .post
            .post-image
             a(href="/blog/#{post.slug}") 
