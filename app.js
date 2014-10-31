@@ -30,10 +30,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ 
-    //TODO  memcach
+    //TODO  memcache
     secret: 'ikush',
     store: new MongoStore({
-      db : 'sessions',
+      db : 'sessions'
     })
   }));
 app.use(passport.initialize());
