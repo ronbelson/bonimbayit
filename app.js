@@ -1,6 +1,7 @@
 var methodOverride = require('method-override')
 var express = require('express');
 var session = require('express-session')
+var MongoStore = require('connect-mongo')(session);
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -26,7 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'ikush' }));
+
+app.use(session({ 
+    //TODO  memcach
+    secret: 'ikush',
+    store: new MongoStore({
+      db : 'sessions',
+    })
+  }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', routes);
