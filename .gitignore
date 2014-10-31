@@ -1,1 +1,4 @@
-node_modules/ghost
+node_modules/ghost/*.*
+node_modules/ghost/
+
+
