@@ -53,10 +53,10 @@ function(accessToken, refreshToken, profile, done) {
         photo: profile.photos[0].value
 
       });
-      var email = profile.emails;
-
-      if (email)
-        { user.push({'email':profile.emails[0].value})}
+      // var email = profile.emails;
+      // console.log(email)
+      // if (email!='undefined' || email!=undefined )
+      //   { user.push({'email':profile.emails[0].value})}
       user.save(function(err) {
         if(err) {
           console.log(err);

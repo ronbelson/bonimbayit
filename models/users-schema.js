@@ -13,16 +13,30 @@
 										fbId:  { 
 									        type:   Number, 
 									        unique: true,
+									        sparse: true,
 									        index:  true
 									        },
 									    photo: String,
 									    email: 
-									    	{ type : String , lowercase : true, unique: true,index:  true},    
+									    	{ type : String ,
+									    	 lowercase : true,
+									    	 unique: true,
+									    	 sparse: true,
+									    	 index:  true
+									    	},    
 										createdate: { type: Date, default: Date.now() } ,
 										phone: { 
-									        type:   String, 
-									        unique: true
+									        type:   String									       
 									        },
+									    address: {
+								              street: String,
+								              city:   String
+								            },
+								        contractors_looking_for: {
+								        	  type: String,
+								        	  area: String
+								        	},
+
 								        isadmin: { type: Boolean, default: false}
 												      
 				});

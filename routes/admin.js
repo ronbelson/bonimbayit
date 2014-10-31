@@ -17,7 +17,7 @@ require('../db/db_connect');
 require('../models/init_schema');
 
 router.get('/', function(req, res) { 
-  //console.log('render the page')
+  if (req.isAuthenticated()) {res.redirect('/admin/home')}
   res.render('admin/index', { title: 'בונים בית - התחבר'});
 }); 
 
