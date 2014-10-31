@@ -9,7 +9,6 @@ var  posts = { posts: [] }
 var blog_url = 'http://127.0.0.1:2368'
 var app = express(); 
 var config_passport = require('../oauth-production.js');
-console.log('app.get(env)='+app.get('env'));
 if (app.get('env') == 'development') {config_passport = require('../oauth-dev.js');}
 
 var mongoose = require('mongoose')
