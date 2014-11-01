@@ -13,7 +13,7 @@
   padding-top: 50px;
     height: 520px;
     opacity:1; 
-    background:  url('/img/home-background/background.gif')  center no-repeat ; background-size: cover;
+    background:  url('/img/home-background/background.jpg')  center no-repeat ; background-size: cover;
     /*background: url('/img/home-background/slide9.jpg') center center no-repeat scroll;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
