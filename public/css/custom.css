@@ -102,7 +102,7 @@ body {
   border-color: #af2e59;
   height: 38px !important;
   font-weight: bold;
-  opacity:0.8; 
+  opacity:0.9; 
 }
 .navbar-default .navbar-brand {
   color: #000 ;
@@ -224,7 +224,7 @@ footer {
 #logo {
 
 height: 40px;
-width:40px;
+width:auto;
 margin-top: -8px;
 margin-left: 10px;
 
