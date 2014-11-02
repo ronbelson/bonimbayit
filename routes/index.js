@@ -5,6 +5,11 @@ var bodyParser = require('body-parser')
 var request = require('request');
 var cache = require('memory-cache');
 
+//memcached
+//var Memcached = require('memcached');
+//var memcached = new Memcached('localhost:11211');
+//var lifetime = 86400; //24hrs
+
 var  posts = { posts: [] };
 var blog_url = 'http://127.0.0.1:2368';
 var site_email = 'ronbelson@gmail.com';
@@ -94,8 +99,13 @@ router.use(function(req, res, next)
   
         if (!error && response.statusCode == 200) 
           {
-  
-            //cache.put('posts', body, 1000*60*60*3) // Time in ms
+            // memcached.set('posts', body, lifetime, function( err, result ){
+            //   if( err ) console.error( err );
+            //   console.dir( result );
+            // });
+
+            cache.put('posts', body, 1000*60*60*3) // Time in ms
+            console.log('put cache')
             posts = JSON.parse(body);
             next(); 
           } 
@@ -172,7 +182,7 @@ router.post('/search/', function(req, res) {
   var message = {
   
     "text": "שם ואימייל: " + data_json.EMAIL + " , " + data_json.name + ", מחפש קבלן: " + data_json.MMERGE2 + ' באזור ' +  data_json.MMERGE1 ,
-    "subject": data_json.name + ' מתעניין על בקבלן ' +  data_json.MMERGE2 + ' באזור ' +  data_json.MMERGE1,
+    "subject": data_json.name + ' מתעניין בקבלן ' +  data_json.MMERGE2 + ' באזור ' +  data_json.MMERGE1,
     "from_email": data_json.EMAIL,
     "from_name": data_json.name,
     "to": [{
