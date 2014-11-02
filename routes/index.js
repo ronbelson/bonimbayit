@@ -5,14 +5,15 @@ var bodyParser = require('body-parser')
 var request = require('request');
 var cache = require('memory-cache');
 
-var  posts = { posts: [] }
-var blog_url = 'http://127.0.0.1:2368'
+var  posts = { posts: [] };
+var blog_url = 'http://127.0.0.1:2368';
+var site_email = 'ronbelson@gmail.com';
 var app = express(); 
 var config_passport = require('../oauth-production.js');
 if (app.get('env') == 'development') {config_passport = require('../oauth-dev.js');}
 
-var mongoose = require('mongoose')
-var passport = require('passport')
+var mongoose = require('mongoose');
+var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 require('../db/db_connect');
@@ -115,8 +116,102 @@ router.get('/', function(req, res) {
   //res.send(posts);
 });
 
+router.post('/search/', function(req, res) {
+   //'/search/:type/:area/:email/:name'
+   var data_json = (req.body);
+   //console.log(data_json);
+   var User = mongoose.model('Users'); 
+   
+   User.findOne({ email: data_json.EMAIL }, function(err, user) {
+      if(err) { 
+          console.log(err);
+          var err = new Error(err);
+          throw err;
+           }
+      
+      if (!err && user != null) {
+        user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 });
+        user.save(function(err) {
+          if(err) {
+            console.log(err);
+            var err = new Error(err);
+            throw err;
+          } else {
+            console.log("saving user usersearchcontractors ...");
+            
+          };
+        });  
+        
+      } else 
+        {
+         
+        var user = new User({
+          name: data_json.name,
+          email: data_json.EMAIL,
+          usersearchcontractors: [{ type: data_json.MMERGE2 , area: data_json.MMERGE1}]
+        });
+        
+        
+        user.save(function(err) {
+          if(err) {
+            console.log(err);
+            var err = new Error(err);
+            throw err;
+          } else {
+            console.log("saving user ...");
+            
+          };
+        });
+      };
+      });
+      
+  // sending mail
+  var mandrill = require('mandrill-api/mandrill');
+  var mandrill_client = new mandrill.Mandrill('FIuK1588pNxIn1NSyZCE8g');
+  if (app.get('env') === 'production') {site_email='bonimbayit@gmail.com'}
+  var message = {
+  
+    "text": "שם ואימייל: " + data_json.EMAIL + " , " + data_json.name + ", מחפש קבלן: " + data_json.MMERGE2 + ' באזור ' +  data_json.MMERGE1 ,
+    "subject": data_json.name + ' מתעניין על בקבלן ' +  data_json.MMERGE2 + ' באזור ' +  data_json.MMERGE1,
+    "from_email": data_json.EMAIL,
+    "from_name": data_json.name,
+    "to": [{
+            "email": site_email,
+            "name": "בונים בית",
+            "type": "to"
+        }],
+    "headers": {
+        "Reply-To":data_json.EMAIL
+    }};
 
- 
+    
+  var async = true;
+  var ip_pool = "Main Pool";
+  mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
+      
+      //console.log(message);
+      res.contentType('json');
+      console.log('send mail ok');
+      res.send({ result: result });
+      /*
+      [{
+              "email": "recipient.email@example.com",
+              "status": "sent",
+              "reject_reason": "hard-bounce",
+              "_id": "abc123abc123abc123abc123abc123"
+          }]
+      */
+       //console.log(result);
+  }, function(e) {
+      // Mandrill returns the error as an object with name and message keys
+      console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+      res.send(500,e.message)
+      // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+  });
+
+
+  
+});
 router.get('/contractors/:company_name/:phone', function(req, res) {
 
     // note that since this has a callback, the
@@ -207,7 +302,6 @@ router.get('/kablanim/:type/:area', function(req, res) {
 router.post('/contact', function(req, res) {
   //console.log(req);
   data_json = (req.body);
-  //console.log(data_json);
   
   var mandrill = require('mandrill-api/mandrill');
   var mandrill_client = new mandrill.Mandrill('FIuK1588pNxIn1NSyZCE8g');

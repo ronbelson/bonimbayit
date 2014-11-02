@@ -22,7 +22,7 @@
 									    	 lowercase : true,
 									    	 unique: true,
 									    	 sparse: true,
-									    	 index:  true
+									    	 index:  true 
 									    	},    
 										createdate: { type: Date, default: Date.now() } ,
 										phone: { 
@@ -32,14 +32,16 @@
 								              street: String,
 								              city:   String
 								            },
-								        contractors_looking_for: {
-								        	  type: String,
-								        	  area: String
-								        	},
-
+								        usersearchcontractors: [UserSearchcontractors], 			
 								        isadmin: { type: Boolean, default: false}
 												      
 				});
+
+			var UserSearchcontractors = new mongoose.Schema({
+				  type: String,
+		    	  area: String,
+		    	  createdate: { type: Date, default: Date.now() }
+			});
 
 			 
 			
@@ -58,4 +60,3 @@
 	};
 
 }());
-

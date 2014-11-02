@@ -242,9 +242,9 @@ margin-left: 10px;
        width: 100%;
        font: bold 15px/40px ;
        color: #f1c40f;
-       background: #e74c3c;
+       background: #3B5998;
        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-       font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#f1c40f;
+       font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:18px; color:#f1c40f;
        
        
    }   
@@ -252,19 +252,20 @@ margin-left: 10px;
    .btn-submit:hover{   
 
            background: #d83c3c;
+           border-color: transparent #d83c3c transparent;
        }  
        
    .btn-submit:before {
            content: '';
            position: absolute;
-       border-width: 6px 0 6px 10px;
+           border-width: 6px 0 6px 10px;
            width: 0;
            height: 0;
            border-style: solid solid solid solid;
-           border-color: transparent #d83c3c transparent;
+           border-color: transparent #3B5998 transparent;
            top: 25px;
            right: -10px;
-           font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:20px; color:#000;
+           font-family: 'Roboto', "Alef Hebrew"; font-weight : 150;font-size:18px; color:#000;
            
           }
 .navbar {

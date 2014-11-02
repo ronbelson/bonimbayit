@@ -105,7 +105,7 @@ h5.tagline ,h4.tagline {
 }
 
 #area_selector ,.a_area,.a_profession, #profession_selector  {
-  text-shadow: 0 0 1px red;
+  text-shadow: 0 0 1px #3B5998;
   font-size:18px;
   
 }
@@ -200,20 +200,27 @@ h5.tagline ,h4.tagline {
     border-width:0;
     font-family: 'Roboto', "Alef Hebrew"; font: bold 15px/40px ;font-size:16px; 
   } */
-    #testimonials{
-    height: 100%;
-    background: rgba(59, 59, 32, 0.5);
+    #div_testimonials{
+    padding:15px 15px 15px 15px ;
+    height: auto;
+    background: rgba(59, 59, 32, 0.7);
     border-radius: 0%;
-    opacity:1; 
+     
+    opacity:1;  font-family: 'Roboto', "Alef Hebrew"; font-weight:bold;font-weight :660;font-size:18px;color: #e6f34e;
+     
   }
 
    
-   
-  #testimonials li{ 
     
-    padding-top: 20px;
-    opacity:1; 
+  #testimonials li{ 
+  
 
+  }
+   #testimonials { 
+  
+    padding-top:0;
+     margin-top:0;
+     margin-bottom:0;
   }
   #testimonials ul{
     list-style:none;
@@ -225,7 +232,9 @@ h5.tagline ,h4.tagline {
     
   }
   #testimonials p.author{
-     padding-right: 0px;
+     padding-top:0;
+     margin-top:0;
+     margin-bottom:0;
      font-family: 'Roboto', "Alef Hebrew"; font-weight : 150;font-size:15px; color:#f6f5f5;
      opacity:1; 
   }
@@ -235,12 +244,7 @@ h5.tagline ,h4.tagline {
     color:#f6f5f5;
     opacity:1; 
   }
-  #testimonials p.author span{ padding-right: 10px;opacity:1; }
   
-  testimonials{
-   opacity:0.9;  font-family: 'Roboto', "Alef Hebrew"; font-weight:bold;font-weight :560;font-size:18px;color: #e6f34e;
-     
-          }
    
     .circle {
 

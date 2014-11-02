@@ -11,12 +11,12 @@ block content
      h1.tagline קהילת הבונים עוזרת לך להצליח בבניית הבית
      br
    .row
-    .col-md-7(style="padding-top:60px;")
+    .col-md-7(style="vertical-align: middle")
      form.bgcolor-white
       .row
        .col-md-7
-        button#profession_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" style="") מצא את הקבלן הטוב ביותר שהומלץ ע"י הקהילה
-         span.caret
+        button#profession_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" style="") בחר סוג קבלן שהומלץ ע״י הקהילה
+         i.fa.fa-caret-down(style="padding-right:3px")
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
          li
          a#a_profession1.a_profession.text-right(href="#" tabindex="-1") אינסטלציה
@@ -72,7 +72,7 @@ block content
          li.divider
        .col-md-2
         button#area_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" ) באזור
-         span.caret         
+         i.fa.fa-caret-down(style="padding-right:2px")
         ul(role="menu" aria-labelledby="dropdownMenu").dropdown-menu.text-center
          li
          a#a_area1.text-right.a_area(href="#" tabindex="-1" data-toggle="modal" ) צפון
@@ -93,10 +93,12 @@ block content
          li.divider  
 
        .col-md-3
-        button(data-toggle="modal" href="#signin" style="text-shadow: 0 0 1px #000;" ).btn-submit מצא &nbsp;
+        button(data-toggle="modal" href="#signin" style="text-shadow: 0 0 1px #000;padding-right:3px;" ).btn-submit קבל המלצה &nbsp;
          i.fa.fa-heart
      
      
+     div
+      i.fa.fa-arrow-up.fa-5x(style="float:left;color:#f1c40f;").pdt10.visible-lg
       
 
     .col-md-5
@@ -107,37 +109,7 @@ block content
 
  .container
   div.row
-  div.col-md-3
-    div.box
-      div.box-gray.textcenter
-        h4 המלצות מהקהילה
-        div.icon
-          i.fa.fa-heart.fa-3x
-        div בונים מהקהילה ממליצים לך על הקבלנים הטובים ביותר בשביל שתוכל לבנות בהצלחה את הבית שלך 
-      div.box-bottom
-       a(href="#signin" data-toggle="modal") צפה בהמלצות בונים&nbsp;
-        i.fa.fa-arrow-left&nbsp;
-  div.col-md-3
-    div.box
-      div.box-gray.textcenter
-        h4 צוות מומחים לעזרתך
-        div.icon
-          i.fa.fa-facebook-square.fa-3x
-        div אלפי בונים מתייעצים עימנו חינם בפייסבוק ובדואל! אל תהססו לפנות לשאול ולהגיב, ביחד נגשים את החלום.
-      div.box-bottom
-        a(href="https://www.facebook.com/bonimbayit" taget="_blank" title="בונים בית דף הפייסבוק") לדף המומחים בפייסבוק 
-         i.fa.fa-arrow-left&nbsp;
-  div.col-md-3
-    div.box
-      div.box-gray.textcenter
-        h4 כל עלויות בניית בית
-        div.icon
-          i.fa.fa-edit.fa-3x
-        div אנחנו מקבלים עלויות בניה היישר מהבונים, כל רבעון תוכלו לצפות בעלויות הבניה העדכניות במשק.
-      div.box-bottom
-        a(href='#filecost') עלות בניית בית
-         i.fa.fa-arrow-left&nbsp;
-  div.col-md-3
+   div.col-md-3
     div.box
       div.box-gray.textcenter
         h4 כל תהליכי הבניה
@@ -147,8 +119,40 @@ block content
       div.box-bottom
         a(href='/blog') עבור ליומן הבניה השלם
          i.fa.fa-arrow-left&nbsp;
+   div.col-md-3
+    div.box
+      div.box-gray.textcenter
+        h4 כל עלויות בניית בית
+        div.icon
+          i.fa.fa-edit.fa-3x
+        div אנחנו מקבלים עלויות בניה היישר מהבונים, כל רבעון תוכלו לצפות בעלויות הבניה העדכניות במשק.
+      div.box-bottom
+        a(href='#filecost') עלות בניית בית
+         i.fa.fa-arrow-left&nbsp;
+ 
 
  
+   div.col-md-3
+    div.box
+      div.box-gray.textcenter
+        h4 המלצות מהקהילה
+        div.icon
+          i.fa.fa-heart.fa-3x
+        div בונים מהקהילה ממליצים לך על הקבלנים הטובים ביותר בשביל שתוכל לבנות בהצלחה את הבית שלך 
+      div.box-bottom
+       a(href="#signin" data-toggle="modal") צפה בהמלצות בונים&nbsp;
+        i.fa.fa-arrow-left&nbsp;
+   div.col-md-3
+    div.box
+      div.box-gray.textcenter
+        h4 צוות מומחים לעזרתך
+        div.icon
+          i.fa.fa-facebook-square.fa-3x
+        div אלפי בונים מתייעצים עימנו חינם בפייסבוק ובדואל! אל תהססו לפנות לשאול ולהגיב, ביחד נגשים את החלום.
+      div.box-bottom
+        a(href="https://www.facebook.com/bonimbayit" taget="_blank" title="בונים בית דף הפייסבוק") לדף המומחים בפייסבוק 
+         i.fa.fa-arrow-left&nbsp;
+   
 
  
  include frontpage-content

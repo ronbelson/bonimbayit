@@ -72,7 +72,7 @@ $(function() {
      $('#mc-form').find('label[for=mc-email]').html('אנא המתן מעביר נתונים..').show();
      $.ajax({
              type: "POST",
-             url: "/contact/",
+             url: "/search/",
              data: $("#mc-form").serializeJSON(), // serializes the form's elements.
              success: function(data)
              {
