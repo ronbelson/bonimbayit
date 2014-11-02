@@ -141,7 +141,7 @@ body {
   border-color: #000;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #000;
+  background-color: #red;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #000;
@@ -205,8 +205,9 @@ body {
     color: #f0f0f0;
     font-size: 16px;
     border-color: #f0f0f0;
-    background-color: #000;
+    background-color: #f3f3f3;
     font-weight: bold;
+    opacity: 1;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #000;
