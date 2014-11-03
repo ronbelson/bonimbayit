@@ -21,7 +21,7 @@ nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
      a.dropdown-toggle(style="" href='javascript:void(0)', data-toggle='dropdown') יומן הבניה השלם
       i.fa.fa-caret-down(style="padding-right:5px;")
       ul.dropdown-menu-posts-navbar.dropdown-menu.scrollable-menu.pdr10.pdl10( role="menu")
-       each post, i in posts['posts']
+       each post, i in posts
         li
          a.text-right(href='/blog/#{post.slug}')=post.title.substr(0, 70)
 

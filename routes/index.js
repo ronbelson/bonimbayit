@@ -94,7 +94,7 @@ router.use(function(req, res, next)
   {
     
     if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
-    request(blog_url+'/json/?limit=100', function (error, response, body) 
+    request(blog_url+'/json/', function (error, response, body) 
       {
   
         if (!error && response.statusCode == 200) 
