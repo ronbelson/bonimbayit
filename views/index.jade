@@ -1,7 +1,7 @@
 extends layout	
 
 block css
- link(href="/css/business-frontpage.css" rel="stylesheet")
+ != css("css/business-frontpage")
 
 block content
  header.business-header
@@ -89,7 +89,9 @@ block content
          li
          a#a_area5.a_area.text-right(href="#" data-toggle="modal" ) דרום
          li.divider  
-         a#a_area6.a_area(href="#" data-toggle="modal" ) כל הארץ
+         a#a_area6.a_area(href="#" data-toggle="modal" ) השומרון
+         li.divider  
+         a#a_area7.a_area(href="#" data-toggle="modal" ) אילת והערבה   
          li.divider  
 
        .col-md-3
@@ -166,6 +168,6 @@ block content
  
  
 block jsfiles
- script(src="/js/front-page.js")
+ != js("js/front-page")
 
 

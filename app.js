@@ -2,6 +2,7 @@ require('nodetime').profile({
     accountKey: '5e85fa0d0a4651f7429866ebeabbbb6d3425dffd', 
     appName: 'Node.js Application'
   });
+
 var methodOverride = require('method-override')
 var express = require('express');
 var session = require('express-session')
@@ -22,7 +23,7 @@ var passport = require('passport')
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-
+ 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(require("connect-assets")({ src: __dirname + '/public' }));
 app.use(session({ 
     //TODO  memcache
     secret: 'ikush',
