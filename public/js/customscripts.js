@@ -56,7 +56,12 @@ window.fbAsyncInit = function() {
 
 //OPP-poll-id-53a2116be4b0fb42190cb76d', function(e) {
   
- 
+ $("#btn_search_submit").click(function() {
+  if($('#mc-form #MMERGE1').val()=='כל האזורים' || $('#mc-form #MMERGE2').val()=='כל הקבלנים' )
+    {bootbox.alert("<div class=text-center><h5><i class='fa fa-heart fa-2x pdl10'></i>בונה יקר, יש לבחור סוג קבלן ואזור</h5></div>"); return false;}
+  //alert($('#mc-form #MMERGE1').val())
+  
+ });
 
 $(function() {
   $('#mc-form').ajaxChimp({
