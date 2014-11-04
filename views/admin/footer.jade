@@ -1,0 +1,23 @@
+div(tabindex="-1" data-width="760")#addconstractor.container.modal.fade.well
+ 
+ 
+ h5.text-center הוסף את פרטי הקבלן
+ .row
+  .col-xs-12
+   form#formaddconstractor()
+    .form-group.well
+     input( dir="rtl"  placeholder="שם הקבלן" required id="name" name="name" ng-model="name").form-control.input-md
+     input( dir="rtl" onkeypress="this.dir='ltr'" placeholder="email" required id="" type="email" ng-model="upvotes").form-control.input-md
+     input.hide( dir="rtl"  required id="MMERGE1"  name="MMERGE1"  value="כל האזורים").form-control 
+     input.hide( dir="rtl"  required id="MMERGE2"  name="MMERGE2"  value="כל הקבלנים").form-control 
+     input.hide( dir="rtl"  required id="message"  name="message" ).form-control
+     input.hide( dir="rtl"  required id="subject"  name="subject" value="פניה בנושא קבלן מ").form-control
+     
+     label(for="mc-email")
+    .modal-admin-footer.text-center
+     button.btn-submit.btn.btn-primary(type="submit" ng-click="addConstractor()") הוסף
+     span(style="padding-right:20px;")
+     button(type="button" data-dismiss="modal" ).btn.btn-default
+      small X
+    br
+    

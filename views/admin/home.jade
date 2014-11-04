@@ -3,7 +3,13 @@ extends layout-admin
 block css-admin
 
 block content
- 
+ .container
+  .row(style="padding-top:100px;")
+   .col-xs-12
+    div(ng-repeat="constractor in constractors") {{constractor.name}} - upvotes: {{constractor.upvotes}}
+
+
+  
   
  
 block jsfiles-admin

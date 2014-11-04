@@ -14,10 +14,11 @@ block content
     .col-md-7(style="vertical-align: middle")
      form.bgcolor-white
       .row
-       .col-md-7
+       .col-md-7.text-center
         button#profession_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" style="")איזה קבלן שהומלץ ע"י הקהילה את\ה מחפש\ת?
          i.fa.fa-caret-down(style="padding-right:3px")
-        ul(role="menu" aria-labelledby="dropdownMenu" style="width:100%").dropdown-menu.text-center
+        ul(role="menu" aria-labelledby="dropdownMenu" style="width:98%;height:400px;").dropdown-menu.text-center.scrollable-menu
+
          li
          a#a_profession1.a_profession.text-right(href="#" tabindex="-1") אינסטלציה
          li.divider
@@ -75,25 +76,107 @@ block content
        .col-md-2
         button#area_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" )באזור
          i.fa.fa-caret-down(style="padding-right:1px")
-        ul(role="menu" aria-labelledby="dropdownMenu").dropdown-menu.text-center
+        ul(role="menu" aria-labelledby="dropdownMenu" style="width:98%;height:400px").dropdown-menu.text-center.scrollable-menu
          li
-         a#a_area1.text-right.a_area(href="#" tabindex="-1" data-toggle="modal" ) צפון
+          div.area_divider אזור צפון
+         li.divider 
+         li
+         a#a_area1.text-right.a_area(href="#" tabindex="-1" data-toggle="modal" ) חיפה וחוף הכרמל
          li.divider
          li
-         a#a_area2.a_area.text-right(href="#" data-toggle="modal" ) מרכז
+         a#a_area2.a_area.text-right(href="#" data-toggle="modal" ) קריות
          li.divider
          li
-         a#a_area3.a_area.text-right(href="#" data-toggle="modal" ) שפלה
+         a#a_area3.a_area.text-right(href="#" data-toggle="modal" ) עכו - נהריה
          li.divider
          li
-         a#a_area4.a_area.text-right(href="#" data-toggle="modal" ) השרון
+         a#a_area4.a_area.text-right(href="#" data-toggle="modal" ) גליל ועמקים
          li.divider  
          li
-         a#a_area5.a_area.text-right(href="#" data-toggle="modal" ) דרום
+         a#a_area5.a_area.text-right(href="#" data-toggle="modal" ) טבריה והסביבה
          li.divider  
-         a#a_area6.a_area(href="#" data-toggle="modal" ) השומרון
+         a#a_area6.a_area(href="#" data-toggle="modal" ) עמק יזרעאל
          li.divider  
-         a#a_area6.a_area(href="#" data-toggle="modal" ) אילת והערבה
+         a#a_area7.a_area(href="#" data-toggle="modal" ) כרמיאל והסביבה
+         li.divider  
+         a#a_area8.a_area(href="#" data-toggle="modal" ) מושבים בצפון
+         li.divider
+         li
+          div.area_divider אזור השרון והסביבה
+         li.divider 
+         a#a_area9.a_area(href="#" data-toggle="modal" ) זכרון - בנימינה
+         li.divider  
+         a#a_area9.a_area(href="#" data-toggle="modal" ) חדרה וישובי עמק חפר
+         li.divider  
+         a#a_area10.a_area(href="#" data-toggle="modal" ) פרדס חנה - כרכור
+         li.divider  
+         a#a_area11.a_area(href="#" data-toggle="modal" ) יישובי השומרון
+         li.divider  
+         a#a_area12.a_area(href="#" data-toggle="modal" ) נתניה והסביבה
+         li.divider  
+         a#a_area12.a_area(href="#" data-toggle="modal" ) קיסריה והסביבה
+         li.divider  
+         a#a_area14.a_area(href="#" data-toggle="modal" ) רמת השרון - הרצליה
+         li.divider  
+         a#a_area15.a_area(href="#" data-toggle="modal" ) רעננה - כפר סבא
+         li.divider  
+         a#a_area16.a_area(href="#" data-toggle="modal" ) הוד השרון והסביבה
+         li.divider  
+         a#a_area17.a_area(href="#" data-toggle="modal" ) מושבים בשרון
+         li.divider  
+         li
+          div.area_divider אזור המרכז
+         li.divider 
+         a#a_area18.a_area(href="#" data-toggle="modal" ) תל אביב
+         li.divider  
+         a#a_area19.a_area(href="#" data-toggle="modal" ) ראשל"צ והסביבה
+         li.divider  
+         a#a_area20.a_area(href="#" data-toggle="modal" ) חולון - בת ים
+         li.divider  
+         a#a_area21.a_area(href="#" data-toggle="modal" ) רמת גן - גבעתיים
+         li.divider  
+         a#a_area22.a_area(href="#" data-toggle="modal" ) פתח תקוה והסביבה
+         li.divider  
+         a#a_area23.a_area(href="#" data-toggle="modal" ) ראש העין והסביבה
+         li.divider  
+         a#a_area24.a_area(href="#" data-toggle="modal" ) בקעת אונו
+         li.divider  
+         a#a_area25.a_area(href="#" data-toggle="modal" ) מושבים במרכז
+         li.divider 
+         li
+          div.area_divider אזור ירושלים
+         li.divider  
+         a#a_area26.a_area(href="#" data-toggle="modal" ) ירושלים
+         li.divider  
+         a#a_area27.a_area(href="#" data-toggle="modal" ) מודיעין והסביבה
+         li.divider  
+         a#a_area28.a_area(href="#" data-toggle="modal" ) בית שמש והסביבה
+         li.divider  
+         a#a_area29.a_area(href="#" data-toggle="modal" ) מושבים באזור ירושלים
+         li.divider  
+         li
+          div.area_divider  אזור השפלה והסביבה
+         li.divider 
+         a#a_area30.a_area(href="#" data-toggle="modal" ) נס ציונה - רחובות
+         li.divider  
+         a#a_area31.a_area(href="#" data-toggle="modal" ) אשדוד - אשקלון
+         li.divider  
+         a#a_area32.a_area(href="#" data-toggle="modal" ) רמלה - לוד
+         li.divider  
+         a#a_area33.a_area(href="#" data-toggle="modal" ) גדרה יבנה והסביבה
+         li.divider  
+         a#a_area34.a_area(href="#" data-toggle="modal" ) מושבים בשפלה
+         li.divider  
+         li
+          div.area_divider  אזור דרום
+         li.divider 
+         a#a_area35.a_area(href="#" data-toggle="modal" ) באר שבע והסביבה
+         li.divider  
+         a#a_area36.a_area(href="#" data-toggle="modal" ) אילת והערבה
+         li.divider  
+         a#a_area37.a_area(href="#" data-toggle="modal" ) רמלה - לוד
+         li.divider  
+         a#a_area38.a_area(href="#" data-toggle="modal" ) מושבים בדרום
          li.divider  
 
        .col-md-3

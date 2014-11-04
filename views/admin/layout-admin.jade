@@ -11,7 +11,7 @@ html(lang="he")
     link(rel="shortcut icon" href="http://faviconist.com/icons/2c04dc877c331d51dc497a7a584dccac/favicon.ico")
 
     include cssfiles-admin
-    block css
+    block css-admin
     //- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
     //- WARNING: Respond.js doesn't work if you view the page via file:// 
     //[if lt IE 9]
@@ -20,13 +20,15 @@ html(lang="he")
     //[endif]
     
 
-  body.skin-blue
+  body.skin-blue(ng-app="flapperNews" ng-controller="MainCtrl")
+
     script(src='/js/google_analytics.js')
     include navbar
     .fb-root
     block content
+    include footer
     include jsfiles-admin
-    block jsfiles
+    block jsfiles-admin
 
 
     

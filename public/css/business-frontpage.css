@@ -103,7 +103,11 @@ h5.tagline ,h4.tagline {
   font-family: 'Roboto', "Alef Hebrew"; font-weight : 400;  
     
 }
-
+.area_divider  {
+  text-shadow: 0 0 1px red;
+  font-size:18px;
+  
+}
 #area_selector ,.a_area,.a_profession, #profession_selector  {
   text-shadow: 0 0 1px #3B5998;
   font-size:18px;
