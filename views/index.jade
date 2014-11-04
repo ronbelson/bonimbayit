@@ -1,14 +1,14 @@
 extends layout	
 
 block css
- != css("css/business-frontpage")
+ link(href="/css/business-frontpage.css?v=0" rel="stylesheet")
 
 block content
  header.business-header
   .container
    .row
     .col-xs-12
-     h1.tagline קהילת הבונים עוזרת לך להצליח בבניית הבית
+     h1#top.tagline קהילת הבונים עוזרת לך להצליח בבניית הבית
      br
    .row
     .col-md-7(style="vertical-align: middle")
@@ -91,7 +91,7 @@ block content
          li.divider  
          a#a_area6.a_area(href="#" data-toggle="modal" ) השומרון
          li.divider  
-         a#a_area7.a_area(href="#" data-toggle="modal" ) אילת והערבה   
+         a#a_area6.a_area(href="#" data-toggle="modal" ) אילת והערבה
          li.divider  
 
        .col-md-3
@@ -140,9 +140,9 @@ block content
         h4 המלצות מהקהילה
         div.icon
           i.fa.fa-heart.fa-3x
-        div בונים מהקהילה ממליצים לך על הקבלנים הטובים ביותר בשביל שתוכל לבנות בהצלחה את הבית שלך 
+        div בונים מהקהילה ממליצים לך על הקבלנים הטובים ,בחר סוג קבלן ואזור וקבל המלצות
       div.box-bottom
-       a(href="#signin" data-toggle="modal") צפה בהמלצות בונים&nbsp;
+       a(href="#top" ) צפה בהמלצות בונים&nbsp;
         i.fa.fa-arrow-left&nbsp;
    div.col-md-3
     div.box
@@ -152,7 +152,7 @@ block content
           i.fa.fa-facebook-square.fa-3x
         div אלפי בונים מתייעצים עימנו חינם בפייסבוק ובדואל! אל תהססו לפנות לשאול ולהגיב, ביחד נגשים את החלום.
       div.box-bottom
-        a(href="https://www.facebook.com/bonimbayit" taget="_blank" title="בונים בית דף הפייסבוק") לדף המומחים בפייסבוק 
+        a(href="https://www.facebook.com/bonimbayit" target="_blank" title="בונים בית דף הפייסבוק") לדף המומחים בפייסבוק 
          i.fa.fa-arrow-left&nbsp;
    
 
@@ -168,6 +168,6 @@ block content
  
  
 block jsfiles
- != js("js/front-page")
+ script(src="/js/front-page.js")
 
 

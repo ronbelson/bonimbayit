@@ -71,7 +71,7 @@ body {
         float: none;
     }
     .navbar-nav>li>a {
-        
+         
     }
 
     .dropdown-menu-posts-navbar a {color:#000  !important; font-weight: bold !important;font-weight: 500 !important;}
@@ -126,6 +126,8 @@ body {
 
 
 }
+  
+
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: gray;
 }

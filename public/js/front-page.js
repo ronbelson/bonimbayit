@@ -14,4 +14,15 @@ next();
 //alert($('#disqus_last_feeds').html())
 });
  
+
+$("a[href='#top']").click(function (e) {
+	e.stopPropagation();
+    $("html, body").animate({
+        scrollTop: 0
+    }, "slow", function () {
+    	$('#profession_selector.dropdown-toggle').dropdown('toggle');
+        //$('#profession_selector.dropdown-toggle').dropdown('dropdown');
+    });
+    return false;
+});
  
