@@ -62,7 +62,9 @@ router.get('/contractors/:contractor', function(req, res) {
 router.post('/contractors/update', function(req, res, next) {
   
   Contractors.findOneAndUpdate({ _id:req.body._id },{$set: req.body},{upsert: true},function(err,data){
-    if(err){ res.json(err);return next(); }
+    if(err){ 
+    	res.json(err);
+    	return next(); }
     res.json(data);
   });
 });

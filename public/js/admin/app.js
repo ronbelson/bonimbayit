@@ -59,7 +59,16 @@ function($stateProvider, $urlRouterProvider) {
           }, 4000);
 
         });
-    });
+    }).
+      error(function(data, status, headers, config) {
+        console.log(data);
+        console.log(status);
+        console.log(headers);
+        console.log(config);
+        
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
   };
   return o;
 }])
