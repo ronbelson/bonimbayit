@@ -64,6 +64,7 @@ router.post('/contractors/update', function(req, res, next) {
   Contractors.findOneAndUpdate({ _id:req.body._id },{$set: req.body},{upsert: true},function(err,data){
     if(err){ 
     	console.log('in 2')
+    	console.log(err)
     	res.json(err);
     	return next(); }
     console.log('in 3')
