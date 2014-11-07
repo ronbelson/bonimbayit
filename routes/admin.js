@@ -61,7 +61,9 @@ router.get('/contractors/:contractor', function(req, res) {
 router.post('/contractors/update', function(req, res, next) {
   console.log(req.body)
   console.log('in 1')
-  Contractors.findOneAndUpdate({ _id:req.body._id },{$set: req.body},{upsert: true},function(err,data){
+  var _id = req.body._id;
+  delete req.body._id;
+  Contractors.findOneAndUpdate({ _id:_id },{$set: req.body},{upsert: true},function(err,data){
     if(err){ 
     	console.log('in 2')
     	console.log(err)
