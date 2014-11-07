@@ -65,7 +65,7 @@ router.post('/contractors/update', function(req, res, next) {
     if(err){ 
     	res.json(err);
     	return next(); }
-    res.json(data);
+    res.jsonp(data);
   });
 });
 // router.post('/contractors/:contractor', function(req, res, next) {
