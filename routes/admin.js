@@ -1,5 +1,4 @@
 var express = require('express');
-var httpProxy = require('http-proxy');
 var router = express.Router();
 var bodyParser = require('body-parser')
 var request = require('request');
@@ -60,12 +59,15 @@ router.get('/contractors/:contractor', function(req, res) {
 });
 
 router.post('/contractors/update', function(req, res, next) {
-  
+  console.log('in 1')
   Contractors.findOneAndUpdate({ _id:req.body._id },{$set: req.body},{upsert: true},function(err,data){
     if(err){ 
+    	console.log('in 2')
     	res.json(err);
     	return next(); }
+    console.log('in 3')
     res.jsonp(data);
+    console.log('in 4')
   });
 });
 // router.post('/contractors/:contractor', function(req, res, next) {
