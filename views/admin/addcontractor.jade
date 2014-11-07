@@ -1,0 +1,27 @@
+div(tabindex="-1" data-width="760")#addcontractor.container.modal.fade.well
+ 
+ 
+ h5.text-center הוסף את פרטי הקבלן
+ .row
+  .col-xs-12
+   form#formaddconstractor()
+    .form-group
+     div.well
+      input( dir="rtl"  placeholder="שם הקבלן" required id="name" name="name" ng-model="name").form-control.input-lg
+     div.well
+      input( dir="rtl"  placeholder="שם החברה" required id="company_name" name="company_name" ng-model="company_name").form-control.input-lg
+     div.well
+      input( dir="rtl"  placeholder="כתובת החברה"  id="address" name="address" ng-model="address").form-control.input-lg
+     div.well
+      input( dir="rtl"  onkeypress="this.dir='ltr'"  placeholder="דואל אם יש"  id="" type="email" ng-model="email").form-control.input-lg
+     div.well
+      input( dir="rtl"  onkeypress="this.dir='ltr'" required placeholder="טלפון ללא מקפים"  id="" type="phone" ng-model="phone").form-control.input-lg
+     div.well.hide
+      label(for="mc-email")
+    .modal-admin-footer.text-center
+     button.btn-submit.btn.btn-primary(type="submit" ng-click="addContractor()") הוסף
+     span(style="padding-right:20px;")
+     button(type="button" data-dismiss="modal" ).btn.btn-default
+      small X
+    br
+    

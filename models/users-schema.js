@@ -2,7 +2,7 @@
 	'use strict';
 
 	var mongoose = require('mongoose');
-
+	var Contractors = require('./contractors-schema');
 	 
 
 	module.exports = function() {
@@ -32,7 +32,8 @@
 								              street: String,
 								              city:   String
 								            },
-								        usersearchcontractors: [UserSearchcontractors], 			
+								        usersearchcontractors: [UserSearchcontractors],
+								        userforwardcontractors: [Contractors],								        			
 								        isadmin: { type: Boolean, default: false}
 												      
 				});

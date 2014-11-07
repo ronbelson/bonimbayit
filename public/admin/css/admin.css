@@ -1,3 +1,20 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400);
+@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+* { font-family: 'Roboto', "Alef Hebrew"; font-weight : 300; } 
+
+body {
+
+    font-family: 'Roboto', "Alef Hebrew"; color:#d83c3c;
+    background-color: #f2f2f2;
+    /*padding-top: 50px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #fff; 
+    /*background-image: 
+        linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+        linear-gradient(#eee .1em, transparent .1em);
+        background-size: 100% 1.2em;*/
+    background: url('/img/home-background/white_brick_wall.png')  
+        
+}
 .navbar-login
 {
     width: 305px;
@@ -11,8 +28,24 @@
     padding-bottom: 0px;
     padding-top: 0px;
 }
-
+ 
 .icon-size
 {
     font-size: 87px;
 }
+.row {
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-top: 0;
+    margin-right: 0;
+    *zoom: 1;
+    margin-top: 10px;
+}
+.well
+{background:#fff !important;}
+.well_add_gray {background:#f4f6f1 !important;}
+.well_no_bacground { background-color:transparent  !important;
+
+}
+
+

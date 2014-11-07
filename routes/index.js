@@ -222,67 +222,6 @@ router.post('/search/', function(req, res) {
 
   
 });
-router.get('/contractors/:company_name/:phone', function(req, res) {
-
-    // note that since this has a callback, the
-    // save happens asychronously. So, the find
-    // that follows may not (probably will not)
-    // retrieve the contractor you're trying to save.
-    
-      
-    var Contractor = mongoose.model('Contractors');
-
-    var contractor  = new Contractor({ 
-                      company_name: req.param('company_name') ,
-                      phone: req.param('phone') }); 
-
-
-    contractor.save(function (err) {
-      if (err) {
-          // TODO Warning message
-          console.error('could not save ' + err.message);
-          res.send(err.message);     
-        } 
-      else {
-        Contractor.findById(contractor, function (err, contractor) {
-          if (err) {
-            console.error('could not find Contractor after insert new');
-            throw err;
-          } 
-          
-          if ( contractor.length <= 0 ) {
-           res.send({error: 'I have no Contractor'});
-          } 
-          else {
-             res.send(contractor); 
-               }  
-          });
-      }
-        
-      });
-});
-
-router.get('/contractors', function(req, res) {
-  
-   var Contractor = mongoose.model('Contractors'); 
-
-   Contractor.find( function (err, contractor) {
-        if (err) {
-          console.error('could not find Contractor');
-          throw err;
-        } 
-        
-        if ( contractor.length <= 0 ) {
-         res.send({error: 'I have no Contractor'});
-        } 
-        else {
-           res.send(contractor);   
-        }
-         
-
-    });
-  
-});
 
 
 /* Thankyou page. */

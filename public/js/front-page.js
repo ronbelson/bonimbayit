@@ -25,4 +25,18 @@ $("a[href='#top']").click(function (e) {
     });
     return false;
 });
+
+$("a[href='#filecost']").click(function (e) {
+    e.stopPropagation();
+    
+    var targetOffset = $('#filecost').offset().top - 50;
+     
+    $("html, body").animate({
+        scrollTop: targetOffset
+    }, "slow", function () {
+        //$('#profession_selector.dropdown-toggle').dropdown('toggle');
+        //$('#profession_selector.dropdown-toggle').dropdown('dropdown');
+    });
+    return false;
+});
  

@@ -19,8 +19,8 @@ html(lang="he")
     script(src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js")
     //[endif]
     
-
-  body.skin-blue(ng-app="flapperNews" ng-controller="MainCtrl")
+  //-
+  body.skin-blue(ng-app="Admin" )
 
     script(src='/js/google_analytics.js')
     include navbar
@@ -29,8 +29,140 @@ html(lang="he")
     include footer
     include jsfiles-admin
     block jsfiles-admin
+    script(type='text/ng-template' id="home.html")
+     container
+      //-h3.page-header.text-center רשימת קבלנים
+      div(style="padding-top:10px;")
+      .row.text-left(style="margin-left:10px;margin-bottom:10px;")
+       col-xs-12
+        button(href="#addcontractor" data-toggle="modal" style="margin-top:10px").btn.btn-default הוסף קבלן חדש&nbsp;
+         i.fa.fa-plus
+      .row.well.well_add_gray.text-center
+       .col-xs-6.col-md-1 שם איש קשר
+       .col-xs-6.col-md-1 שם חברה
+       .col-xs-6.col-md-2 אימייל 
+       .col-xs-6.col-md-1 טלפון
+       .col-xs-6.col-md-2 כתובת
+       .col-xs-6.col-md-1 אזורים
+       .col-xs-6.col-md-1 המלצות
+       .col-xs-6.col-md-1 לידים
+       .col-xs-6.col-md-1 סטטוס
+       .col-xs-6.col-md-1 התווסף ב
 
+      .row(ng-repeat="contractor in contractors" style="color:#000;font-size:16px;").well.well_no_bacground.text-center
+       
+       .col-xs-6.col-md-1
+        a(href="#/contractor/{{contractor._id}}").btn.btn-default.btn-md {{contractor.name}} 
+        
+       .col-xs-6.col-md-1 {{contractor.company_name}}
+       .col-xs-6.col-md-2.small
+        a(ng-show="contractor.email" href="mailto:{{contractor.email}}") {{contractor.email}}
+        span(ng-hide="contractor.email") -
+       .col-xs-6.col-md-1 {{contractor.phone}}
+       .col-xs-6.col-md-2 {{contractor.address}}
+       .col-xs-6.col-md-1 {{contractor.}}
+       .col-xs-6.col-md-1.small {{contractor.comments.length}}
+       .col-xs-6.col-md-1.small {{contractor.forwards.length}}
+       .col-xs-6.col-md-1.small(ng-switch on="contractor.status")
+         span(ng-switch-when=0) ממתין
+         span(ng-switch-when=1) פעיל
+         span(ng-switch-when=2) מחוק
+       .col-xs-6.col-md-1.small {{contractor.date_created | date : format : timezone}} 
+     include addcontractor
 
+    script(type="text/ng-template" id="/contractor.html")
+     container
+      //-h3.page-header.text-center רשימת קבלנים
+      div
+      .row.text-left(style="margin-left:10px;margin-bottom:10px;")
+       col-xs-12
+        span#message(style="display:none")
+         a.btn.btn-info( href="javascript:void(0)" style="margin-top:10px;margin-left:10px" data-dismiss='alert') x
+          small העדכון בוצע בהצלחה 
+        button.btn.btn-default(style="margin-top:10px;margin-left:10px" type="submit" ng-click="updateContractor()") שמור&nbsp;
+         i.fa.fa-save
+        a(href="#"  style="margin-top:10px").btn.btn-default חזור לקבלנים&nbsp;
+         i.fa.fa-backward
+        
+        
+      form
+       .row
+        .col-xs-1 
+         שם איש קשר
+        .col-xs-4
+         input(dir="rtl" type="text" required  ng-model="contractor.name").form-control.input-md 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         שם חברה
+        .col-xs-4
+         input(dir="rtl" type="text" required  ng-model="contractor.company_name").form-control.input-md 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         אימייל
+        .col-xs-4
+         input(dir="ltr" type="email"  ng-model="contractor.email").form-control.input-md 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         טלפון
+        .col-xs-4
+         input(dir="ltr" type="text" required id="phone" name="phone" ng-model="contractor.phone").form-control.input-md 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         כתובת
+        .col-xs-4
+         input(dir="rtl" type="text" required id="name" name="name" ng-model="contractor.address").form-control.input-md 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         אזורים
+        .col-xs-4
+         input(dir="ltr" type="text" required id="name" name="name" ng-model="contractor.areas").form-control.input-md 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         לידים
+        .col-xs-4
+         a(ng-if="contractor.forwards.length>0" href="" style="width:40%").btn.btn-info המלצות הועברו ל {{contractor.forwards.length}} בונים
+          i.fa.fa-plus(style="padding-right:4px;") 
+         span(ng-if="contractor.forwards.length==0" style="width:40%").btn.btn-danger עדיין לא הועבר לבונים
+          i.fa.fa-meh-o(style="padding-right:4px;") 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         המלצות
+        .col-xs-4 
+         a(ng-if="contractor.comments.length>0" href="" style="width:40%").btn.btn-info התקבלו  {{contractor.comments.length}} המלצות
+          i.fa.fa-plus(style="padding-right:4px;") 
+         span(ng-if="contractor.comments.length==0" style="width:40%").btn.btn-danger אין המלצות עדיין, הוסף
+          i.fa.fa-plus(style="padding-right:4px;") 
+        .col-xs-7
+       .row
+        .col-xs-1 
+         סטטוס
+        .col-xs-4
+         //-div {{contractor.status}}
+         select(ng-model="contractor.status" ng-options=" i.value as i.name  for i in contractor_status" )
+        .col-xs-7
+       .row(style="padding-top:20px")
+        .col-xs-1 
+        
+    
+    
+      //- .row.well.well_add_gray.text-center
+      //-  .col-xs-6.col-md-1 שם קבלן
+      //-  .col-xs-6.col-md-1 שם חברה
+      //-  .col-xs-6.col-md-2 אימייל 
+      //-  .col-xs-6.col-md-1 טלפון
+      //-  .col-xs-6.col-md-2 כתובת
+      //-  .col-xs-6.col-md-1 אזורים
+      //-  .col-xs-6.col-md-1 המלצות
+      //-  .col-xs-6.col-md-1 לידים
+      //-  .col-xs-6.col-md-1 סטטוס
+      //-  .col-xs-6.col-md-1 התווסף ב
     
 
 
