@@ -3,7 +3,6 @@ var router = express.Router();
 var bodyParser = require('body-parser')
 var request = require('request');
 var cache = require('memory-cache');
-var app = express(); 
 var mongoose = require('mongoose')
 var User = mongoose.model('Users'); 
 var Contractors = mongoose.model('Contractors'); 
@@ -48,7 +47,7 @@ router.param('contractor', function(req, res, next, id) {
   query.exec(function (err, contractor){
     if (err) { return next(err); }
     if (!contractor) { return next(new Error("can't find contractor")); }
-
+    console.log(contractor)
     req.contractor = contractor;
     return next();
   });
@@ -59,19 +58,14 @@ router.get('/contractors/:contractor', function(req, res) {
 });
 
 router.post('/contractors/update', function(req, res, next) {
-  console.log(req.body)
-  console.log('in 1')
   var _id = req.body._id;
+  
   delete req.body._id;
   Contractors.findOneAndUpdate({ _id:_id },{$set: req.body},{upsert: true},function(err,data){
     if(err){ 
-    	console.log('in 2')
-    	console.log(err)
-    	res.json(err);
+    	res.json({err: err});
     	return next(); }
-    console.log('in 3')
     res.jsonp(data);
-    console.log('in 4')
   });
 });
 // router.post('/contractors/:contractor', function(req, res, next) {

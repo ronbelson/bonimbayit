@@ -15,6 +15,10 @@ body {
     background: url('/img/home-background/white_brick_wall.png')  
         
 }
+
+.col-xs-6 {padding:2px 2px 10px 2px !important ;}
+
+
 .navbar-login
 {
     width: 305px;

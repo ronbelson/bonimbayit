@@ -77,9 +77,9 @@ if (app.get('env') === 'development') {
         console.log('error:' +err);
         res.render('error', {
             message: err.message,
-
             error: err
         });
+       
     });
 }
 

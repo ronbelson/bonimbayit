@@ -28,17 +28,19 @@
 										        	index:  true
 										        },
 										        date_created: { type: Date, default: Date.now() } ,
-										        areas: { area: String},
-										        comments: [ContractorsComments],  
-										        forwards: [Users.schema],  
+										        areas: [{ id: String}],
+										        feedbacks: [ContractorsFeedbacks],  
+										        forwards: [Users.schema], 
+										        comment: String,
+										        payment_method: Number, //1 - per month  2 - per deal 
 												      
 				});
 
-			var ContractorsComments = new mongoose.Schema({
+			var ContractorsFeedbacks = new mongoose.Schema({
 				  author: String,
 		    	  phone: String,
 		    	  email: String,
-		    	  comment: String,
+		    	  feed: String,
 		    	  createdate: { type: Date, default: Date.now() }
 			});
 

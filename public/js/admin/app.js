@@ -1,7 +1,7 @@
 
 
 
-angular.module('Admin', ['ui.router'])
+angular.module('Admin', ['ui.router','angularjs-dropdown-multiselect'])
 
 .config([
 '$stateProvider',
@@ -49,8 +49,8 @@ function($stateProvider, $urlRouterProvider) {
     });
   };
   o.update = function(contractor) {
-    //console.log(contractor)
-
+    console.log(contractor)
+ 
   return $http.post('/admin/contractors/update', contractor).success(function(data){
 
       $('#message').show( "slow", function() {
@@ -106,6 +106,10 @@ function($scope, Contractors, Contractor){
 
 		$scope.contractor = Contractor.contractor
     $scope.contractor_status = [{name: 'פעיל', value: 1},{name: 'מחןק', value: 2},{name: 'ממתין', value: 0}];
+    $scope.contractor.areas = $scope.contractor.areas; 
+    $scope.areas_data = [ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
+    $scope.areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}
+    
 
     $scope.updateContractor = function(){
       //if(!$scope.contractor.name || $scope.contractor.name === '' || !$scope.contractor.phone || $scope.contractor.phone === '' || !$scope.contractor.company_name || $scope.contractor.company_name === '' ) { return; }
@@ -117,7 +121,10 @@ function($scope, Contractors, Contractor){
          phone: $scope.contractor.phone,
          email: $scope.contractor.email,
          status: $scope.contractor.status,
-         address: $scope.contractor.address
+         payment_method: $scope.contractor.payment_method,
+         address: $scope.contractor.address,
+         comment: $scope.contractor.comment,
+         areas: $scope.contractor.areas
         });
     };
 
@@ -133,8 +140,11 @@ function($scope, Contractors, Contractor){
 'Contractors',
 function($scope,Contractors){
 
- $scope.contractors = Contractors.contractors
- 
+ $scope.contractors = Contractors.contractors;
+ $scope.areas_data = [ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
+ $scope.areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}
+ $scope.areas  = [];
+
  $scope.addContractor = function(){
  
   if(!$scope.name || $scope.name === '' || !$scope.phone || $scope.phone === '' || !$scope.company_name || $scope.company_name === '' ) { return; }
@@ -144,6 +154,7 @@ function($scope,Contractors){
   			 phone: $scope.phone,
   			 email: $scope.email,
          status: 0,
+         areas: $scope.areas,
          address: $scope.address,
          date_created: new Date()
   			 
