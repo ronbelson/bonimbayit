@@ -29,7 +29,7 @@ html(lang="he")
     include footer
     include jsfiles-admin
     block jsfiles-admin
-    script(type='text/ng-template' id="home.html")
+    script(type='text/ng-template' id="home.html" )
      container
       //-h3.page-header.text-center רשימת קבלנים
       div(style="padding-top:10px;")
@@ -76,10 +76,13 @@ html(lang="he")
          span(ng-switch-when=1) פעיל
          span(ng-switch-when=2) מחוק
        .col-xs-6.col-md-1.small {{contractor.date_created | date : format : timezone}} 
+       div.ng-hide
+        textarea(rows="4" cols="50" dir="rtl"  ng-model="contractor.comment")
      include addcontractor
 
-    script(type="text/ng-template" id="/contractor.html")
+    script(type="text/ng-template" id="/contractor.html" ng-model="Contractor")
      container
+
       //-h3.page-header.text-center רשימת קבלנים
       div
       .row.text-left(style="margin-left:10px;margin-bottom:10px;")
@@ -94,6 +97,7 @@ html(lang="he")
         
         
       form
+       {{contractor.comment}}
        .row
         .col-md-1 
          שם איש קשר

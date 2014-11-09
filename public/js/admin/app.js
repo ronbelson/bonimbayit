@@ -27,7 +27,7 @@ function($stateProvider, $urlRouterProvider) {
 	  controller: 'ContractorCtrl',
     resolve: {
               ContractorPromise: ['$stateParams', 'Contractor', function($stateParams, Contractor) {
-                return Contractor.get($stateParams.id);
+                return Contractor.getByid($stateParams.id);
               }]
             }
 		});
@@ -39,17 +39,19 @@ function($stateProvider, $urlRouterProvider) {
 }])
 
 
+
 .factory('Contractor', ['$http', function($http){
   var o = {
     contractor: []
   };
-  o.get = function(id) {
+  o.getByid = function(id) {
+    o.contractor = {};
     return $http.get('/admin/contractors/'+id).success(function(data){
       angular.copy(data, o.contractor);
+
     });
   };
   o.update = function(contractor) {
-    console.log(contractor)
  
   return $http.post('/admin/contractors/update', contractor).success(function(data){
 
@@ -70,6 +72,7 @@ function($stateProvider, $urlRouterProvider) {
         // or server returns response with an error status.
       });
   };
+   
   return o;
 }])
 
@@ -78,6 +81,7 @@ function($stateProvider, $urlRouterProvider) {
     contractors: []
   };
   o.getAll = function() {
+     
     return $http.get('/admin/contractors').success(function(data){
       angular.copy(data, o.contractors);
     });
@@ -88,11 +92,7 @@ function($stateProvider, $urlRouterProvider) {
     });
   };
 
-  o.get = function(id) {
-  return $http.get('/admin/contractors/' + id).then(function(res){
-    return res.data;
-  });
-};
+ 
   return o;
 
 }])  
@@ -103,10 +103,11 @@ function($stateProvider, $urlRouterProvider) {
 'Contractors',
 'Contractor',
 function($scope, Contractors, Contractor){
-
-		$scope.contractor = Contractor.contractor
+    $scope.contractor = null
+    $scope.contractor = Contractor.contractor;
+     
+     
     $scope.contractor_status = [{name: 'פעיל', value: 1},{name: 'מחןק', value: 2},{name: 'ממתין', value: 0}];
-    $scope.contractor.areas = $scope.contractor.areas; 
     $scope.areas_data = [ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
     $scope.areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}
     
@@ -165,6 +166,10 @@ function($scope,Contractors){
   $scope.phone = '';
   $scope.email = '';
   $scope.address = '';
+  $scope.comment = '';
+  $scope.status = 0;
+  $scope.areas = [];
+
 
 };
 
