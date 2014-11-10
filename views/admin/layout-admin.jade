@@ -40,15 +40,8 @@ html(lang="he")
         select.custom.btn.btn-default.btn-md( ng-model="contractor_areas_search" ng-options=" i.id as i.label  for i in areas_data" )
          option(value="") סנן לפי אזור
         
-        select.custom(style=";margin-left: 5px;" ng-model="search_status" ).btn.btn-default.btn-lg 
-         option(value='')  סנן לפי סטטוס קבלן 
-         option(value='1111') רק הוכנס
-         option(value='2222') ממתין
-         option(value='3333') פעיל
-         option(valuen='4444') ממתין לממליצים מהקבלן
-         option(value='5555') עדיין לא נוצר קשר עם הקבלן
-         option(value='6666') הקבלן ביקש לחזור אליו
-         option(value='7777') הקבלן אמור להתקשר להמשך הטיפול
+        select.custom.btn.btn-default.btn-md( ng-model="contractor_status_search" ng-options=" i.id as i.label  for i in contractor_status" )
+         option(value="") סנן לפי סטטוס
         button(href="#addcontractor" data-toggle="modal" style="margin-top:10px;float:left").btn.btn-default הוסף קבלן חדש&nbsp;
          i.fa.fa-plus
         input(placeholder="חפש במסמך" ng-model="search.$" style="margin-top:10px;margin-left:5px;").btn.btn-default 
@@ -65,7 +58,7 @@ html(lang="he")
        .col-xs-6.col-md-1 סטטוס
        .col-xs-6.col-md-1 סוג קבלן
 
-      .row(ng-repeat="contractor in contractors | filter:search:strict | filter:search_status |  filter:contractor_types_search | filter:contractor_areas_search" style="color:#000;font-size:16px;").well.well_no_bacground.text-center
+      .row(ng-repeat="contractor in contractors | filter:search:strict | filter:contractor_status_search |  filter:contractor_types_search | filter:contractor_areas_search" style="color:#000;font-size:16px;").well.well_no_bacground.text-center
        
        .col-xs-6.col-md-1
         a(href="#/contractor/{{contractor._id}}") {{contractor.name}} 
@@ -84,7 +77,9 @@ html(lang="he")
           option(value="") {{contractor.areas.length}} אזורים
        .col-xs-6.col-md-1.small {{contractor.comments.length}}
        .col-xs-6.col-md-1.small {{contractor.forwards.length}}
-       .col-xs-6.col-md-1.small(ng-switch on="contractor.status.toString()")
+
+       .col-xs-6.col-md-1.small(ng-switch on="contractor.status")
+        div
          span(ng-switch-when='1111') רק הוכנס
          span(ng-switch-when='2222') פעיל
          span(ng-switch-when='3333') מחוק
@@ -92,8 +87,8 @@ html(lang="he")
          span(ng-switch-when='5555') עדיין לא נוצר קשר עם הקבלן
          span(ng-switch-when='6666') הקבלן ביקש לחזור אליו
          span(ng-switch-when='7777') הקבלן אמור להתקשר להמשך הטיפול
+         
       
-    
        .col-xs-6.col-md-1.small         
         select.btn.btn-default.btn-md(ng-show="contractor.contractor_types" ng-model="contractor.contractor_types" ng-options=" i.id as i.id  for i in contractor.contractor_types" )
          option(value="") סוג הקבלן
@@ -170,15 +165,21 @@ html(lang="he")
         .col-md-4 
          a(ng-if="contractor.feedbacks.length>0" href="" style="width:100%").btn.btn-info התקבלו  {{contractor.comments.length}} המלצות
           i.fa.fa-plus(style="padding-right:4px;") 
-         span(ng-if="contractor.feedbacks.length==0" style="width:100%").btn.btn-danger אין המלצות עדיין, הוסף
+         span(onclick="$('#feedbacks').toggle();return false;" ng-if="contractor.feedbacks.length==0" style="width:100%").btn.btn-danger אין המלצות עדיין, הוסף
           i.fa.fa-plus(style="padding-right:4px;") 
+        .col-md-7
+       .row#feedbacks(style="display:none1")
+        .col-md-1 
+         המלצות
+        .col-md-4 
+         textarea(rows="3" id="area_feedback" placeholder="הוסף המלצה" cols="50" dir="rtl" )
         .col-md-7
        .row
         .col-md-1 
          סטטוס
         .col-md-4
-        
-         select.btn.btn-default.btn-md(style="width:100%" ng-model="contractor.status" ng-options=" i.value as i.name  for i in contractor_status" )
+         select.btn.btn-default.btn-md(style="width:100%" ng-model="contractor.status" ng-options=" i.id as i.label  for i in contractor_status" )
+
         .col-md-7
        .row
         .col-md-1 

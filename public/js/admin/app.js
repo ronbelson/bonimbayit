@@ -40,7 +40,7 @@ function($stateProvider, $urlRouterProvider) {
 
 .factory("AdminService",['$http', function($http){
   var areas =[ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
-  var contractor_status = [{name: 'רק הוכנס', value: '1111'},{name: 'פעיל', value: '2222'},{name: 'מחוק', value: '3333'},{name: 'ממתין לממליצים מהקבלן', value: '4444'},{name: 'עדיין לא נוצר קשר עם הקבלן', value: '5555'},{name: 'הקבלן בישק לחזור אליו', value: '6666'},{name: 'הקבלן אמור להתקשר להמשך הטיפול', value: '7777'}];
+  var contractor_status = [{label: 'רק הוכנס', id: '1111'},{label: 'פעיל', id: '2222'},{label: 'מחוק', id: '3333'},{label: 'ממתין לממליצים מהקבלן', id: '4444'},{label: 'עדיין לא נוצר קשר עם הקבלן', id: '5555'},{label: 'הקבלן בישק לחזור אליו', id: '6666'},{label: 'הקבלן אמור להתקשר להמשך הטיפול', id: '7777'}];
   var areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}  
   var types_customTexts =  {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר סוג קבלן',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}  
   return {
@@ -137,6 +137,7 @@ function($scope, Contractors, Contractor, AdminService,$http){
           $scope.areas_data =  angular.fromJson(data);
          
       });
+    $scope.contractor_status = AdminService.get_contractor_status();
     $scope.areas_customTexts = AdminService.get_areas_customTexts();
     $scope.types_customtexts = AdminService.get_types_customTexts();
     $scope.contractor_types_data =[]
