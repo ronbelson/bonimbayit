@@ -131,7 +131,12 @@ function($scope, Contractors, Contractor, AdminService,$http){
     $scope.contractor = null
     $scope.contractor = Contractor.contractor;
     $scope.contractor_status = AdminService.get_contractor_status();
-    $scope.areas_data = AdminService.get_areas();
+   
+    $scope.areas_data = [];
+    $http.get('/json/areas_types.json').success(function(data) {
+          $scope.areas_data =  angular.fromJson(data);
+         
+      });
     $scope.areas_customTexts = AdminService.get_areas_customTexts();
     $scope.types_customtexts = AdminService.get_types_customTexts();
     $scope.contractor_types_data =[]
@@ -174,7 +179,11 @@ function($scope,Contractors,AdminService,$http){
 
  $scope.contractor_status = AdminService.get_contractor_status();
  $scope.contractors = Contractors.contractors;
- $scope.areas_data = AdminService.get_areas();
+ $scope.areas_data = [];
+ $http.get('/json/areas_types.json').success(function(data) {
+        $scope.areas_data =  angular.fromJson(data);
+       
+    });
  $scope.types_customtexts = AdminService.get_types_customTexts();
  $scope.areas_customTexts = AdminService.get_areas_customTexts();
  $scope.contractor_types_data =[]

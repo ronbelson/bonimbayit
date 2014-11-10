@@ -37,7 +37,7 @@ html(lang="he")
        col-md-12
         select.custom.btn.btn-default.btn-md( ng-model="contractor_types_search" ng-options=" i.label as i.label  for i in contractor_types_data" )
          option(value="") סנן לפי סוג קבלן
-        select.custom.btn.btn-default.btn-md( ng-model="contractor_areas_search" ng-options=" i.label as i.label  for i in areas_data" )
+        select.custom.btn.btn-default.btn-md( ng-model="contractor_areas_search" ng-options=" i.id as i.label  for i in areas_data" )
          option(value="") סנן לפי אזור
         
         select.custom(style=";margin-left: 5px;" ng-model="search_status" ).btn.btn-default.btn-lg 
@@ -80,7 +80,7 @@ html(lang="he")
         small {{contractor.address}}
        .col-xs-6.col-md-1
        
-        select.btn.btn-default.btn-md(ng-show="contractor.areas" ng-model="contractor.areas" ng-options=" i.id as i.id  for i in contractor.areas" )
+        select.btn.btn-default.btn-md(ng-show="contractor.areas" ng-model="contractor.areas" ng-options=" i.id as i.label  for i in contractor.areas" )
           option(value="") {{contractor.areas.length}} אזורים
        .col-xs-6.col-md-1.small {{contractor.comments.length}}
        .col-xs-6.col-md-1.small {{contractor.forwards.length}}
