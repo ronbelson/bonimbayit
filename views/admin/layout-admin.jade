@@ -80,7 +80,7 @@ html(lang="he")
         small {{contractor.address}}
        .col-xs-6.col-md-1
        
-        select.btn.btn-default.btn-md(ng-show="contractor.areas" ng-model="contractor.areas" ng-options=" i.id as i.label  for i in contractor.areas" )
+        select.btn.btn-default.btn-md(ng-show="contractor.areas" ng-model="contractor.areas" ng-options=" i.id as i.id  for i in contractor.areas" )
           option(value="") {{contractor.areas.length}} אזורים
        .col-xs-6.col-md-1.small {{contractor.comments.length}}
        .col-xs-6.col-md-1.small {{contractor.forwards.length}}
