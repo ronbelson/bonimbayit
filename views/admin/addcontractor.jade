@@ -19,6 +19,10 @@ div(tabindex="-1" data-width="760")#addcontractor.container.modal.fade.well
       input( dir="rtl"  onkeypress="this.dir='ltr'" required placeholder="טלפון ללא מקפים"  id="" type="phone" ng-model="phone").form-control.input-lg
       br
       div(ng-dropdown-multiselect="" options="areas_data" selected-model="areas" translation-texts="areas_customTexts")
+      br
+      
+      div(ng-dropdown-multiselect=""  options="contractor_types_data" selected-model="contractor_types" translation-texts="types_customtexts")
+
      div.well.hide
       label(for="mc-email")
     .modal-admin-footer.text-center

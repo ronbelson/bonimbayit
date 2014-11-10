@@ -38,6 +38,28 @@ function($stateProvider, $urlRouterProvider) {
 
 }])
 
+.factory("AdminService",['$http', function($http){
+  var areas =[ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
+  var contractor_status = [{name: 'רק הוכנס', value: '1111'},{name: 'פעיל', value: '2222'},{name: 'מחוק', value: '3333'},{name: 'ממתין לממליצים מהקבלן', value: '4444'},{name: 'עדיין לא נוצר קשר עם הקבלן', value: '5555'},{name: 'הקבלן בישק לחזור אליו', value: '6666'},{name: 'הקבלן אמור להתקשר להמשך הטיפול', value: '7777'}];
+  var areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}  
+  var types_customTexts =  {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר סוג קבלן',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}  
+  return {
+    get_areas: function() {
+      return areas;
+    },
+    get_contractor_status: function() {
+      return contractor_status;
+    },
+    get_areas_customTexts: function() {
+      return areas_customTexts;
+    },
+    get_types_customTexts: function() {
+      return types_customTexts;
+    },
+    
+  }
+
+}])
 
 
 .factory('Contractor', ['$http', function($http){
@@ -81,7 +103,7 @@ function($stateProvider, $urlRouterProvider) {
     contractors: []
   };
   o.getAll = function() {
-     
+
     return $http.get('/admin/contractors').success(function(data){
       angular.copy(data, o.contractors);
     });
@@ -97,21 +119,26 @@ function($stateProvider, $urlRouterProvider) {
 
 }])  
 
+ 
 
 .controller('ContractorCtrl', [
 '$scope',
 'Contractors',
 'Contractor',
-function($scope, Contractors, Contractor){
+'AdminService',
+'$http',
+function($scope, Contractors, Contractor, AdminService,$http){
     $scope.contractor = null
     $scope.contractor = Contractor.contractor;
-     
-     
-    $scope.contractor_status = [{name: 'פעיל', value: 1},{name: 'מחןק', value: 2},{name: 'ממתין', value: 0}];
-    $scope.areas_data = [ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
-    $scope.areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}
-    
-
+    $scope.contractor_status = AdminService.get_contractor_status();
+    $scope.areas_data = AdminService.get_areas();
+    $scope.areas_customTexts = AdminService.get_areas_customTexts();
+    $scope.types_customtexts = AdminService.get_types_customTexts();
+    $scope.contractor_types_data =[]
+    $http.get('/json/contractor_types.json').success(function(data) {
+        $scope.contractor_types_data =  angular.fromJson(data);
+       
+    });
     $scope.updateContractor = function(){
       //if(!$scope.contractor.name || $scope.contractor.name === '' || !$scope.contractor.phone || $scope.contractor.phone === '' || !$scope.contractor.company_name || $scope.contractor.company_name === '' ) { return; }
       //console.log($scope.contractor)
@@ -120,12 +147,14 @@ function($scope, Contractors, Contractor){
          name: $scope.contractor.name,
          company_name: $scope.contractor.company_name,
          phone: $scope.contractor.phone,
+         contractor_types: $scope.contractor.contractor_types,
          email: $scope.contractor.email,
          status: $scope.contractor.status,
          payment_method: $scope.contractor.payment_method,
          address: $scope.contractor.address,
          comment: $scope.contractor.comment,
          areas: $scope.contractor.areas
+
         });
     };
 
@@ -139,24 +168,36 @@ function($scope, Contractors, Contractor){
 .controller('MainCtrl', [
 '$scope',
 'Contractors',
-function($scope,Contractors){
+'AdminService',
+'$http',
+function($scope,Contractors,AdminService,$http){
 
+ $scope.contractor_status = AdminService.get_contractor_status();
  $scope.contractors = Contractors.contractors;
- $scope.areas_data = [ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
- $scope.areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}
+ $scope.areas_data = AdminService.get_areas();
+ $scope.types_customtexts = AdminService.get_types_customTexts();
+ $scope.areas_customTexts = AdminService.get_areas_customTexts();
+ $scope.contractor_types_data =[]
+ $http.get('/json/contractor_types.json').success(function(data) {
+        $scope.contractor_types_data =  angular.fromJson(data);
+       
+    });
+ 
  $scope.areas  = [];
+ $scope.contractor_types  = [];
+
 
  $scope.addContractor = function(){
  
-  if(!$scope.name || $scope.name === '' || !$scope.phone || $scope.phone === '' || !$scope.company_name || $scope.company_name === '' ) { return; }
+  if(!$scope.contractor_types || $scope.contractor_types === ''  || !$scope.name || $scope.name === '' || !$scope.phone || $scope.phone === '' || !$scope.company_name || $scope.company_name === '' ) { return; }
   Contractors.create(
   			{name: $scope.name,
          company_name: $scope.company_name,
   			 phone: $scope.phone,
   			 email: $scope.email,
-         status: 0,
          areas: $scope.areas,
          address: $scope.address,
+         contractor_types: $scope.contractor_types,
          date_created: new Date()
   			 
   			});
@@ -169,6 +210,7 @@ function($scope,Contractors){
   $scope.comment = '';
   $scope.status = 0;
   $scope.areas = [];
+  $scope.contractor_types=[];
 
 
 };

@@ -47,7 +47,6 @@ router.param('contractor', function(req, res, next, id) {
   query.exec(function (err, contractor){
     if (err) { return next(err); }
     if (!contractor) { return next(new Error("can't find contractor")); }
-    console.log(contractor)
     req.contractor = contractor;
     return next();
   });
@@ -59,12 +58,14 @@ router.get('/contractors/:contractor', function(req, res) {
 
 router.post('/contractors/update', function(req, res, next) {
   var _id = req.body._id;
-  
   delete req.body._id;
+   req.body.last_editor = req.user.name
+   req.body.last_edit_time = Date.now();
   Contractors.findOneAndUpdate({ _id:_id },{$set: req.body},{upsert: true},function(err,data){
     if(err){ 
     	res.json({err: err});
     	return next(); }
+
     res.jsonp(data);
   });
 });

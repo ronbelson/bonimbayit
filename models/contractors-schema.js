@@ -24,15 +24,18 @@
 										        email: String,
 										        address: String,
 										        status: {
-										        	type:Number,
-										        	index:  true
+										        	type:String,  default:'1111',index:  true
 										        },
 										        date_created: { type: Date, default: Date.now() } ,
-										        areas: [{ id: String}],
+										        contractor_types: [{id:{ type: String,index:  true}}],
+										        areas: [{id:{ type: String,index:  true}}],
 										        feedbacks: [ContractorsFeedbacks],  
 										        forwards: [Users.schema], 
 										        comment: String,
-										        payment_method: Number, //1 - per month  2 - per deal 
+										        
+										        payment_method: Number, 
+										        last_editor: String,
+										        last_edit_time: { type: Date, default: Date.now() } 
 												      
 				});
 
