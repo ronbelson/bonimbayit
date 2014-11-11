@@ -10,7 +10,7 @@ var cache = require('memory-cache');
 //var memcached = new Memcached('localhost:11211');
 //var lifetime = 86400; //24hrs
 
-var  posts = { posts: [] };
+var  posts =  [] ;
 var blog_url = 'http://127.0.0.1:2368';
 var site_email = 'ronbelson@gmail.com';
 var app = express(); 
@@ -23,7 +23,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 require('../db/db_connect');
 require('../models/init_schema');
-
+var User = mongoose.model('Users'); 
+var Contractor = mongoose.model('Contractors'); 
 
 // serialize and deserialize
 passport.serializeUser(function(user, done) {
@@ -83,19 +84,19 @@ function(accessToken, refreshToken, profile, done) {
 router.use(function(req, res, next) 
 {
  
-  var postsPaths = ['/','/filecosts/','/thankyou/', '/json/blog'];
+  var postsPaths = ['/','/filecosts/', '/json/blog'];
   var _ = require('underscore');
-  if ( !  _.contains(postsPaths, req.path) ) return next();
+  if ( !  _.contains( req.path,postsPaths) ) return next();
   
   //TODO map reduce for small json requuest
   posts_cache = cache.get('posts');
   
   if(posts_cache==null) 
-  {
+  { 
     
     if (app.get('env') === 'production') {blog_url='http://178.62.196.54/blog'  }
     request(blog_url+'/json/', function (error, response, body) 
-      {
+      { 
   
         if (!error && response.statusCode == 200) 
           {
@@ -106,12 +107,16 @@ router.use(function(req, res, next)
 
             cache.put('posts', body, 1000*60*60*3) // Time in ms
             console.log('put cache')
+             
             posts = JSON.parse(body);
+           
             next(); 
           } 
 
       }) 
   } else {
+           
+             
            posts = JSON.parse(posts_cache); 
            next();
          }   
@@ -135,8 +140,10 @@ router.get('/json/blog', function(req, res) {
 router.post('/search/', function(req, res) {
    //'/search/:type/:area/:email/:name'
    var data_json = (req.body);
+
+
    //console.log(data_json);
-   var User = mongoose.model('Users'); 
+   
     
    User.findOne({ email: data_json.EMAIL }, function(err, user) {
       if(err) { 
@@ -145,7 +152,17 @@ router.post('/search/', function(req, res) {
           throw err;
            }
       
+      var contractors_match 
       if (!err && user != null) {
+        
+        // Contractor.find({ contractor_types:{ $elemMatch: { id: "מהנדס בניין" } } ,status:'2222' , areas: { $elemMatch: { id: "גליל ועמקים" } } },function(err, data) {
+        //       contractors_match= data;
+        //       console.log(contractors_match)
+        //     }
+
+        //   )
+
+        //user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 , userforwardcontractors: contractors_match });
         user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 });
         user.save(function(err) {
           if(err) {
@@ -233,7 +250,9 @@ router.post('/search/', function(req, res) {
 /* Thankyou page. */
 
 router.get('/thankyou/:type/:msg', function(req, res) { 
-  res.render('thankyou', { msg: req.param("msg") , title: 'תודה על הרישום לבונים בית' , posts: posts});
+  console.log(posts)
+  res.render('thankyou', { msg: req.param("msg") , title: 'תודה על הרישום לבונים בית' , posts: posts });
+
 
 });
 
