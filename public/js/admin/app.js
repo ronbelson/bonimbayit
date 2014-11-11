@@ -179,7 +179,7 @@ function($scope, Contractors, Contractor, AdminService,$http){
     $scope.contractor_types_data =[]
     $http.get('/json/contractor_types.json').success(function(data) {
         $scope.contractor_types_data =  angular.fromJson(data);
-       
+        
     });
     
     $scope.Deletefeedback = function(_id,index,contractor_id){
