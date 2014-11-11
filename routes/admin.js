@@ -6,6 +6,7 @@ var cache = require('memory-cache');
 var mongoose = require('mongoose')
 var User = mongoose.model('Users'); 
 var Contractors = mongoose.model('Contractors'); 
+var ContractorsFeedbacks = mongoose.model('ContractorsFeedbacks'); 
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -55,6 +56,47 @@ router.param('contractor', function(req, res, next, id) {
 router.get('/contractors/:contractor', function(req, res) {
   res.json(req.contractor);
 });
+
+
+router.post('/contractors/feedback', function(req, res, next) {
+  var _id = req.body._id;
+  var contractors_feedbacks = new ContractorsFeedbacks(JSON.parse(req.body.feedbacks));
+
+
+  Contractors.findOne({_id: _id}, function (err, contractor) {
+    if(err){ 
+      res.json({err: err});
+      return next(); }
+    
+
+    contractor.feedbacks.push(contractors_feedbacks);
+    contractor.save(function(err, contractor){
+    if(err){ 
+      res.json({err: err});
+      return next(err); }
+
+    res.json(contractors_feedbacks);
+    });
+    
+  });
+
+});
+
+router.post('/contractors/feedback/delete', function(req, res, next) {
+  
+   //console.log(req.body.contractor_id);
+   Contractors.update({_id: req.body.contractor_id}, {$pull: {feedbacks: {_id: req.body._id}}})
+   // Contractors.update({_id: req.body.contractor_id}, {$pull: {feedbacks: {_id: req.body._id}}}, function(err, data){
+   //    if(err){ 
+   //    res.json({err: err});
+   //    return next(err); }
+   //    //console.log(err, data);
+   //    res.json(data);
+   //  }); 
+    res.json({});
+
+});
+
 
 router.post('/contractors/update', function(req, res, next) {
   var _id = req.body._id;

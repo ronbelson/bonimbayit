@@ -7,7 +7,15 @@
 
 	module.exports = function() {
 
-			 
+			var ContractorsFeedbacks = new mongoose.Schema({
+				  author: String,
+		    	  phone: Number,
+		    	  email: String,
+		    	  feed: String,
+		    	  town: String,
+		    	  createdate: { type: Date, default: Date.now() }
+			});
+
 			// this initializes the schema for the model
 			var Contractors = mongoose.Schema({ 
 												name: String,
@@ -29,7 +37,7 @@
 										        date_created: { type: Date, default: Date.now() } ,
 										        contractor_types: [{id:{ type: String,index:  true}}],
 										        areas: [{id:{ type: String,index:  true}}],
-										        feedbacks: [ContractorsFeedbacks],  
+										        feedbacks: [ContractorsFeedbacks.schema],  
 										        forwards: [Users.schema], 
 										        comment: String,
 										        
@@ -39,13 +47,7 @@
 												      
 				});
 
-			var ContractorsFeedbacks = new mongoose.Schema({
-				  author: String,
-		    	  phone: String,
-		    	  email: String,
-		    	  feed: String,
-		    	  createdate: { type: Date, default: Date.now() }
-			});
+			
 
 
 
@@ -53,6 +55,7 @@
 			// now we compile our model and register it 
 
 			mongoose.model('Contractors', Contractors);
+			mongoose.model('ContractorsFeedbacks', ContractorsFeedbacks);
 
 			// If, for example, we assume the model's name is Kitten,
 			// then we would have used the following to compile and register it:

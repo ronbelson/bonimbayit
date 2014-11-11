@@ -15,6 +15,21 @@ body {
     background: url('/img/home-background/white_brick_wall.png')  
         
 }
+input {
+
+    border:1px solid #999999;
+    
+    margin:5px 0;
+    padding:1%;
+}
+textarea 
+{
+    border:1px solid #999999;
+    width:100%;
+    margin:5px 0;
+    padding:1%;
+}
+
 
 .col-xs-6 {padding:2px 2px 10px 2px !important ;}
 select.custom {

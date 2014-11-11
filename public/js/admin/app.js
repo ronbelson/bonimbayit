@@ -73,6 +73,43 @@ function($stateProvider, $urlRouterProvider) {
 
     });
   };
+  
+  o.feedDelete = function(feedback) {
+
+    return $http.post('/admin/contractors/feedback/delete', feedback).success(function(data){
+    
+      //console.log(data) 
+    }).
+      error(function(data, status, headers, config) {
+        console.log(data);
+        console.log(status);
+        console.log(headers);
+        console.log(config);
+        
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+  };
+  o.feedAdd = function(contractor_feedback) {
+  //console.log(contractor_feedback)
+  return $http.post('/admin/contractors/feedback', contractor_feedback).success(function(data){
+      o.contractor.feedbacks.unshift(data);
+      $('#feedbacksAdd').toggle( "slow", function() {
+           
+
+        });
+       
+    }).
+      error(function(data, status, headers, config) {
+        console.log(data);
+        console.log(status);
+        console.log(headers);
+        console.log(config);
+        
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+  };
   o.update = function(contractor) {
  
   return $http.post('/admin/contractors/update', contractor).success(function(data){
@@ -145,8 +182,42 @@ function($scope, Contractors, Contractor, AdminService,$http){
         $scope.contractor_types_data =  angular.fromJson(data);
        
     });
+    
+    $scope.Deletefeedback = function(_id,index,contractor_id){
+      
+      Contractor.feedDelete(
+          {
+             _id: _id,
+             index:index,
+             contractor_id:contractor_id
+          }
+       
+        )
+      $scope.contractor.feedbacks.splice(index, 1);
+    }
+
+    $scope.Addfeedback = function(){
+      if(!$scope.contractor.feedback || $scope.contractor.feedback.feed === '' || !$scope.contractor.feedback.author || $scope.contractor.feedback.author ===''){ return; }
+      var _id = $scope.contractor._id;
+      var feedback = JSON.stringify($scope.contractor.feedback)
+      Contractor.feedAdd(
+          {
+             _id: _id,
+             feedbacks: feedback
+          }
+       
+        )
+      //console.log(feedback)
+      $scope.contractor.feedback.feed = '';
+      $scope.contractor.feedback.phone = '';
+      $scope.contractor.feedback.email = '';
+      $scope.contractor.feedback.town = '';
+      $scope.contractor.feedback.author = '';
+      
+    }
+
     $scope.updateContractor = function(){
-      //if(!$scope.contractor.name || $scope.contractor.name === '' || !$scope.contractor.phone || $scope.contractor.phone === '' || !$scope.contractor.company_name || $scope.contractor.company_name === '' ) { return; }
+      if(!$scope.contractor.name || $scope.contractor.name === '' || !$scope.contractor.phone || $scope.contractor.phone === '' || !$scope.contractor.company_name || $scope.contractor.company_name === '' ) { return; }
       //console.log($scope.contractor)
       Contractor.update({
          _id: $scope.contractor._id,
