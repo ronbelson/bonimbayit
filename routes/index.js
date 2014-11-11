@@ -83,7 +83,7 @@ function(accessToken, refreshToken, profile, done) {
 router.use(function(req, res, next) 
 {
  
-  var postsPaths = ['/','/filecosts/','/thankyou/'];
+  var postsPaths = ['/','/filecosts/','/thankyou/', '/json/blog'];
   var _ = require('underscore');
   if ( !  _.contains(postsPaths, req.path) ) return next();
   
@@ -126,12 +126,18 @@ router.get('/', function(req, res) {
   //res.send(posts);
 });
 
+router.get('/json/blog', function(req, res) { 
+
+  res.jsonp(posts);
+});
+
+
 router.post('/search/', function(req, res) {
    //'/search/:type/:area/:email/:name'
    var data_json = (req.body);
    //console.log(data_json);
    var User = mongoose.model('Users'); 
-   
+    
    User.findOne({ email: data_json.EMAIL }, function(err, user) {
       if(err) { 
           console.log(err);
