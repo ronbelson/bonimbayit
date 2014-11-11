@@ -75,10 +75,9 @@ function($stateProvider, $urlRouterProvider) {
   };
   
   o.feedDelete = function(feedback) {
-
+    //console.log(feedback) 
     return $http.post('/admin/contractors/feedback/delete', feedback).success(function(data){
-    
-      //console.log(data) 
+      console.log(data) 
     }).
       error(function(data, status, headers, config) {
         console.log(data);
@@ -192,8 +191,10 @@ function($scope, Contractors, Contractor, AdminService,$http){
              contractor_id:contractor_id
           }
        
-        )
-      $scope.contractor.feedbacks.splice(index, 1);
+        ).then(function (response){
+          $scope.contractor.feedbacks.splice(index, 1);
+         });
+      
     }
 
     $scope.Addfeedback = function(){

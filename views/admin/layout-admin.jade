@@ -130,7 +130,7 @@ html(lang="he")
          input(dir="rtl" type="text"  placeholder="עיר" ng-model="contractor.feedback.town").form-control.input-md 
          button.btn.btn-default(style="margin-top:10px;margin-left:10px:float:left" type="submit" ng-click="Addfeedback()") הוסף&nbsp;
         br
-
+        
         div(ng-repeat="feedback  in contractor.feedbacks")
          div.well המלצה מאת {{feedback.author}}: 
           i.fa.fa-trash(ng-click="Deletefeedback(feedback._id,$index,contractor._id)" style="cursor:pointer;cursor:hand;float:left" title="מחק")

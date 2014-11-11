@@ -84,16 +84,16 @@ router.post('/contractors/feedback', function(req, res, next) {
 
 router.post('/contractors/feedback/delete', function(req, res, next) {
   
-   //console.log(req.body.contractor_id);
-   Contractors.update({_id: req.body.contractor_id}, {$pull: {feedbacks: {_id: req.body._id}}})
-   // Contractors.update({_id: req.body.contractor_id}, {$pull: {feedbacks: {_id: req.body._id}}}, function(err, data){
-   //    if(err){ 
-   //    res.json({err: err});
-   //    return next(err); }
-   //    //console.log(err, data);
-   //    res.json(data);
-   //  }); 
+   
+   Contractors.findByIdAndUpdate( mongoose.Types.ObjectId(req.body.contractor_id), { $pull : { feedbacks : { _id : mongoose.Types.ObjectId(req.body._id) } } }, function(err){
     res.json({});
+   } )
+
+    
+    
+    
+  
+    
 
 });
 
