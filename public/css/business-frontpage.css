@@ -205,7 +205,7 @@ h5.tagline ,h4.tagline {
     font-family: 'Roboto', "Alef Hebrew"; font: bold 15px/40px ;font-size:16px; 
   } */
     #div_testimonials {
-    padding:15px 0px 10px 42px ;
+    padding:10px 0px 10px 42px ;
     height: auto;
     background: rgba(59, 59, 32, 0.7);
     border-radius: 0%;
