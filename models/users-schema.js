@@ -33,7 +33,8 @@
 								              city:   String
 								            },
 								        usersearchcontractors: [UserSearchcontractors],
-								        userforwardcontractors: [Contractors],								        			
+								        //userforwardcontractors: [Contractors],								        			
+								        //userforwardcontractors: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contractors',index: true, unique: true }],
 								        isadmin: { type: Boolean, default: false}
 												      
 				});

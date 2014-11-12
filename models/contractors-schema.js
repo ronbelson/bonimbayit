@@ -38,7 +38,7 @@
 										        contractor_types: [{id:{ type: String,index:  true}}],
 										        areas: [{id:{ type: String,index:  true}}],
 										        feedbacks: [ContractorsFeedbacks.schema],  
-										        forwards: [Users.schema], 
+										        forwards:  [{type: mongoose.Schema.Types.ObjectId, ref: 'Users',unique: true,sparse: true }],
 										        comment: String,
 										        
 										        payment_method: Number, 

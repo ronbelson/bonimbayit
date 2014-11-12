@@ -4,7 +4,7 @@ var router = express.Router();
 var bodyParser = require('body-parser')
 var request = require('request');
 var cache = require('memory-cache');
-
+var _ = require('underscore');
 //memcached
 //var Memcached = require('memcached');
 //var memcached = new Memcached('localhost:11211');
@@ -24,7 +24,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 require('../db/db_connect');
 require('../models/init_schema');
 var User = mongoose.model('Users'); 
-var Contractor = mongoose.model('Contractors'); 
+var Contractors = mongoose.model('Contractors'); 
 
 // serialize and deserialize
 passport.serializeUser(function(user, done) {
@@ -83,10 +83,11 @@ function(accessToken, refreshToken, profile, done) {
 //TODO : ignure db schema on pathes
 router.use(function(req, res, next) 
 {
- 
+  
   var postsPaths = ['/','/filecosts/', '/json/blog'];
-  var _ = require('underscore');
-  if ( !  _.contains( req.path,postsPaths) ) return next();
+  
+  //if (  _.contains( req.path,postsPaths)==false ) return next();
+  if (postsPaths.indexOf(req.path)==-1) return next();
   
   //TODO map reduce for small json requuest
   posts_cache = cache.get('posts');
@@ -137,10 +138,10 @@ router.get('/json/blog', function(req, res) {
 });
 
 
-router.post('/search/', function(req, res) {
+router.post('/search/', function(req, res,next) {
    //'/search/:type/:area/:email/:name'
    var data_json = (req.body);
-
+   var contractors_match ;
 
    //console.log(data_json);
    
@@ -152,18 +153,48 @@ router.post('/search/', function(req, res) {
           throw err;
            }
       
-      var contractors_match 
+      
       if (!err && user != null) {
         
-        // Contractor.find({ contractor_types:{ $elemMatch: { id: "מהנדס בניין" } } ,status:'2222' , areas: { $elemMatch: { id: "גליל ועמקים" } } },function(err, data) {
-        //       contractors_match= data;
-        //       console.log(contractors_match)
-        //     }
+       
+        // Contractors.find({ contractor_types:{ $elemMatch: { id: "מהנדס בניין" } } ,status:'2222' , areas: { $elemMatch: { id: "גליל ועמקים" } } },function(err, data) {
+        //     contractors_to_send = []
+        //      _.each(data, function(value, key) {
+                
+        //         if(value.forwards.indexOf(user._id) === -1){ // if the contractor not sent to this user
+        //          //////////----
+        //          Contractors.findOne({_id: value._id}, function (err, contractor) {
+        //             if(err){ 
+        //               res.json({err: err});
+        //               return next(); }
+              
+        //             contractor.forwards.push(mongoose.Types.ObjectId(user._id));
+        //             contractor.save(function(err, contractor){
+        //             if(err){ 
+        //               res.json({err: err});
+        //               return next(err); }
+        //             contractors_to_send.push(value)
+        //             console.log(contractor)
+        //               });
+             
+        //           });
+        //          //////////----
+        //        }  
 
-        //   )
+        //      });
+        //      //send mail to user with recommends of the constractor
+        //      if(contractors_to_send.length()>0) {
 
-        //user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 , userforwardcontractors: contractors_match });
-        user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 });
+
+        //      }
+        //      console.log(contractors_to_send)
+        // });
+        //return 
+        //next()
+        user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1  });
+       // user.userforwardcontractors.push(contractors_match);
+          //console.log(user)
+        //user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 });
         user.save(function(err) {
           if(err) {
             console.log(err);
@@ -217,7 +248,7 @@ router.post('/search/', function(req, res) {
         "Reply-To":data_json.EMAIL
     }};
 
-    
+  
   var async = true;
   var ip_pool = "Main Pool";
   mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
@@ -234,7 +265,7 @@ router.post('/search/', function(req, res) {
               "_id": "abc123abc123abc123abc123abc123"
           }]
       */
-       //console.log(result);
+       console.log(result);
   }, function(e) {
       // Mandrill returns the error as an object with name and message keys
       console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);

@@ -1,19 +1,25 @@
+// $( document ).ready(function(){
+// var items = (Math.floor(Math.random() * ($('#testimonials li').length)));
+// $('#div_testimonials').show();
+// $('#testimonials li').hide().eq(items).show();
+
+// function next(){
+//   $('#testimonials li:visible').delay(7000).fadeOut('slow',function(){
+//     $(this).appendTo('#testimonials ul');
+//     $('#testimonials li:first').fadeIn('slow',next);
+//   });
+//  }
+// next();
+//});
 $( document ).ready(function(){
-var items = (Math.floor(Math.random() * ($('#testimonials li').length)));
-$('#div_testimonials').show();
-$('#testimonials li').hide().eq(items).show();
-
-function next(){
-  $('#testimonials li:visible').delay(7000).fadeOut('slow',function(){
-    $(this).appendTo('#testimonials ul');
-    $('#testimonials li:first').fadeIn('slow',next);
-  });
- }
-next();
-
-//alert($('#disqus_last_feeds').html())
+  var newsticker = $('#newsticker').newsTicker({
+    row_height: 80,
+    max_rows: 3,
+    duration: 5000,
+    //prevButton: $('#nt-example1-prev'),
+    //nextButton: $('#nt-example1-next')
+ });
 });
- 
 
 $("a[href='#top']").click(function (e) {
 	e.stopPropagation();

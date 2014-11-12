@@ -204,16 +204,29 @@ h5.tagline ,h4.tagline {
     border-width:0;
     font-family: 'Roboto', "Alef Hebrew"; font: bold 15px/40px ;font-size:16px; 
   } */
-    #div_testimonials{
-    padding:15px 15px 15px 15px ;
+    #div_testimonials {
+    padding:15px 0px 10px 42px ;
     height: auto;
     background: rgba(59, 59, 32, 0.7);
     border-radius: 0%;
-     
-    opacity:1;  font-family: 'Roboto', "Alef Hebrew"; font-weight:bold;font-weight :660;font-size:18px;color: #e6f34e;
+    line-height: 30px; 
+    color: #e6f34e;
      
   }
 
+   #div_testimonials a{
+   font-weight :bold;font-size:17px;color: #e6f34e;
+
+  } 
+
+ #div_testimonials  hr {
+    color: #f0f0f0;
+    height: 1px;
+    border-color: none;
+    border-style: solid none;
+    border-top: none;
+    margin-top: 9px;
+  }
    
     
   #testimonials li{ 
@@ -222,14 +235,11 @@ h5.tagline ,h4.tagline {
   }
    #testimonials { 
   
-    padding-top:0;
-     margin-top:0;
-     margin-bottom:0;
+     
   }
   #testimonials ul{
     list-style:none;
-    padding-right: 0px ;
-    padding-left: 0px ;
+     
     opacity:1; 
 
         
