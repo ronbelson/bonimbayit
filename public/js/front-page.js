@@ -13,9 +13,9 @@
 //});
 $( document ).ready(function(){
   var newsticker = $('#newsticker').newsTicker({
-    row_height: 80,
+    row_height: 71,
     max_rows: 3,
-    duration: 5000,
+    duration: 6000,
     //prevButton: $('#nt-example1-prev'),
     //nextButton: $('#nt-example1-next')
  });
