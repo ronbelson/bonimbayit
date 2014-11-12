@@ -234,7 +234,7 @@ margin-left: 10px;
 
 .btn-submit{
 
-     overflow: visible;
+       overflow: visible;
        position: relative;
        float: right;
        border: 0;
@@ -253,8 +253,8 @@ margin-left: 10px;
    
    .btn-submit:hover{   
 
-           background: #d83c3c;
-           border-color: transparent #d83c3c transparent;
+           background: green;
+           border-color: transparent green transparent;
        }  
        
    .btn-submit:before {
