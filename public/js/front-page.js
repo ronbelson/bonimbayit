@@ -19,6 +19,7 @@ $( document ).ready(function(){
     //prevButton: $('#nt-example1-prev'),
     //nextButton: $('#nt-example1-next')
  });
+ $('#div_testimonials').show();
 });
 
 $("a[href='#top']").click(function (e) {
