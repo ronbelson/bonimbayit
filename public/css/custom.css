@@ -244,7 +244,7 @@ margin-left: 10px;
        width: 100%;
        font: bold 15px/40px ;
        color: #f1c40f;
-       background: #3B5998;
+       background: green;
        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
        font-family: 'Roboto', "Alef Hebrew"; font-weight : 50;font-size:18px; color:#f1c40f;
        
@@ -253,7 +253,7 @@ margin-left: 10px;
    
    .btn-submit:hover{   
 
-           background: green;
+           background: #3B5998;
            border-color: transparent green transparent;
        }  
        
@@ -264,7 +264,7 @@ margin-left: 10px;
            width: 0;
            height: 0;
            border-style: solid solid solid solid;
-           border-color: transparent #3B5998 transparent;
+           border-color: transparent green transparent;
            top: 25px;
            right: -10px;
            font-family: 'Roboto', "Alef Hebrew"; font-weight : 150;font-size:18px; color:#000;
