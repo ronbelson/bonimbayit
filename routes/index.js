@@ -138,6 +138,21 @@ router.get('/json/blog', function(req, res) {
 });
 
 
+router.get('/test', function(req, res) { 
+
+
+  Contractors
+  .findById('5450b7b5bdfa640000954a46')
+  .populate('forwards') 
+  .exec(function (err, person) {
+    if (err) return handleError(err);
+    console.log(person);
+    res.json({person: person})
+  })
+
+
+});
+
 router.post('/search/', function(req, res,next) {
    //'/search/:type/:area/:email/:name'
    var data_json = (req.body);
