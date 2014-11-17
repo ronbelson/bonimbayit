@@ -64,6 +64,7 @@ html(lang="he")
         a(href="#/contractor/{{contractor._id}}") {{contractor.name}} 
         
        .col-xs-6.col-md-1 {{contractor.company_name}}
+
        .col-xs-6.col-md-2.small
         a(ng-show="contractor.email" href="mailto:{{contractor.email}}") {{contractor.email}}
         span(ng-hide="contractor.email") -
@@ -98,7 +99,6 @@ html(lang="he")
 
     script(type="text/ng-template" id="/contractor.html" ng-model="Contractor")
      container
-
       //-h3.page-header.text-center רשימת קבלנים
       div
       .row.text-left(style="margin-left:10px;margin-bottom:10px;")
@@ -113,6 +113,8 @@ html(lang="he")
         
      container  
       form 
+
+
       .row
        .col-md-6
         div(onclick="$('#feedbacksAdd').toggle();return false;" style="cursor:pointer;cursor:hand;") 
@@ -144,7 +146,7 @@ html(lang="he")
            שם איש קשר
           .col-md-10
            input(dir="rtl" type="text" required  ng-model="contractor.name").form-control.input-md 
-           
+           input(style="display:none" id="contractor.date_published" ng-model='contractor.date_published').form-control.input-md 
          .row
           .col-md-2
            שם חברה

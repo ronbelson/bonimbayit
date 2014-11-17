@@ -1,4 +1,5 @@
 var express = require('express');
+var app = express(); 
 var router = express.Router();
 var bodyParser = require('body-parser')
 var request = require('request');
@@ -9,8 +10,19 @@ var Contractors = mongoose.model('Contractors');
 var ContractorsFeedbacks = mongoose.model('ContractorsFeedbacks'); 
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
+var _ = require('underscore');
+var nodemailer = require('nodemailer');
+var transport = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'bonimbayit@gmail.com',
+        pass: 'ynvfhfjtgnfklccq'
+    }
+});
 
- 
+var kue = require('kue')
+  , jobs = kue.createQueue('admin');
+
 
 require('../db/db_connect');
 require('../models/init_schema');
@@ -23,6 +35,14 @@ router.get('/', function(req, res) {
 
 router.get('/home',ensureAuthenticated, function(req, res) { 
   res.render('admin/home', { title: 'בונים בית - אדמין',user: req.user});
+}); 
+
+router.get('/contractor_count/:status',ensureAuthenticated, function(req, res) { 
+
+  Contractors.find({status:req.param('status')},function(err, data) {
+              res.json({count:data.length});
+            });   
+  
 }); 
  
 router.post('/contractors', function(req, res, next) {
@@ -99,32 +119,96 @@ router.post('/contractors/feedback/delete', function(req, res, next) {
 
 
 router.post('/contractors/update', function(req, res, next) {
+  var timer = 1000*60*3
+  if (app.get('env') == 'development') {timer = 1000 }
   var _id = req.body._id;
   delete req.body._id;
    req.body.last_editor = req.user.name
    req.body.last_edit_time = Date.now();
-  Contractors.findOneAndUpdate({ _id:_id },{$set: req.body},{upsert: true},function(err,data){
+
+  // var contractor_publish = false;
+  // if(req.body.status == '2222' && (req.body.date_published===null || req.body.date_publishe==='null' || req.body.date_published===undefined || req.body.date_publishe==='undefined') ) 
+  //           {req.body.date_published = Date.now();
+  //             contractor_publish = true;
+  //           }
+  
+  Contractors.findOneAndUpdate({ _id:_id },{$set: req.body},{upsert: true},function(err,contractor){
     if(err){ 
     	res.json({err: err});
     	return next(); }
+    //run delta if is published
+    var contractorAreas = _.map(contractor.areas, function(value, key) {
+      return value.id;
+    });
+    var contractorTypes = _.map(contractor.types, function(value, key) {
+      return value.id;
+    });
+    
+    if(contractor.status=="2222"){
+                  var contractor_publish = jobs.create('contractor_publish', {
+                       contractor: _id
+                      ,contractorTypes:contractorTypes
+                      ,contractorAreas:contractorAreas 
+                  }).delay(timer)
+                    .priority('high')
+                    .save()
+                
+                 jobs.promote()
+                }; 
 
-    res.jsonp(data);
+    res.json(contractor);
+   
   });
 });
-// router.post('/contractors/:contractor', function(req, res, next) {
+
+jobs.process('contractor_publish', function(job, done){
    
-//   contractor = req.contractor ;
-//   console.log(contractor)
-//   contractor.update({'_id':contractor._id},{upsert: true},function(err,contractor){
-//     if(err){ 
-//     	    res.json(err);
-//     		return next(); 
-//     	    }
-//     console.log(contractor)
-//     res.json({success:'success'});
     
-//   });
-// });
+   Contractors.findById(job.data.contractor).exec(function(err, contractor){
+    if(err){ return next(err); }
+    User
+      .find({sendmail:{'$ne': false}, usersearchcontractors:{ $elemMatch: { type: {"$in" : job.data.contractorTypes} },$elemMatch: { area: {"$in" : job.data.contractorAreas} } } }
+        ,function(err, user) {
+          if(err){ 
+            console.log(err);
+            return next(); 
+          }
+          //console.log(contractor)
+
+             _.each(user, function(value, key) {
+               if(contractor.forwards.indexOf(value._id) == -1){ // if the contractor not sent to this user
+                  var email = jobs.create('email', {
+                      email_data: {data:contractor, name:value.name} 
+                    , template: 'contractor_publish'
+                    , name:value.name
+                    , to: value.email
+                    , bcc:'bonimbayit@gmail.com'
+                    , subject: 'עדכון: בקשר להמלצות על קבלן שביקשת' 
+                     
+
+                  }).delay(1000)
+                    .priority('high')
+                    .save()
+                
+                 jobs.promote(); 
+
+                 // update user with this contractor
+                 contractor.forwards.push(mongoose.Types.ObjectId(value._id));
+
+               };//if(contractor.forwards.indexOf(value._id) == -1)
+               
+            });  // _.each(user, function(value, key) {
+            contractor.save(); // TODO : check if need to save
+        });
+    //console.log(contractor)
+  });
+   
+   
+   console.log("contractor_publish:"+job.id)
+   done();
+});
+
+
 
 // test authentication
 function ensureAuthenticated(req, res, next) {

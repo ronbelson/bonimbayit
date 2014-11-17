@@ -32,6 +32,7 @@
 								              street: String,
 								              city:   String
 								            },
+								        sendmail: {type: Boolean},
 								        usersearchcontractors: [UserSearchcontractors],
 								        //userforwardcontractors: [Contractors],								        			
 								        //userforwardcontractors: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contractors',index: true, unique: true }],
@@ -40,8 +41,8 @@
 				});
 
 			var UserSearchcontractors = new mongoose.Schema({
-				  type: String,
-		    	  area: String,
+				  type:{ type:String,index:  true },
+		    	  area: { type:String,index:  true },
 		    	  createdate: { type: Date, default: Date.now() }
 			});
 

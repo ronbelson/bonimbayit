@@ -5,15 +5,35 @@ var bodyParser = require('body-parser')
 var request = require('request');
 var cache = require('memory-cache');
 var _ = require('underscore');
+var path           = require('path')
+  , templatesDir   = path.join(__dirname, '../emails')
+  , emailTemplates = require('email-templates');
+var mandrill = require('mandrill-api/mandrill');
+var mandrill_client = new mandrill.Mandrill('FIuK1588pNxIn1NSyZCE8g');
+var nodemailer = require('nodemailer');
+var transport = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'bonimbayit@gmail.com',
+        pass: 'ynvfhfjtgnfklccq'
+    }
+});
+
+var kue = require('kue')
+  , jobs = kue.createQueue();
+  kue.app.listen(4000);
+  
 //memcached
 //var Memcached = require('memcached');
 //var memcached = new Memcached('localhost:11211');
 //var lifetime = 86400; //24hrs
 
+
+var app = express(); 
 var  posts =  [] ;
 var blog_url = 'http://127.0.0.1:2368';
 var site_email = 'ronbelson@gmail.com';
-var app = express(); 
+if (app.get('env') === 'production') {site_email='bonimbayit@gmail.com'}
 var config_passport = require('../oauth-production.js');
 if (app.get('env') == 'development') {config_passport = require('../oauth-dev.js');}
 
@@ -138,25 +158,14 @@ router.get('/json/blog', function(req, res) {
 });
 
 
-router.get('/test', function(req, res) { 
 
-
-  Contractors
-  .findById('5450b7b5bdfa640000954a46')
-  .populate('forwards') 
-  .exec(function (err, person) {
-    if (err) return handleError(err);
-    console.log(person);
-    res.json({person: person})
-  })
-
-
-});
 
 router.post('/search/', function(req, res,next) {
    //'/search/:type/:area/:email/:name'
    var data_json = (req.body);
    var contractors_match ;
+   var timer = 1000*60*3
+   if (app.get('env') == 'development') {timer = 1000 }
 
    //console.log(data_json);
    
@@ -172,40 +181,6 @@ router.post('/search/', function(req, res,next) {
       if (!err && user != null) {
         
        
-        // Contractors.find({ contractor_types:{ $elemMatch: { id: "מהנדס בניין" } } ,status:'2222' , areas: { $elemMatch: { id: "גליל ועמקים" } } },function(err, data) {
-        //     contractors_to_send = []
-        //      _.each(data, function(value, key) {
-                
-        //         if(value.forwards.indexOf(user._id) === -1){ // if the contractor not sent to this user
-        //          //////////----
-        //          Contractors.findOne({_id: value._id}, function (err, contractor) {
-        //             if(err){ 
-        //               res.json({err: err});
-        //               return next(); }
-              
-        //             contractor.forwards.push(mongoose.Types.ObjectId(user._id));
-        //             contractor.save(function(err, contractor){
-        //             if(err){ 
-        //               res.json({err: err});
-        //               return next(err); }
-        //             contractors_to_send.push(value)
-        //             console.log(contractor)
-        //               });
-             
-        //           });
-        //          //////////----
-        //        }  
-
-        //      });
-        //      //send mail to user with recommends of the constractor
-        //      if(contractors_to_send.length()>0) {
-
-
-        //      }
-        //      console.log(contractors_to_send)
-        // });
-        //return 
-        //next()
         user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1  });
        // user.userforwardcontractors.push(contractors_match);
           //console.log(user)
@@ -242,51 +217,48 @@ router.post('/search/', function(req, res,next) {
           };
         });
       };
-      });
-      
-  // sending mail
-  var mandrill = require('mandrill-api/mandrill');
-  var mandrill_client = new mandrill.Mandrill('FIuK1588pNxIn1NSyZCE8g');
-  if (app.get('env') === 'production') {site_email='bonimbayit@gmail.com'}
-  var message = {
-  
-    "text": "שם ואימייל: " + data_json.EMAIL + " , " + data_json.name + ", מחפש קבלן: " + data_json.MMERGE2 + ' באזור ' +  data_json.MMERGE1 ,
-    "subject": data_json.name + ' מתעניין בקבלן ' +  data_json.MMERGE2 + ' באזור ' +  data_json.MMERGE1,
-    "from_email": data_json.EMAIL,
-    "from_name": data_json.name,
-    "to": [{
-            "email": site_email,
-            "name": "בונים בית",
-            "type": "to"
-        }],
-    "headers": {
-        "Reply-To":data_json.EMAIL
-    }};
 
-  
-  var async = true;
-  var ip_pool = "Main Pool";
-  mandrill_client.messages.send({"message": message, "async": async, "ip_pool": ip_pool}, function(result) {
+          Contractors.find({ contractor_types:{ $elemMatch: { id:  data_json.MMERGE2 } } ,status:'2222' , areas: { $elemMatch: { id:  data_json.MMERGE1 } } },function(err, data) {
+            _.each(data, function(value, key) {
+                if(value.forwards.indexOf(user._id) == -1){ // if the contractor not sent to this user
+                     Contractors.findOne({_id: value._id}, function (err, contractor) {
+                     if(err){ return err; next(); }
+                     contractor.forwards.push(mongoose.Types.ObjectId(user._id));
+                     contractor.save(function(err, contractor){
+                       if(err){return (err); next(); }
+                      }); // contractor.save
+                    }); //  Contractors.findOne
+                 }; //  if(value.forwards.indexOf
+            });  // _.each(data, function(value, key) {
+            
+            var email_template = 'recommand_contractor_not_found'
+            if(data.length>0) {email_template = 'recommand_contractor'}
+          
+                var email = jobs.create('email', {
+                      email_data: {data:data, name:data_json.name} 
+                    , template: email_template
+                    , name:data_json.name
+                    , to: data_json.EMAIL
+                    , bcc:'bonimbayit@gmail.com'
+                    , subject: 'בקשר להמלצות על קבלן ' + data_json.MMERGE2 + ' ב' + data_json.MMERGE1
+                     
+
+                  }).delay(timer)
+                    .priority('high')
+                    .save()
+                
+                 jobs.promote(); 
+
+                res.json({result:'done'})
+            
+      }); // Contractors.find(
+
+    });
       
-      //console.log(message);
-      res.contentType('json');
-      console.log('send mail ok');
-      res.send({ result: result });
-      /*
-      [{
-              "email": "recipient.email@example.com",
-              "status": "sent",
-              "reject_reason": "hard-bounce",
-              "_id": "abc123abc123abc123abc123abc123"
-          }]
-      */
-       console.log(result);
-  }, function(e) {
-      // Mandrill returns the error as an object with name and message keys
-      console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-      res.send(500,e.message)
-      // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-  });
+  
+  
+  
+  
 
 
   
@@ -296,7 +268,8 @@ router.post('/search/', function(req, res,next) {
 /* Thankyou page. */
 
 router.get('/thankyou/:type/:msg', function(req, res) { 
-  console.log(posts)
+   
+  //console.log(posts)
   res.render('thankyou', { msg: req.param("msg") , title: 'תודה על הרישום לבונים בית' , posts: posts });
 
 
@@ -323,8 +296,7 @@ router.post('/contact', function(req, res) {
   //console.log(req);
   data_json = (req.body);
   
-  var mandrill = require('mandrill-api/mandrill');
-  var mandrill_client = new mandrill.Mandrill('FIuK1588pNxIn1NSyZCE8g');
+  
   var subject = data_json.subject;
   var name    = data_json.name;
   var phone   = data_json.phone;
@@ -377,7 +349,6 @@ router.post('/contact', function(req, res) {
 
 
 
-
 // test authentication
 function ensureAuthenticated(req, res, next) {
 if (req.isAuthenticated()) { return next(); }
@@ -388,3 +359,34 @@ res.redirect('/')
 });
 
 module.exports = router;
+
+
+jobs.process('email', function(job, done){
+  emailTemplates(templatesDir, function(err, template) {
+                   template(job.data.template, job.data.email_data, function(err, html, text) {
+                   
+                    transport.sendMail({
+                          from: 'תומר חן - בונים בית <bonimbayit@gmail.com>',
+                          to: job.data.to,
+                          bcc: job.data.bcc,
+                          subject: job.data.subject,
+                          html: html,
+                          // generateTextFromHTML: true,
+                          text: text
+                        }, function(err, responseStatus,callback) {
+                          if (err) {
+                            console.log(err);
+                            //res.status(500)
+                          } else {
+                            //console.log(data);
+                            
+                            
+                          }
+                     }); //transport.sendMail({
+                  }); //  template('recommand_contractor',
+               }); // emailTemplates(templatesDir
+
+  console.log('done '+job.id)
+  done();
+});
+

@@ -35,12 +35,12 @@
 										        	type:String,  default:'1111',index:  true
 										        },
 										        date_created: { type: Date, default: Date.now() } ,
+										        date_published: { type: Date } ,
 										        contractor_types: [{id:{ type: String,index:  true}}],
 										        areas: [{id:{ type: String,index:  true}}],
 										        feedbacks: [ContractorsFeedbacks.schema],  
 										        forwards:  [{type: mongoose.Schema.Types.ObjectId, ref: 'Users',unique: true,sparse: true }],
 										        comment: String,
-										        
 										        payment_method: Number, 
 										        last_editor: String,
 										        last_edit_time: { type: Date, default: Date.now() } 

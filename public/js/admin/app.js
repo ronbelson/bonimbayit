@@ -231,7 +231,8 @@ function($scope, Contractors, Contractor, AdminService,$http){
          payment_method: $scope.contractor.payment_method,
          address: $scope.contractor.address,
          comment: $scope.contractor.comment,
-         areas: $scope.contractor.areas
+         areas: $scope.contractor.areas,
+         date_published: $scope.contractor.date_published 
 
         });
     };

@@ -1,0 +1,37 @@
+doctype html
+html(lang="he" dir="rtl")
+head
+body(style="text-align:right; direction:rtl;")
+ div הי  #{name}, 
+ br
+ div בבקשה:
+ br
+ each contractor,i in data
+  div #{i+1}. #{contractor.name}, טלפון #{contractor.phone}
+   br
+   br
+   each feedback in contractor.feedbacks
+    div(style="padding-right:9px;")
+     i המלצה שקיבלתי מ#{feedback.author}&nbsp;&nbsp;
+      small
+       a(href='mailto:#{feedback.email}') #{feedback.email}
+     div  
+      i(style="color:gray") #{feedback.feed}
+    
+
+    br
+ div 
+ br
+ br
+ div שיהיה לי עוד קבלנים שבדקתי ומאד טובים אשלח, מקווה שעזרתי, בכל מקרה אני פה לכל שאלה נוספת
+ div תודה תומר חן.
+ div
+  a(href="http://bonimbayit.co.il") bonimbayit.co.il
+
+ br
+ br
+ div נ.ב
+ div אשמח אם במהלך הבנייה תמליצו באתר עבור קהילת הבונים והמשפצים על קבלנים מצוינים שעבדתם איתם.
+
+
+

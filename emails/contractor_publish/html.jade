@@ -1,0 +1,37 @@
+doctype html
+html(lang="he" dir="rtl")
+head
+body(style="text-align:right; direction:rtl;")
+ div הי  #{name.split(' ')[0]}, מה שלומך?
+ br
+ div(style="padding-right:9px;") בבקשה עדכון לגבי קבלן מומלץ
+ br
+ 
+ div(style="padding-right:9px;")  #{data.name}, טלפון #{data.phone} , עובד בתחום:
+  each type in data.contractor_types
+   span #{type.id},&nbsp;
+ br  
+ br
+ each feedback in data.feedbacks
+  div(style="padding-right:9px;")
+   i המלצה שקיבלתי מ#{feedback.author}&nbsp;&nbsp;
+   small
+    a(href='mailto:#{feedback.email}') #{feedback.email}
+   div  
+    i(style="color:gray") #{feedback.feed}
+ 
+ div 
+ br
+ div שכשימליצו באתר על עוד קבלנים טובים באזורך  ולאחר שבנוסף אבדוק אותם באופן אישי  אשלח עדכון, מקווה שעזרתי, בכל מקרה אני תמיד זמין  לכל שאלה נוספת
+
+ div תודה תומר חן.
+ div
+  a(href="http://bonimbayit.co.il") bonimbayit.co.il
+
+ br
+ br
+ div נ.ב
+ div אשמח אם במהלך הבנייה תמליצו באתר עבור קהילת הבונים והמשפצים על קבלנים מצוינים שעבדתם איתם.
+
+
+
