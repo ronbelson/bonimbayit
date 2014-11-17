@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
   if (req.isAuthenticated()) {res.redirect('/admin/home')}
   res.render('admin/index', { title: 'בונים בית - התחבר'});
 }); 
-  
+    
 
 router.get('/home',ensureAuthenticated, function(req, res) { 
   res.render('admin/home', { title: 'בונים בית - אדמין',user: req.user});
