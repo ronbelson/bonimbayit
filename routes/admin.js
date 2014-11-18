@@ -38,10 +38,17 @@ router.get('/home',ensureAuthenticated, function(req, res) {
 }); 
 
 router.get('/contractor_count/:status',ensureAuthenticated, function(req, res) { 
-
-  Contractors.find({status:req.param('status')},function(err, data) {
+  var status = req.param('status');
+  if(status=='0') {
+    Contractors.find(function(err, data) {
               res.json({count:data.length});
             });   
+  } else {
+    Contractors.find({status:status},function(err, data) {
+              res.json({count:data.length});
+            });   
+  }
+  
   
 }); 
  
@@ -168,7 +175,11 @@ jobs.process('contractor_publish', function(job, done){
    Contractors.findById(job.data.contractor).exec(function(err, contractor){
     if(err){ return next(err); }
     User
-      .find({sendmail:{'$ne': false}, usersearchcontractors:{ $elemMatch: { type: {"$in" : job.data.contractorTypes} },$elemMatch: { area: {"$in" : job.data.contractorAreas} } } }
+      //.find({sendmail:{'$ne': false}, usersearchcontractors:{ $elemMatch: { type: {"$in" : job.data.contractorTypes} },$elemMatch: { area: {"$in" : job.data.contractorAreas} } } }
+      //.find( { usersearchcontractors: { $all: [ { "$elemMatch" : {area: {"$in" :job.data.contractorAreas}} }, { "$elemMatch" : { type :{"$in":job.data.contractorTypes}  } } ] } } 
+        .find( { usersearchcontractors: { $all: [ { "$elemMatch" : {area: {"$in" :job.data.contractorAreas}, type: {"$in":job.data.contractorTypes } } } ] } } 
+
+
         ,function(err, user) {
           if(err){ 
             console.log(err);
@@ -176,7 +187,7 @@ jobs.process('contractor_publish', function(job, done){
           }
           //console.log(user)
 
-         // return 1
+          //return 1
              _.each(user, function(value, key) {
                if(contractor.forwards.indexOf(value._id) == -1){ // if the contractor not sent to this user
                   var email = jobs.create('email', {

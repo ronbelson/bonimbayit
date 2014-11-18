@@ -218,6 +218,7 @@ router.post('/search/', function(req, res,next) {
         });
       };
 
+          //Contractors.find({ contractor_types:{ $elemMatch: { id:  data_json.MMERGE2 } } ,status:'2222' , areas: { $elemMatch: { id:  data_json.MMERGE1 } } },function(err, data) {
           Contractors.find({ contractor_types:{ $elemMatch: { id:  data_json.MMERGE2 } } ,status:'2222' , areas: { $elemMatch: { id:  data_json.MMERGE1 } } },function(err, data) {
             _.each(data, function(value, key) {
                 if(value.forwards.indexOf(user._id) == -1){ // if the contractor not sent to this user
