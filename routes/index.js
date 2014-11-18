@@ -147,7 +147,7 @@ router.use(function(req, res, next)
 
 /* GET home page. */
 router.get('/', function(req, res) { 
-  //console.log('render the page')
+  console.log('render the page')
   res.render('index', { title: 'בונים בית,יומן הבנייה המקיף בישראל' , posts: posts});
   //res.send(posts);
 });
