@@ -97,7 +97,7 @@ function(accessToken, refreshToken, profile, done) {
     };
     });
     }
-    ));
+    ));  
 
 //DONT REMOVE DOWN
 //TODO : ignure db schema on pathes
