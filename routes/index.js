@@ -164,7 +164,7 @@ router.post('/search/', function(req, res,next) {
    //'/search/:type/:area/:email/:name'
    var data_json = (req.body);
    var contractors_match ;
-   var timer = 1000*60*3
+   var timer = 1000*60*60*2  // 2 hours
    if (app.get('env') == 'development') {timer = 1000 }
 
    //console.log(data_json);

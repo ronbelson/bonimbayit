@@ -119,7 +119,7 @@ router.post('/contractors/feedback/delete', function(req, res, next) {
 
 
 router.post('/contractors/update', function(req, res, next) {
-  var timer = 1000*60*3
+  var timer = 1000*60*60*2  // 2 hours
   if (app.get('env') == 'development') {timer = 1000 }
   var _id = req.body._id;
   delete req.body._id;
@@ -140,10 +140,11 @@ router.post('/contractors/update', function(req, res, next) {
     var contractorAreas = _.map(contractor.areas, function(value, key) {
       return value.id;
     });
-    var contractorTypes = _.map(contractor.types, function(value, key) {
+    var contractorTypes = _.map(contractor.contractor_types, function(value, key) {
+
       return value.id;
     });
-    
+     
     if(contractor.status=="2222"){
                   var contractor_publish = jobs.create('contractor_publish', {
                        contractor: _id
@@ -163,7 +164,7 @@ router.post('/contractors/update', function(req, res, next) {
 
 jobs.process('contractor_publish', function(job, done){
    
-    
+  //console.log(job.data.contractorTypes,job.data.contractorAreas)
    Contractors.findById(job.data.contractor).exec(function(err, contractor){
     if(err){ return next(err); }
     User
@@ -173,8 +174,9 @@ jobs.process('contractor_publish', function(job, done){
             console.log(err);
             return next(); 
           }
-          //console.log(contractor)
+          //console.log(user)
 
+         // return 1
              _.each(user, function(value, key) {
                if(contractor.forwards.indexOf(value._id) == -1){ // if the contractor not sent to this user
                   var email = jobs.create('email', {
