@@ -70,7 +70,7 @@ router.get('/contractors', function(req, res, next) {
 }); 
 
 router.param('contractor', function(req, res, next, id) {
-  var query = Contractors.findById(id).populate('forwards').sort({'date_created': -1});
+  var query = Contractors.findById(id).populate('forwards').sort('forwards:{createdate: 1}'); //TODO  fix sort. notwork
 
   query.exec(function (err, contractor){
     if (err) { return next(err); }

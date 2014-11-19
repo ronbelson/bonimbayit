@@ -20,9 +20,10 @@ nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
     li
      a(href="/blog/tag/%60lvyvt-bnyyh/" ) עלויות בניה
       i.fa.fa-ils
-    li.dropdown
-     a.dropdown-toggle(style="" href='javascript:void(0)', data-toggle='dropdown') יומן הבניה השלם
-      i.fa.fa-caret-down(style="padding-right:5px;")
+    li(style="margin-top:-8px;")
+     a.dropdown-toggle( href='javascript:void(0)', data-toggle='dropdown') 
+      span(style="font-weight: bold;font-weight: 700;font-size:16px;").btn.btn-default יומן הבניה השלם
+       i.fa.fa-caret-down(style="padding-right:5px;")
       ul.dropdown-menu-posts-navbar.dropdown-menu.scrollable-menu.pdr10.pdl10( role="menu")
        each post, i in posts
         li

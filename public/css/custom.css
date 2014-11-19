@@ -17,7 +17,7 @@ body {
 }
 
 
-
+ 
 .OPP-poll-choice-div{
   background-color: #e74c3c !important ;
 }
@@ -54,23 +54,30 @@ body {
     }
     .navbar-toggle {
         display: block;
+
     }
     .navbar-collapse {
         border-top: 1px solid transparent;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        background: #f3f3f3;
+
     }
+
     .navbar-collapse.collapse {
         display: none!important;
     }
     .navbar-nav {
-        float: none!important;
+        float: center !important;
         margin: 7.5px -15px;
+
     }
     .navbar-nav>li {
         float: none;
+
     }
+
     .navbar-nav>li>a {
-         
+         margin: 10px 10px 10px 10px;
     }
 
     .dropdown-menu-posts-navbar a {color:#000  !important; font-weight: bold !important;font-weight: 500 !important;}
