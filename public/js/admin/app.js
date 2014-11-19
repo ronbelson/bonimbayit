@@ -182,6 +182,14 @@ function($scope, Contractors, Contractor, AdminService,$http){
         
     });
     
+     $scope.forwardsToggle= function(){
+      
+        $( "#forwardsToogleDiv" ).toggle( "slow", function() {
+           
+        });
+      
+     }
+
     $scope.Deletefeedback = function(_id,index,contractor_id){
       
       Contractor.feedDelete(

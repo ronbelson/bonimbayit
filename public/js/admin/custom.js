@@ -19,3 +19,5 @@ $.ajax({
        $('#contractorTotal').html('<i style="padding-left:4px;" class="fa fa-star"/>מספר קבלנים סכ״ה:' + data.count)
    }
  });
+
+

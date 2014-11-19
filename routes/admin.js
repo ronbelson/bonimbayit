@@ -70,7 +70,7 @@ router.get('/contractors', function(req, res, next) {
 }); 
 
 router.param('contractor', function(req, res, next, id) {
-  var query = Contractors.findById(id);
+  var query = Contractors.findById(id).populate('forwards');
 
   query.exec(function (err, contractor){
     if (err) { return next(err); }

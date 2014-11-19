@@ -182,8 +182,14 @@ html(lang="he")
           .col-md-2
            לידים
           .col-md-10
-           a(ng-if="contractor.forwards.length>0" href="" style="width:100%").btn.btn-info המלצות הועברו ל {{contractor.forwards.length}} בונים
+           span( ng-if="contractor.forwards.length>0" ng-click="forwardsToggle()" style="width:100%").btn.btn-info המלצות הועברו ל {{contractor.forwards.length}} בונים
             i.fa.fa-plus(style="padding-right:4px;") 
+           div(id="forwardsToogleDiv" style=" border:1px solid black;display:none")
+            div( ng-repeat="user in contractor.forwards")
+             div(style="padding:2px 2px 2px 2px;").small {{$index+1}}. {{user.name}} בתאריך:{{user.createdate |date:'dd/MM/yyyy'}} , דואל {{user.email}} , טלפןן: {{user.phone}}
+
+
+            
            span(ng-if="contractor.forwards.length==0" style="width:100%").btn.btn-danger עדיין לא הועבר לבונים
             i.fa.fa-meh-o(style="padding-right:4px;") 
            
