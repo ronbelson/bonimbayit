@@ -20,4 +20,15 @@ $.ajax({
    }
  });
 
+$.ajax({
+   type: "GET",
+   url: '/admin/count/searches',
+
+   success: function(data)
+   {
+        
+       $('#contractorSearch').html('<i style="padding-left:4px;" class="fa fa-star"/>מספר חיפושי קבלנים:' + data[0].count)
+   }
+ });
+
 

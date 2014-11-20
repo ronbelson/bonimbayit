@@ -37,6 +37,16 @@ router.get('/home',ensureAuthenticated, function(req, res) {
   res.render('admin/home', { title: 'בונים בית - אדמין',user: req.user});
 }); 
 
+router.get('/count/searches',ensureAuthenticated, function(req, res) { 
+  User.aggregate( {$match: {'usersearchcontractors.0': {$exists: true}}}, {$unwind: '$usersearchcontractors'}, {$group: {_id: null, count: {$sum: 1}}} )
+   .exec(function(err, data){
+    if(err){  res.json({err:err}); }
+    res.json(data);
+  });
+
+   
+}); 
+ 
 router.get('/contractor_count/:status',ensureAuthenticated, function(req, res) { 
   var status = req.param('status');
   if(status=='0') {
