@@ -181,7 +181,7 @@ router.post('/search/', function(req, res,next) {
       if (!err && user != null) {
         
        
-        user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1  });
+        user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1,createdate:new Date()  });
        // user.userforwardcontractors.push(contractors_match);
           //console.log(user)
         //user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 });
@@ -202,7 +202,7 @@ router.post('/search/', function(req, res,next) {
         var user = new User({
           name: data_json.name,
           email: data_json.EMAIL,
-          usersearchcontractors: [{ type: data_json.MMERGE2 , area: data_json.MMERGE1}]
+          usersearchcontractors: [{ type: data_json.MMERGE2 , area: data_json.MMERGE1, createdate: new Date()}]
         });
         
         
