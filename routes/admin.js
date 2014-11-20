@@ -183,7 +183,9 @@ jobs.process('contractor_publish', function(job, done){
    
   //console.log(job.data.contractorTypes,job.data.contractorAreas)
    Contractors.findById(job.data.contractor).exec(function(err, contractor){
-    if(err){ return next(err); }
+    if(err){ return done(); }
+    console.log(contractor.status,contractor.contractor_types,contractor.areas)
+    if(contractor.status!='2222') {console.log(job.id+' canceld');return done({result:'status is not valid'});}
     User
       //.find({sendmail:{'$ne': false}, usersearchcontractors:{ $elemMatch: { type: {"$in" : job.data.contractorTypes} },$elemMatch: { area: {"$in" : job.data.contractorAreas} } } }
       //.find( { usersearchcontractors: { $all: [ { "$elemMatch" : {area: {"$in" :job.data.contractorAreas}} }, { "$elemMatch" : { type :{"$in":job.data.contractorTypes}  } } ] } } 
