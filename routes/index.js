@@ -199,7 +199,7 @@ router.post('/search/', function(req, res,next) {
       } else 
         {
          
-        var user = new User({
+         user = new User({
           name: data_json.name,
           email: data_json.EMAIL,
           usersearchcontractors: [{ type: data_json.MMERGE2 , area: data_json.MMERGE1, createdate: new Date()}]
@@ -223,7 +223,19 @@ router.post('/search/', function(req, res,next) {
             _.each(data, function(value, key) {
                 if(value.forwards.indexOf(user._id) == -1){ // if the contractor not sent to this user
                      Contractors.findOne({_id: value._id}, function (err, contractor) {
+                    // TODO JOB FOR EACH INSERT
                      if(err){ return err; next(); }
+                     var userforwards = jobs.create('userforwards', {
+                        contractor_id  : contractor._id,
+                        user_email : user.email
+
+                      }).delay(timer-1000)
+                        .priority('high')
+                        .save()
+                    
+                     jobs.promote(); 
+                      
+                     
                      contractor.forwards.push(mongoose.Types.ObjectId(user._id));
                      contractor.save(function(err, contractor){
                        if(err){return (err); next(); }
@@ -234,7 +246,8 @@ router.post('/search/', function(req, res,next) {
             
             var email_template = 'recommand_contractor_not_found'
             if(data.length>0) {email_template = 'recommand_contractor'}
-          
+                
+                
                 var email = jobs.create('email', {
                       email_data: {data:data, name:data_json.name} 
                     , template: email_template
@@ -361,13 +374,34 @@ res.redirect('/')
 
 module.exports = router;
 
+jobs.process('userforwards', function(job, done){
+  
+   User.findOne({ email: job.data.user_email }, function(err, user) {
+      if(err) { 
+          console.log(err);
+          var err = new Error(err);
+          throw err;
+           }
+
+
+      user.userforwards.push(mongoose.Types.ObjectId(job.data.contractor_id));
+                      user.save(function(err, usersave){
+                       if(err){return (err); next(); }
+                        console.log('done job userforwards for user: ' + job.data.user_email +' contractor:'+job.data.contractor_id)
+                      }); 
+              });
+ 
+  console.log('done job userforwards: '+job.id)
+  done();
+
+});
 
 jobs.process('email', function(job, done){
   emailTemplates(templatesDir, function(err, template) {
                    template(job.data.template, job.data.email_data, function(err, html, text) {
                    
                     transport.sendMail({
-                          from: 'תומר חן - בונים בית <bonimbayit@gmail.com>',
+                          from: 'תומר חן ריחאנה - בונים בית <bonimbayit@gmail.com>',
                           to: job.data.to,
                           bcc: job.data.bcc,
                           subject: job.data.subject,
@@ -387,7 +421,7 @@ jobs.process('email', function(job, done){
                   }); //  template('recommand_contractor',
                }); // emailTemplates(templatesDir
 
-  console.log('done '+job.id)
+  console.log('done job email: '+job.id)
   done();
 });
 

@@ -32,6 +32,18 @@ function($stateProvider, $urlRouterProvider) {
             }
 		});
 
+  $stateProvider
+  .state('user', {
+    url: '/user/{emailorphone}',
+    templateUrl: '/user.html',
+    controller: 'UserCtrl',
+    resolve: {
+              UserPromise: ['$stateParams', 'User', function($stateParams, User) {
+                return User.getByPhoneOrEmail($stateParams.emailorphone);
+              }]
+            }
+    });
+
   $urlRouterProvider.otherwise('/');
 
   
@@ -155,6 +167,21 @@ function($stateProvider, $urlRouterProvider) {
 
 }])  
 
+.factory('User', ['$http', function($http){
+  var o = {
+    user: []
+  };
+  o.getByPhoneOrEmail = function(emailorphone) {
+
+    return $http.get('/admin/userfind/'+emailorphone).success(function(data){
+      angular.copy(data, o.user);
+    });
+  };
+  
+  return o;
+
+}])  
+
  
 
 .controller('ContractorCtrl', [
@@ -251,6 +278,22 @@ function($scope, Contractors, Contractor, AdminService,$http){
     
   
 ])
+
+
+
+.controller('UserCtrl', [
+'$scope',
+'User',
+'AdminService',
+'$http',
+function($scope,User,AdminService,$http){
+ 
+ $scope.user = User.user;
+ 
+
+  
+
+}])
 
 .controller('MainCtrl', [
 '$scope',

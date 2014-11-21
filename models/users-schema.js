@@ -34,6 +34,7 @@
 								            },
 								        sendmail: {type: Boolean},
 								        usersearchcontractors: [UserSearchcontractors],
+								        userforwards:  [{type: mongoose.Schema.Types.ObjectId, ref: 'Contractors',unique: true,sparse: true }],
 								        //userforwardcontractors: [Contractors],								        			
 								        //userforwardcontractors: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contractors',index: true, unique: true }],
 								        isadmin: { type: Boolean, default: false}

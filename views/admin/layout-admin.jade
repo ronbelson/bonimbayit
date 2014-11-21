@@ -96,6 +96,32 @@ html(lang="he")
        div.ng-hide
         textarea(rows="4" cols="50" dir="rtl"  ng-model="contractor.comment")
      include addcontractor
+    
+
+    script(type="text/ng-template" id="/user.html" ng-model="User")
+     container
+      .row
+       .col-md-1 שם:{{user.name}}
+       .col-md-3 דואל:{{user.email}}
+       .col-md-1 נרשם ב:{{user.createdate | date:'medium'}}
+       .col-md-1 טלפון:{{user.phone}}
+       .col-md-6 חיפושים:
+        div(ng-repeat="search  in user.usersearchcontractors") אזור: {{search.area}} קבלן: {{search.type}} בתאריך {{ search.createdate| date:'medium'}}
+        br
+        div: קבלנים שנמצאו מתאימים:
+        div(ng-repeat="contractor  in user.userforwards")
+         div {{ $index+1}}. שם קבלן {{contractor.name}} טלפון {{contractor.phone}} דואל {{contractor.email}} שם חברה {{contractor.company_name}} 
+          div( style="padding-right:10px;") 
+           u( ng-if="contractor.feedbacks.length>0") המלצות  
+          div(ng-repeat="feedback   in contractor.feedbacks") 
+           div(style="padding-right:10px;") נכתב ע״י {{feedback.author}} אימייל {{feedback.email}}
+           div(style="padding-right:10px;") 
+            i {{feedback.feed}}
+         br
+        br
+        br
+        br
+
 
     script(type="text/ng-template" id="/contractor.html" ng-model="Contractor")
      container

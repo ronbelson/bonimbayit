@@ -20,6 +20,7 @@ var transport = nodemailer.createTransport({
     }
 });
 
+var posts = [{}];
 var kue = require('kue')
   , jobs = kue.createQueue('admin');
 
@@ -43,6 +44,27 @@ router.get('/count/searches',ensureAuthenticated, function(req, res) {
     if(err){  res.json({err:err}); }
     res.json(data);
   });
+
+   
+}); 
+
+router.get('/userfind/:emailorphone',ensureAuthenticated, function(req, res) { 
+  User.find( {$or:[{email:req.param('emailorphone')},{phone:req.param('emailorphone')}]})
+    .populate({
+          path: 'userforwards',
+          select: 'name _id phone contractor_types feedbacks'
+         
+        })
+    
+
+    .exec(function(err, user) {
+              if(err){  res.json({err:err}); }
+              
+
+              res.json(user[0]);
+
+               });   
+           
 
    
 }); 
@@ -184,7 +206,7 @@ jobs.process('contractor_publish', function(job, done){
   //console.log(job.data.contractorTypes,job.data.contractorAreas)
    Contractors.findById(job.data.contractor).exec(function(err, contractor){
     if(err){ return done(); }
-    console.log(contractor.status,contractor.contractor_types,contractor.areas)
+    //console.log(contractor.status,contractor.contractor_types,contractor.areas)
     if(contractor.status!='2222') {console.log(job.id+' canceld');return done({result:'status is not valid'});}
     User
       //.find({sendmail:{'$ne': false}, usersearchcontractors:{ $elemMatch: { type: {"$in" : job.data.contractorTypes} },$elemMatch: { area: {"$in" : job.data.contractorAreas} } } }
@@ -201,7 +223,9 @@ jobs.process('contractor_publish', function(job, done){
 
           //return 1
              _.each(user, function(value, key) {
+
                if(contractor.forwards.indexOf(value._id) == -1){ // if the contractor not sent to this user
+                 
                   var email = jobs.create('email', {
                       email_data: {data:contractor, name:value.name} 
                     , template: 'contractor_publish'
@@ -217,8 +241,36 @@ jobs.process('contractor_publish', function(job, done){
                 
                  jobs.promote(); 
 
-                 // update user with this contractor
+                 // update  contractor with this user
                  contractor.forwards.push(mongoose.Types.ObjectId(value._id));
+                // var update_user = new User(value);
+                // update_user.userforwards.push(mongoose.Types.ObjectId(contractor._id))
+                 //console.log(contractor._id)
+                // User.findOneAndUpdate( {email:value.email} ,{$push: {userforwards:  mongoose.Types.ObjectId(contractor._id) } });
+                 User.findOne({ email: value.email }, function(err, userpush) {
+                    if(err) { 
+                        console.log(err);
+                        var err = new Error(err);
+                        throw err;
+                         }
+                    
+                    
+                    if (!err && userpush != null) {
+                      
+                     
+                     userpush.userforwards.push(mongoose.Types.ObjectId(contractor._id));
+                     userpush.save(function(err) {
+                        if(err) {
+                          console.log(err);
+                          var err = new Error(err);
+                          throw err;
+                        } else {
+                          console.log("saving user userforwards ...");
+                          
+                        };
+                      });  
+                    }
+                  });  
 
                };//if(contractor.forwards.indexOf(value._id) == -1)
                

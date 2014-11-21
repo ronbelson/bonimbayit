@@ -12,7 +12,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var posts = [];
 var app = express();
 var routes = require('./routes/index');
 var admin  = require('./routes/admin');
@@ -58,8 +58,8 @@ app.get('/logout', function(req, res){ req.logout(); res.redirect('/'); });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    
-    res.render('404', {  title: 'בונים בית - הורדת קובץ עלויות בניה ' , posts: { posts: [] } });
+    console.log("not found 404")
+    res.render('404', {  title: 'בונים בית - הורדת קובץ עלויות בניה ' , posts: posts });
     
     //next(err);
 });
@@ -75,7 +75,7 @@ if (app.get('env') === 'development') {
         res.status(err.status || 500);
         console.log(err.message);
         console.log('error:' +err);
-        res.render('error', {
+        res.json( {
             message: err.message,
             error: err
         });
