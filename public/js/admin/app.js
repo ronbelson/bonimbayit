@@ -172,8 +172,8 @@ function($stateProvider, $urlRouterProvider) {
     user: []
   };
   o.getByPhoneOrEmail = function(emailorphone) {
-
-    return $http.get('/admin/userfind/'+emailorphone).success(function(data){
+    o.user= [];
+    return $http.get('/admin/userfind/'+angular.lowercase(emailorphone)).success(function(data){
       angular.copy(data, o.user);
     });
   };
@@ -289,6 +289,7 @@ function($scope, Contractors, Contractor, AdminService,$http){
 function($scope,User,AdminService,$http){
  
  $scope.user = User.user;
+
  
 
   
