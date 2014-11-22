@@ -9,7 +9,7 @@
 
 			 
 			// this initializes the schema for the model
-			var Users = mongoose.Schema({name: String,
+			var Users = mongoose.Schema({name: {type:String,index:  true},
 										fbId:  { 
 									        type:   Number, 
 									        unique: true,

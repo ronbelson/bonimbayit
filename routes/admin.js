@@ -49,7 +49,7 @@ router.get('/count/searches',ensureAuthenticated, function(req, res) {
 }); 
 
 router.get('/userfind/:emailorphone',ensureAuthenticated, function(req, res) { 
-  User.find( {$or:[{email:req.param('emailorphone')},{phone:req.param('emailorphone')}]})
+  User.find( {$or:[{email:req.param('emailorphone')},{phone:req.param('emailorphone')},{name:req.param('emailorphone')}]})
     .populate({
           path: 'userforwards',
           select: 'name _id phone contractor_types feedbacks'
