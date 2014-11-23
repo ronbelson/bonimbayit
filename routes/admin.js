@@ -39,6 +39,8 @@ router.get('/home',ensureAuthenticated, function(req, res) {
   res.render('admin/home', { title: 'בונים בית - אדמין',user: req.user});
 }); 
 
+
+
 router.get('/count/searches',ensureAuthenticated, function(req, res) { 
   User.aggregate( {$match: {'usersearchcontractors.0': {$exists: true}}}, {$unwind: '$usersearchcontractors'}, {$group: {_id: null, count: {$sum: 1}}} )
    .exec(function(err, data){
@@ -48,6 +50,19 @@ router.get('/count/searches',ensureAuthenticated, function(req, res) {
 
    
 }); 
+
+
+router.get('/statistics',ensureAuthenticated, function(req, res) { 
+  User.find({"usersearchcontractors.createdate": {"$gt": new Date("2014-11-23T00:00:00.000Z"),"$lt": new Date("2014-11-24T00:00:00.000Z") }},{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1})
+   .exec(function(err, data){
+    if(err){  res.json({err:err}); }
+    res.json(data);
+  });
+
+   
+}); 
+
+
 
 router.get('/userfind/:emailorphone',ensureAuthenticated, function(req, res) { 
   User.find( {$or:[{email:req.param('emailorphone')},{phone:req.param('emailorphone')},{name:req.param('emailorphone')}]})
@@ -293,7 +308,7 @@ jobs.process('contractor_publish', function(job, done){
 
 // test authentication
 function ensureAuthenticated(req, res, next) {
-  //console.log(req.user.isadmin)
+if (app.get('env') == 'development') return next();
 if (req.isAuthenticated() && req.user.isadmin) { return next(); }
 res.redirect('/')
 }
