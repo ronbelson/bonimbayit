@@ -241,7 +241,7 @@ function($scope, Contractors, Contractor, AdminService,$http){
              _id: _id,
              feedbacks: feedback
           }
-       
+         
         )
       //console.log(feedback)
       $scope.contractor.feedback.feed = '';
@@ -260,6 +260,7 @@ function($scope, Contractors, Contractor, AdminService,$http){
          name: $scope.contractor.name,
          company_name: $scope.contractor.company_name,
          phone: $scope.contractor.phone,
+         phone_display:$scope.contractor.phone_display,
          contractor_types: $scope.contractor.contractor_types,
          email: $scope.contractor.email,
          status: $scope.contractor.status,

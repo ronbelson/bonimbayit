@@ -7,7 +7,7 @@ body(style="text-align:right; direction:rtl;")
  div(style="padding-right:9px;") בבקשה עדכון לגבי קבלן מומלץ
  br
  
- div(style="padding-right:9px;")  #{data.name}, טלפון #{data.phone} , עובד בתחום:
+ div(style="padding-right:9px;")  #{data.name}, טלפון #{data.phone_display ? data.phone_display :data.phone} , עובד בתחום:
   each type in data.contractor_types
    span #{type.id},&nbsp;
  br  

@@ -18,13 +18,14 @@ var transport = nodemailer.createTransport({
         user: 'bonimbayit@gmail.com',
         pass: 'ynvfhfjtgnfklccq'
     }
-});
+});   
 
 var posts = [{}];
 var kue = require('kue')
   , jobs = kue.createQueue('admin');
 
-
+var __DEV_NOTICE = "";
+if (app.get('env') == 'development') {__DEV_NOTICE = "[סביבת פיתוח]";}
 require('../db/db_connect');
 require('../models/init_schema');
 
@@ -202,26 +203,28 @@ router.post('/contractors/update', function(req, res, next) {
 });
 
 jobs.process('contractor_publish', function(job, done){
-   
+    
   //console.log(job.data.contractorTypes,job.data.contractorAreas)
    Contractors.findById(job.data.contractor).exec(function(err, contractor){
     if(err){ return done(); }
     //console.log(contractor.status,contractor.contractor_types,contractor.areas)
     if(contractor.status!='2222') {console.log(job.id+' canceld');return done({result:'status is not valid'});}
+     
     User
       //.find({sendmail:{'$ne': false}, usersearchcontractors:{ $elemMatch: { type: {"$in" : job.data.contractorTypes} },$elemMatch: { area: {"$in" : job.data.contractorAreas} } } }
       //.find( { usersearchcontractors: { $all: [ { "$elemMatch" : {area: {"$in" :job.data.contractorAreas}} }, { "$elemMatch" : { type :{"$in":job.data.contractorTypes}  } } ] } } 
         .find( { usersearchcontractors: { $all: [ { "$elemMatch" : {area: {"$in" :job.data.contractorAreas}, type: {"$in":job.data.contractorTypes } } } ] } } 
 
-
+          
         ,function(err, user) {
           if(err){ 
             console.log(err);
             return next(); 
           }
-          //console.log(user)
+           
 
           //return 1
+            
              _.each(user, function(value, key) {
 
                if(contractor.forwards.indexOf(value._id) == -1){ // if the contractor not sent to this user
@@ -232,7 +235,7 @@ jobs.process('contractor_publish', function(job, done){
                     , name:value.name
                     , to: value.email
                     , bcc:'bonimbayit@gmail.com'
-                    , subject: 'עדכון: בקשר להמלצות על קבלן שביקשת' 
+                    , subject: __DEV_NOTICE+'עדכון: בקשר להמלצות על קבלן שביקשת' 
                      
 
                   }).delay(1000)
@@ -253,11 +256,11 @@ jobs.process('contractor_publish', function(job, done){
                         var err = new Error(err);
                         throw err;
                          }
-                    
-                    
+                     
+                     
                     if (!err && userpush != null) {
                       
-                     
+                     console.log(contractor._id)
                      userpush.userforwards.push(mongoose.Types.ObjectId(contractor._id));
                      userpush.save(function(err) {
                         if(err) {
@@ -276,6 +279,7 @@ jobs.process('contractor_publish', function(job, done){
                
             });  // _.each(user, function(value, key) {
             contractor.save(); // TODO : check if need to save
+            
         });
     //console.log(contractor)
   });

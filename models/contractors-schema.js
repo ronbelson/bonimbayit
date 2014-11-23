@@ -7,7 +7,7 @@
 
 	module.exports = function() {
 
-			var ContractorsFeedbacks = new mongoose.Schema({
+		 	var ContractorsFeedbacks = new mongoose.Schema({
 				  author: String,
 		    	  phone: Number,
 		    	  email: String,
@@ -25,6 +25,11 @@
 										            index:  true
 										        },
 												phone: { 
+											        type:   String, 
+											        unique: true,
+											        index:  true
+										        },
+										        phone_display: { 
 											        type:   String, 
 											        unique: true,
 											        index:  true

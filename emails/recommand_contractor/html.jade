@@ -7,7 +7,7 @@ body(style="text-align:right; direction:rtl;")
  div בבקשה:
  br
  each contractor,i in data
-  div #{i+1}. #{contractor.name}, טלפון #{contractor.phone}
+  div #{i+1}. #{contractor.name}, טלפון #{contractor.phone_display ? contractor.phone_display :contractor.phone}
    br
    br
    each feedback in contractor.feedbacks
