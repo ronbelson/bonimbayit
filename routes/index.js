@@ -18,8 +18,9 @@ var transport = nodemailer.createTransport({
         pass: 'ynvfhfjtgnfklccq'
     }
 });
-
-var kue = require('kue')
+ var contractor_types = require('../public/json/contractor_types.json');
+ var areas_types = require('../public/json/areas_types.json');
+ var kue = require('kue')
   , jobs = kue.createQueue();
   kue.app.listen(4000);
   
@@ -145,16 +146,28 @@ router.use(function(req, res, next)
   
 });
 
-/* GET home page. */
+/* GET home page. */ 
 router.get('/', function(req, res) { 
   console.log('render the page')
-  res.render('index', { title: 'בונים בית,יומן הבנייה המקיף בישראל' , posts: posts});
+  res.render('index', { title: 'בונים בית,יומן הבנייה המקיף בישראל' , posts: posts, contractor_types:contractor_types, areas_types:areas_types});
   //res.send(posts);
 });
 
 router.get('/json/blog', function(req, res) { 
 
   res.jsonp(posts);
+});
+
+router.get('/json/contractor_types', function(req, res) { 
+  
+ res.jsonp(contractor_types);
+ 
+});
+
+router.get('/json/areas_types', function(req, res) { 
+  
+ res.jsonp(areas_types);
+ 
 });
 
 
@@ -279,7 +292,7 @@ router.post('/search/', function(req, res,next) {
 });
 
 
-/* Thankyou page. */
+
 
 router.get('/thankyou/:type/:msg', function(req, res) { 
    

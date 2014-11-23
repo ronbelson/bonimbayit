@@ -19,70 +19,10 @@ block content
         button#profession_selector.btn.btn-search.dropdown-toggle(data-toggle="dropdown" style="")איזה קבלן שהומלץ ע"י הקהילה את\ה מחפש\ת?
          i.fa.fa-caret-down(style="padding-right:3px")
         ul(role="menu" aria-labelledby="dropdownMenu" style="width:98%;height:400px;").dropdown-menu.text-center.scrollable-menu
-
-         li
-         a#a_profession1.a_profession.text-right(href="#" tabindex="-1")אינסטלציה
-         li.divider
-         li
-         a#a_profession2.a_profession.text-right(href="#")חשמל
-         li.divider
-         li
-         a#a_profession2.a_profession.text-right(href="#")קבלן מפתח
-         li.divider
-         li
-         a#a_profession3.a_profession.text-right(href="#")שלד
-         li.divider
-         li
-         a#a_profession4.a_profession.text-right(href="#")גבס
-         li.divider
-         li
-         a#a_profession5.a_profession.text-right(href="#")טיח
-         li.divider
-         li
-         a#a_profession6.a_profession.text-right(href="#")גמר
-         li.divider
-         li
-         a#a_profession7.a_profession.text-right(href="#")יבוא מסין
-         li.divider
-         li
-         a#a_profession8.a_profession.text-right(href="#")עפר
-         li.divider
-         li
-         a#a_profession9.a_profession.text-right(href="#")מפקח
-         li.divider
-         li
-         a#a_profession12.a_profession.text-right(href="#")קידוח
-         li.divider
-         li
-         a#a_profession13.a_profession.text-right(href="#")מיזוג אוויר
-         li.divider
-         li
-         a#a_profession14.a_profession.text-right(href="#")מהנדס בניין
-         li.divider
-         li
-         a#a_profession15.a_profession.text-right(href="#")ריצוף
-         li.divider
-         li
-         a#a_profession16.a_profession.text-right(href="#")צבע
-         li.divider
-         li
-         a#a_profession17.a_profession.text-right(href="#")בניה קלה
-         li.divider
-         a#a_profession18.a_profession.text-right(href="#")אדריכל
-         li.divider
-         a#a_profession19.a_profession.text-right(href="#")יועץ קרקע
-         li.divider
-         a#a_profession20.a_profession.text-right(href="#")מעצב\ת פנים
-         li.divider
-         a#a_profession21.a_profession.text-right(href="#")גנן
-         li.divider
-         a#a_profession22.a_profession.text-right(href="#")אלומניום
-         li.divider
-         a#a_profession23.a_profession.text-right(href="#")מסגרות
-         li.divider
-         a#a_profession24.a_profession.text-right(href="#")נגר
-         li.divider
-         a#a_profession25.a_profession.text-right(href="#")מטבחים
+         each contractor_type, i in contractor_types
+          li
+          a#a_profession.a_profession.text-right(href="#" tabindex="-1")=contractor_type.id
+          li.divider
          
          li.divider
          

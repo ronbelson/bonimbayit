@@ -81,8 +81,6 @@ $(function() {
              data: $("#mc-form").serializeJSON(), // serializes the form's elements.
              success: function(data)
              {
-
-                //alert(JSON.stringify(data))   ;
                  if(response.msg.indexOf("כמעט סיימתם") > -1) 
                   { 
                     var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
