@@ -50,13 +50,20 @@ router.get('/count/searches',ensureAuthenticated, function(req, res) {
 
    
 }); 
-
+ 
 
 router.get('/statistics',ensureAuthenticated, function(req, res) { 
-  User.find({"usersearchcontractors.createdate": {"$gt": new Date("2014-11-23T00:00:00.000Z"),"$lt": new Date("2014-11-24T00:00:00.000Z") }},{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1})
+  var date = new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate()+'T00:00:00.000Z'
+  var max_date = new Date(new Date(date).getTime() + 60 * 60 * 24 * 1000);
+  //max_date.setHours(max_date.getHours() + 24)
+  
+  User.find( {"usersearchcontractors.createdate": {"$gt": date,"$lt": max_date }},{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1})
+  //,{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1}
+   .where('usersearchcontractors.createdate').gt(new Date("2014-11-23T00:00:00.000Z"))
    .exec(function(err, data){
-    if(err){  res.json({err:err}); }
-    res.json(data);
+    if(err){  res.jsonp({err:err})}
+      else {res.jsonp(data);};  
+    
   });
 
    
