@@ -63,6 +63,15 @@ window.fbAsyncInit = function() {
   
  });
 
+ $("#mc-submit").click(function() {
+  
+  if($('#mc-form #name').val()=='' || $('#mc-form #mc-email').val()=='' ){
+   $('#mc-form').find('label[for=mc-email]').html('בונה יקר, יש להכניס שם פרטי ומשפחה ודואל לקבלת ההמלצות.').show();
+   return false;}
+  $('#mc-form #mc-email').val($('#mc-form #mc-email').val().toLowerCase());
+  return true
+ }); 
+
 $(function() {
   $('#mc-form').ajaxChimp({
     url: 'http://bonimbayit.us7.list-manage.com/subscribe/post?u=ddf6dfea18b9935854b4acda7&id=8b05071120',
