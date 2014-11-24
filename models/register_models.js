@@ -21,7 +21,7 @@ register_models();
 
 		var exported_model, i,  path_fn, 
 			//files 		= ['contractors.js', 'comments.js'];
-			files 		= ['contractors-schema.js', 'users-schema.js'];
+			files 		= ['contractors-schema.js', 'users-schema.js', 'lost-schema.js'];
 
 		for(i = 0; i < files.length; i++) {
 

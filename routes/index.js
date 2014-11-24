@@ -18,11 +18,16 @@ var transport = nodemailer.createTransport({
         pass: 'ynvfhfjtgnfklccq'
     }
 });
- var contractor_types = require('../public/json/contractor_types.json');
- var areas_types = require('../public/json/areas_types.json');
- var kue = require('kue')
-  , jobs = kue.createQueue();
-  kue.app.listen(4000);
+
+var app = express(); 
+var __DEV_NOTICE = "";
+if (app.get('env') == 'development') {__DEV_NOTICE = "[סביבת פיתוח]";}
+
+var contractor_types = require('../public/json/contractor_types.json');
+var areas_types = require('../public/json/areas_types.json');
+var kue = require('kue')
+ , jobs = kue.createQueue();
+ kue.app.listen(4000);
   
 //memcached
 //var Memcached = require('memcached');
@@ -30,7 +35,6 @@ var transport = nodemailer.createTransport({
 //var lifetime = 86400; //24hrs
 
 
-var app = express(); 
 var  posts =  [] ;
 var blog_url = 'http://127.0.0.1:2368';
 var site_email = 'ronbelson@gmail.com';
@@ -46,6 +50,7 @@ require('../db/db_connect');
 require('../models/init_schema');
 var User = mongoose.model('Users'); 
 var Contractors = mongoose.model('Contractors'); 
+var Lost = mongoose.model('Lost'); 
 
 // serialize and deserialize
 passport.serializeUser(function(user, done) {
@@ -148,7 +153,6 @@ router.use(function(req, res, next)
 
 /* GET home page. */ 
 router.get('/', function(req, res) { 
-  console.log('render the page')
   res.render('index', { title: 'בונים בית,יומן הבנייה המקיף בישראל' , posts: posts, contractor_types:contractor_types, areas_types:areas_types});
   //res.send(posts);
 });
@@ -171,6 +175,14 @@ router.get('/json/areas_types', function(req, res) {
 });
 
 
+router.get('/lost/', function(req, res) { 
+  Lost.find({type:'שיפוצים'}, function(err, lost) {
+
+     res.jsonp(lost);
+
+  })
+ 
+});
 
 
 router.post('/search/', function(req, res,next) {
@@ -258,7 +270,20 @@ router.post('/search/', function(req, res,next) {
             });  // _.each(data, function(value, key) {
             
             var email_template = 'recommand_contractor_not_found'
-            if(data.length>0) {email_template = 'recommand_contractor'}
+            if(data.length>0) 
+               {email_template = 'recommand_contractor'} else {
+                  Lost.findOneAndUpdate(
+                    { type: data_json.MMERGE2,area:data_json.MMERGE1 },
+                    {type: data_json.MMERGE2,area:data_json.MMERGE1,$inc: {numoflost:1}},
+                    {upsert: true, new: true},
+                    function(err,lost){
+                       if(err){console.log(err); next(); } else
+                       {console.log("lost="+lost)}
+                     
+                    });
+                   
+
+               }//end else {
                 
                 
                 var email = jobs.create('email', {
@@ -267,7 +292,7 @@ router.post('/search/', function(req, res,next) {
                     , name:data_json.name
                     , to: data_json.EMAIL
                     , bcc:'bonimbayit@gmail.com'
-                    , subject: 'בקשר להמלצות על קבלן ' + data_json.MMERGE2 + ' ב' + data_json.MMERGE1
+                    , subject: __DEV_NOTICE+'בקשר להמלצות על קבלן ' + data_json.MMERGE2 + ' ב' + data_json.MMERGE1
                      
 
                   }).delay(timer)
