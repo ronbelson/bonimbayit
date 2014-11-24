@@ -15,7 +15,7 @@ body {
     background: url('/img/home-background/white_brick_wall.png')  
         
 }
-input {
+input ,select{
 
     border:1px solid #999999;
     

@@ -44,11 +44,24 @@ function($stateProvider, $urlRouterProvider) {
             }
     });
 
+  $stateProvider
+  .state('usersstatistics', {
+    url: '/userstatistics/{daydiff}',
+    templateUrl: '/usersstatistics.html',
+    controller: 'UsersStatisticsCtrl',
+    resolve: {
+              UsersStatisticsPromise: ['$stateParams', 'UsersStatistics', function($stateParams, UsersStatistics) {
+                return UsersStatistics.getSearchesByDateDiff($stateParams.daydiff);
+              }]
+            }
+    });
+
   $urlRouterProvider.otherwise('/');
 
   
 
 }])
+
 
 .factory("AdminService",['$http', function($http){
   var areas =[ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
@@ -154,6 +167,7 @@ function($stateProvider, $urlRouterProvider) {
 
     return $http.get('/admin/contractors').success(function(data){
       angular.copy(data, o.contractors);
+
     });
   };
   o.create = function(contractor) {
@@ -175,6 +189,7 @@ function($stateProvider, $urlRouterProvider) {
     o.user= [];
     return $http.get('/admin/userfind/'+angular.lowercase(emailorphone)).success(function(data){
       angular.copy(data, o.user);
+       //console.log(o.user)
     });
   };
   
@@ -182,7 +197,22 @@ function($stateProvider, $urlRouterProvider) {
 
 }])  
 
- 
+
+.factory('UsersStatistics', ['$http', function($http){
+  var o = {
+    usersstatistics: []
+  };
+  o.getSearchesByDateDiff = function(daydiff) {
+   // o.usersstatistics= [];
+    return $http.get('/admin/statistics/'+daydiff).success(function(data){
+      angular.copy(angular.fromJson(data), o.usersstatistics);
+      //console.log(o.usersstatistics)
+    });
+  };
+  
+  return o;
+
+}])  
 
 .controller('ContractorCtrl', [
 '$scope',
@@ -280,7 +310,23 @@ function($scope, Contractors, Contractor, AdminService,$http){
   
 ])
 
+.controller('UsersStatisticsCtrl', [
+'$scope',
+'UsersStatistics',
+'User',
+'$http',
+function($scope,UsersStatistics,User,$http){
+ 
+ $scope.usersstatistics = UsersStatistics.usersstatistics
+ 
+ 
+ 
+ $scope.getStat = function(){
+  alert('d')
+ }
+  
 
+}])
 
 .controller('UserCtrl', [
 '$scope',
@@ -290,10 +336,7 @@ function($scope, Contractors, Contractor, AdminService,$http){
 function($scope,User,AdminService,$http){
  
  $scope.user = User.user;
-
  
-
-  
 
 }])
 
