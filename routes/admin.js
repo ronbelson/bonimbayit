@@ -59,9 +59,10 @@ router.get('/statistics/:daydiff',ensureAuthenticated, function(req, res) {
   var date = new Date(new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+Day+'T00:00:00.000Z')
   var max_date = new Date(new Date(date).getTime() + 60 * 60 * 24 * 1000);
   
-  User.find( {"usersearchcontractors.createdate": {"$gt": date,"$lt": max_date }},{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1})
+  User.find( {"isadmin":false,  "usersearchcontractors.createdate": {"$gt": date,"$lt": max_date }},{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1})
   //,{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1}
    .where('usersearchcontractors.createdate').gt(date)
+
    .exec(function(err, data){
     if(err){  res.json({err:err})}
       else {res.json(data);};  
