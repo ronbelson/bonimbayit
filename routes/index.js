@@ -175,14 +175,7 @@ router.get('/json/areas_types', function(req, res) {
 });
 
 
-router.get('/lost/', function(req, res) { 
-  Lost.find({type:'שיפוצים'}, function(err, lost) {
 
-     res.jsonp(lost);
-
-  })
- 
-});
 
 
 router.post('/search/', function(req, res,next) {
@@ -278,7 +271,7 @@ router.post('/search/', function(req, res,next) {
                     {upsert: true, new: true},
                     function(err,lost){
                        if(err){console.log(err); next(); } else
-                       {console.log("lost="+lost)}
+                       {}
                      
                     });
                    

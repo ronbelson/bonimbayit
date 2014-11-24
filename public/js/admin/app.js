@@ -56,12 +56,39 @@ function($stateProvider, $urlRouterProvider) {
             }
     });
 
+   $stateProvider
+  .state('userslost', {
+    url: '/userslost',
+    templateUrl: '/userslost.html',
+    controller: 'UsersLostCtrl',
+    resolve: {
+              UsersLostCtrl: ['$stateParams', 'UsersLost', function($stateParams, UsersLost) {
+                return UsersLost.getLost();
+              }]
+            }
+    });
+
   $urlRouterProvider.otherwise('/');
 
   
 
 }])
 
+.factory('UsersLost', ['$http', function($http){
+  var o = {
+    userslost: []
+  };
+  o.getLost = function() {
+    
+   // o.usersstatistics= [];
+    return $http.get('/admin/lost/').success(function(data){
+      angular.copy(angular.fromJson(data), o.userslost);
+    });
+  };
+  
+  return o;
+
+}])  
 
 .factory("AdminService",['$http', function($http){
   var areas =[ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
@@ -310,6 +337,19 @@ function($scope, Contractors, Contractor, AdminService,$http){
   
 ])
 
+
+.controller('UsersLostCtrl', [
+'$scope',
+'UsersLost',
+'$http',
+function($scope,UsersLost,$http){
+ 
+ $scope.userslost = UsersLost.userslost
+ console.log($scope.userslost)
+  
+
+}])
+
 .controller('UsersStatisticsCtrl', [
 '$scope',
 'UsersStatistics',
@@ -319,12 +359,6 @@ function($scope,UsersStatistics,User,$http){
  
  $scope.usersstatistics = UsersStatistics.usersstatistics
  
- 
- 
- $scope.getStat = function(){
-  alert('d')
- }
-  
 
 }])
 

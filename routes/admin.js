@@ -7,6 +7,7 @@ var cache = require('memory-cache');
 var mongoose = require('mongoose')
 var User = mongoose.model('Users'); 
 var Contractors = mongoose.model('Contractors'); 
+var Lost = mongoose.model('Lost'); 
 var ContractorsFeedbacks = mongoose.model('ContractorsFeedbacks'); 
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -39,7 +40,13 @@ router.get('/home',ensureAuthenticated, function(req, res) {
   res.render('admin/home', { title: 'בונים בית - אדמין',user: req.user});
 }); 
 
+router.get('/lost/', function(req, res) { 
+  Lost.find({}, function(err, lost) {
+     res.jsonp(lost);
 
+  })
+ 
+});
 
 router.get('/count/searches',ensureAuthenticated, function(req, res) { 
   User.aggregate( {$match: {'usersearchcontractors.0': {$exists: true}}}, {$unwind: '$usersearchcontractors'}, {$group: {_id: null, count: {$sum: 1}}} )
