@@ -189,6 +189,9 @@ router.post('/contractors/feedback/delete', function(req, res, next) {
 
 });
 
+router.get('/test', function(req, res, next) {
+  res.json({ok:ok})
+});
 
 router.post('/contractors/update', function(req, res, next) {
   var timer = 1000*60*60*2  // 2 hours
@@ -241,7 +244,19 @@ jobs.process('contractor_publish', function(job, done){
     if(err){ return done(); }
     //console.log(contractor.status,contractor.contractor_types,contractor.areas)
     if(contractor.status!='2222') {console.log(job.id+' canceld');return done({result:'status is not valid'});}
-     
+    
+
+    // Delete all lost searches in the db thab this contractor handle them
+    Lost.remove( { area: {"$in" :job.data.contractorAreas}, type: {"$in":job.data.contractorTypes } } 
+      ,function(err) {
+          if(err){ 
+            console.log(err);
+            return done(); 
+          }
+
+          //done
+    });
+
     User
       //.find({sendmail:{'$ne': false}, usersearchcontractors:{ $elemMatch: { type: {"$in" : job.data.contractorTypes} },$elemMatch: { area: {"$in" : job.data.contractorAreas} } } }
       //.find( { usersearchcontractors: { $all: [ { "$elemMatch" : {area: {"$in" :job.data.contractorAreas}} }, { "$elemMatch" : { type :{"$in":job.data.contractorTypes}  } } ] } } 

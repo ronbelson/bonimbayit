@@ -345,7 +345,7 @@ function($scope, Contractors, Contractor, AdminService,$http){
 function($scope,UsersLost,$http){
  
  $scope.userslost = UsersLost.userslost
- console.log($scope.userslost)
+ //console.log($scope.userslost)
   
 
 }])
