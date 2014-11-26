@@ -277,7 +277,7 @@ jobs.process('contractor_publish', function(job, done){
                if(contractor.forwards.indexOf(value._id) == -1){ // if the contractor not sent to this user
                  
                   var email = jobs.create('email', {
-                      email_data: {data:contractor, name:value.name} 
+                      email_data: {data:contractor, name:value.name,_id:value._id} 
                     , template: 'contractor_publish'
                     , name:value.name
                     , to: value.email
@@ -297,7 +297,7 @@ jobs.process('contractor_publish', function(job, done){
                 // update_user.userforwards.push(mongoose.Types.ObjectId(contractor._id))
                  //console.log(contractor._id)
                 // User.findOneAndUpdate( {email:value.email} ,{$push: {userforwards:  mongoose.Types.ObjectId(contractor._id) } });
-                 User.findOne({ email: value.email }, function(err, userpush) {
+                 User.findOne({ email: value.email, sendmail:{ $ne: false } }, function(err, userpush) {
                     if(err) { 
                         console.log(err);
                         var err = new Error(err);

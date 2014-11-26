@@ -1,5 +1,6 @@
 var express = require('express');
 var httpProxy = require('http-proxy');
+var urlencode = require('urlencode');
 var router = express.Router();
 var bodyParser = require('body-parser')
 var request = require('request');
@@ -157,6 +158,26 @@ router.get('/', function(req, res) {
   //res.send(posts);
 });
 
+
+router.get('/user/sendmail/:trueorfalse/:id', function(req, res) { 
+   User.findOne(mongoose.Types.ObjectId(req.param('id')), function(err, user) {
+      if (err) return res.send(500, { error: err });
+   user.sendmail = req.param('trueorfalse');
+   user.save(function(err) {
+          if(err) {
+            console.log(err);
+            var err = new Error(err);
+            throw err;
+          } else {
+            //done
+            res.redirect('/thankyou/5/%D7%94%D7%95%D7%A1%D7%A8%D7%AA%20%D7%91%D7%94%D7%A6%D7%9C%D7%97%D7%94' )
+          };
+        });  
+   
+  });
+});
+
+
 router.get('/json/blog', function(req, res) { 
 
   res.jsonp(posts);
@@ -197,8 +218,7 @@ router.post('/search/', function(req, res,next) {
       
       
       if (!err && user != null) {
-        
-       
+        user.sendmail = true;
         user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1,createdate:new Date()  });
        // user.userforwardcontractors.push(contractors_match);
           //console.log(user)
