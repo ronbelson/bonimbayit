@@ -48,3 +48,9 @@ $("#searchuser").enterKey(function () {
     
 })
 
+$(document).ready(function () {
+  $(".navbar-collapse li a").click(function(event) {
+    if(this.className==="dropdown-toggle") return;
+    $(".navbar-collapse").collapse('hide');
+  });
+});

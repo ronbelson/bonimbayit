@@ -181,14 +181,38 @@ $(function() {
 
 
  
+//Google Search
+(function() {
+    var cx = '010087137512713044540:l4yfap-jtb8';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 
-  
- 
 
-
-
-
+$("a[href='#searchsitebygoogle']").click(function (e) {
+    e.stopPropagation();
+    
+    var targetOffset = $('#searchsitebygoogledest').offset().top - 50;
      
+    $("html, body").animate({
+        scrollTop: targetOffset
+    }, "slow", function () {
+        //$('#profession_selector.dropdown-toggle').dropdown('toggle');
+        //$('#profession_selector.dropdown-toggle').dropdown('dropdown');
+    });
+    return false;
+});
 
 
+$(document).ready(function () {
+  $(".navbar-collapse li a").click(function(event) {
+    if(this.className==="dropdown-toggle") return;
+    $(".navbar-collapse").collapse('hide');
+  });
+});
  

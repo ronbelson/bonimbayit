@@ -16,8 +16,9 @@ body {
         
 }
 
+.gsc-search-button ,.gsc-search-button-v2 {display: none;}
+ input[type=text].gsc-input {height: 1.25em !important;float:right;}
 
- 
 .OPP-poll-choice-div{
   background-color: #e74c3c !important ;
 }
