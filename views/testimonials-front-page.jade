@@ -3,9 +3,8 @@ div#div_testimonials(style="display:none")
  ul#newsticker
   each post , i in posts
    li
-    div
+    div.text-right
      a(href="/blog/#{post.slug}") 
-      span #{post.title}
-       small.pdr10(style="color:#f0f0f0") המשך לקרוא >>
+      small #{post.title}
     hr
   

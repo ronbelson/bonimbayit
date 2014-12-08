@@ -1,7 +1,7 @@
 extends layout	
 
 block css
- link(href="/css/business-frontpage.css?v=4" rel="stylesheet")
+ link(href="/css/business-frontpage.css?v=5" rel="stylesheet")
 
 block content
  header.business-header
@@ -132,19 +132,24 @@ block content
          li.divider  
 
        .col-md-3
-        button#btn_search_submit(data-toggle="modal" href="#signin" style="text-shadow: 0 0 1px #000;padding-right:3px;" ).btn-submit קבל המלצה &nbsp;
+        button#btn_search_submit(data-toggle="modal" href="#signin" style="text-shadow: 0 0 1px #000;padding-right:3px" ).btn-submit קבל המלצה &nbsp;
          i.fa.fa-heart
-     
-     
-     //-div
-     //- i.fa.fa-arrow-up.fa-5x(style="float:left;color:#f1c40f;").pdt10.visible-lg
       
-
+     .row.visible-lg.visible-md
+      .col-md-12 
+       br
+       div.pink-color קבלן שלד, קבלן גמר, גגן או אדריכל, 
+        a.pink-color(href="#howitswork" tabindex="-1" data-toggle="modal")
+         u איך עובדות ההמלצות מהקהילה עבורך?
+      
     .col-md-5
      .row
       .col-md-8.col-lg-10.col-md-offset-1.col-lg-offset-1.visible-md.visible-lg.text-right#testimonials
        include testimonials-front-page
+   
+
  br
+  
 
  .container
   div.row
@@ -205,7 +210,7 @@ block content
  
  
 block jsfiles
- script(src="/js/front-page.js?v=4")
+ script(src="/js/front-page.js?v=5")
  script(src="/js/jquery.newsTicker.min.js")
  
 
