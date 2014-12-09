@@ -171,6 +171,7 @@ $(function() {
 });  
 
  //crazi egg
+ /*
  $(function() {
   setTimeout(function(){var a=document.createElement("script");
   var b=document.getElementsByTagName("script")[0];
@@ -178,7 +179,7 @@ $(function() {
   a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
  });  
-
+*/
 
  
 //Google Search

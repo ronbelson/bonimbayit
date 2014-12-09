@@ -154,7 +154,7 @@ router.use(function(req, res, next)
 
 /* GET home page. */ 
 router.get('/', function(req, res) { 
-  res.render('index', { title: 'בונים בית,יומן הבנייה המקיף בישראל' , posts: posts, contractor_types:contractor_types, areas_types:areas_types});
+  res.render('index', { title: 'בונים בית - בניית בית פרטי - יומן הבנייה המקיף בישראל' , posts: posts, contractor_types:contractor_types, areas_types:areas_types});
   //res.send(posts);
 });
 
