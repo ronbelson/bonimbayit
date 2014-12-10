@@ -55,17 +55,16 @@ router.get('/count/searches',ensureAuthenticated, function(req, res) {
     res.json(data);
   });
 
-   
+    
 }); 
  
 ///admin/statistics/1  the date diff for going days back (1 day back in this example, 0 for today)
 router.get('/statistics/:daydiff',ensureAuthenticated, function(req, res) { 
   var Day= new Date().getDate() - req.param("daydiff")
-
+  if(Day.toString().length==1) {Day='0'+Day;}
    
-  var date = new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+Day+'T00:00:00.000Z'
-  var max_date = new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate()+'T23:59:59.000Z'
-  //var max_date = new Date(new Date(date).getTime() + 60 * 60 * 24 * 1000);
+  var date = new Date(new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+Day+'T00:00:00.000Z')
+  var max_date = new Date(new Date(date).getTime() + 60 * 60 * 24 * 1000);
   //console.log(date,max_date);
   User.find( {"isadmin":false,  "usersearchcontractors.createdate": {"$gt": date,"$lt": max_date }},{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1})
   //,{"usersearchcontractors.createdate":1,"usersearchcontractors.area":1,"usersearchcontractors.type":1,"name":1,"email":1}
