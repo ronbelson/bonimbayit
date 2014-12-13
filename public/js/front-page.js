@@ -46,4 +46,8 @@ $("a[href='#filecost']").click(function (e) {
     });
     return false;
 });
+
+$("img.lazy").lazyload({
+    effect : "fadeIn"
+});
  
