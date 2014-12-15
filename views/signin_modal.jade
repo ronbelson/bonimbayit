@@ -1,6 +1,6 @@
 div(tabindex="-1" data-width="760")#signin.container.modal.fade.well
  .page-header
-  h5.textcenter.font-default.pdt0 לתשומת לבך: מלא\י את הדואל ואשלח לך קבלנים שהומלצו ע״י הקהילה
+  h5.textcenter.font-default.pdt0 לתשומת לבך: מלא\י את הדואל שם ומשפחה וכן זמן התחלת העבודה, לאחר מכן אשלח לך קבלנים שהומלצו ע״י הקהילה לדואר האלקטרוני שלך.
    i.social_icon.fa.fa-heart.fa-1x.pdr10 
  
  .row
@@ -13,9 +13,23 @@ div(tabindex="-1" data-width="760")#signin.container.modal.fade.well
  form(id="mc-form")
   .form-group.pdr10.pdl10
    input( dir="rtl"  placeholder="שם פרטי ומשפחה" required id="name" name="name" ).form-control.input-lg
+   br
    input( dir="rtl" onkeypress="this.dir='ltr'" placeholder="הכנס דואר אלקטרוני" required id="mc-email" type="email" ).form-control.input-lg
+   br
+   div.dropdown.text-right
+    button#Time2WorkButton.text-right.input-lg.form-control.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true')
+      | האם העבודה מיידית או לעוד כמה חודשים?  [בחר\י  מהאפשריות] 
+      span.caret.text-right
+    ul#Time2Work.dropdown-menu.text-right(role='menu', aria-labelledby='Time2WorkButton')
+      li(role='presentation')
+        a(role='menuitem', tabindex='-1')מיידית
+      li(role='presentation')
+        a(role='menuitem', tabindex='-1')בין חודש לשלושה חודשים
+      li(role='presentation')
+        a(role='menuitem', tabindex='-1')יותר משלושה חודשים
    input.hide( dir="rtl"  required id="MMERGE1"  name="MMERGE1"  value="כל האזורים").form-control 
    input.hide( dir="rtl"  required id="MMERGE2"  name="MMERGE2"  value="כל הקבלנים").form-control 
+   input.hide( dir="rtl"  required id="MMERGE3"  name="MMERGE3"  value="").form-control 
    input.hide( dir="rtl"  required id="message"  name="message" ).form-control
    input.hide( dir="rtl"  required id="subject"  name="subject" value="פניה בנושא קבלן מ").form-control
    

@@ -202,6 +202,7 @@ router.get('/json/areas_types', function(req, res) {
 router.post('/search/', function(req, res,next) {
    //'/search/:type/:area/:email/:name'
    var data_json = (req.body);
+   //console.log(data_json);
    var contractors_match ;
    var timer = 1000*60*60*2  // 2 hours
    if (app.get('env') == 'development') {timer = 1000 }
@@ -219,7 +220,7 @@ router.post('/search/', function(req, res,next) {
       
       if (!err && user != null) {
         user.sendmail = true;
-        user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1,createdate:new Date()  });
+        user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1, time2work: data_json.MMERGE3,createdate:new Date()  });
        // user.userforwardcontractors.push(contractors_match);
           //console.log(user)
         //user.usersearchcontractors.push({ type: data_json.MMERGE2 , area: data_json.MMERGE1 });
@@ -229,7 +230,8 @@ router.post('/search/', function(req, res,next) {
             var err = new Error(err);
             throw err;
           } else {
-            console.log("saving user usersearchcontractors ...");
+            console.log("saving user usersearchcontractors");
+              //console.log('user='+user);
             
           };
         });  
@@ -240,10 +242,10 @@ router.post('/search/', function(req, res,next) {
          user = new User({
           name: data_json.name,
           email: data_json.EMAIL,
-          usersearchcontractors: [{ type: data_json.MMERGE2 , area: data_json.MMERGE1, createdate: new Date()}]
+          usersearchcontractors: [{ type: data_json.MMERGE2 , area: data_json.MMERGE1, time2work: data_json.MMERGE3, createdate: new Date()}]
         });
         
-        
+      
         user.save(function(err) {
           if(err) {
             console.log(err);

@@ -65,8 +65,8 @@ window.fbAsyncInit = function() {
 
  $("#mc-submit").click(function() {
   
-  if($('#mc-form #name').val()=='' || $('#mc-form #mc-email').val()=='' ){
-   $('#mc-form').find('label[for=mc-email]').html('בונה יקר, יש להכניס שם פרטי ומשפחה ודואל לקבלת ההמלצות.').show();
+  if($('#mc-form #name').val()=='' || $('#mc-form #mc-email').val()=='' || $('#mc-form #MMERGE3').val()=='' ){
+   $('#mc-form').find('label[for=mc-email]').html('בונה יקר, יש להכניס שם פרטי ומשפחה,דואל וכן זמני התחלת עבודה של הקבלן לקבלת ההמלצות.').show();
    return false;}
   $('#mc-form #mc-email').val($('#mc-form #mc-email').val().toLowerCase());
   return true
@@ -93,7 +93,8 @@ $(function() {
                  if(response.msg.indexOf("כמעט סיימתם") > -1) 
                   { 
                     var responsemsg = response.msg.replace(/(<([^>]+)>)/ig,"");
-                    window.location.href = '/thankyou/1/' + encodeURIComponent(responsemsg) +'/';  
+                    //window.location.href = '/thankyou/1/' + encodeURIComponent(responsemsg) +'/';  
+                    window.location.href = '/thankyou/1/כמעט סיימתם.... אנו צריכים לאשר את כתובת הדואל שלכם על מנת לסיים את תהליך הרישום אנא הקליקו על הקישור בהודעת הדוא"ל ששלחנו לכם זה עתה. לגבי ההמלצות, מאמין שתוך כמה שעות אשלח תשובה לדואל שתאשר, תודה תומר חן./';  
                   }
                   else
                   {
@@ -158,6 +159,17 @@ $('a[id^="a_profession"]').click(function(){
     $('#MMERGE2').val($(this).text())
     $('#profession_selector').text('קבלן '+$(this).text())
     
+});
+
+$(function(){
+
+    $("#Time2Work").on('click', 'li a', function(){
+      
+      $("#Time2WorkButton").text($(this).text());
+      $("#MMERGE3").val($(this).text());
+
+   });
+
 });
 
 

@@ -44,6 +44,7 @@
 			var UserSearchcontractors = new mongoose.Schema({
 				  type:{ type:String,index:  true },
 		    	  area: { type:String,index:  true },
+		    	  time2work: { type:String,index:  true },
 		    	  createdate: { type: Date, default: Date.now() }
 			});
 

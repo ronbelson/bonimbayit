@@ -129,9 +129,8 @@ html(lang="he")
              a(href="#/user/{{user.email}}"){{user.email}}
            
          .row(ng-repeat="search  in user.usersearchcontractors") 
-          .col-md-12(style="padding-right:25px;padding-top:4px;")
-            .small חיפש: {{search.type}} | {{search.area}}
-            .small בתאריך: {{search.createdate | date:'medium'}} 
+          .col-md-12.text-center(style="padding-right:25px;padding-top:4px;")
+            .small חיפש: {{search.type}} | {{search.area}} | {{search.time2work}} | בתאריך: {{search.createdate | date:'medium'}} 
       br
       br
       br
