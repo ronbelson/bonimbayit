@@ -79,6 +79,32 @@ router.get('/statistics/:daydiff',ensureAuthenticated, function(req, res) {
    
 }); 
 
+router.get('/statistics_mail/:daydiff',ensureAuthenticated, function(req, res) { 
+  var Day= new Date().getDate() - req.param("daydiff")
+  if(Day.toString().length==1) {Day='0'+Day;}
+   
+  var date = new Date(new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+Day+'T00:00:00.000Z')
+  
+  User.find( {"isadmin":false,  "usersearchcontractors.createdate": {"$lt": date }},{"name":1,"email":1})
+  
+   .where('usersearchcontractors.createdate').lt(date)
+
+   .exec(function(err, data){
+    if(err){  res.json({err:err})}
+      
+      else {
+        var emails =[]
+        for(var i = 0; i < data.length; i++) {
+          emails.push(data[i].email);
+        }
+        res.send(emails);
+      };  
+    
+  });
+
+   
+}); 
+
 
 
 router.get('/userfind/:emailorphone',ensureAuthenticated, function(req, res) { 
