@@ -1,13 +1,15 @@
 extends layout	
 
 block css
- link(href="/css/business-frontpage.css" rel="stylesheet")
+ link(href="/css/business-frontpage.css?v=12" rel="stylesheet")
 
 block content
  .container
   .row(style="padding-top:100px;")
    .col-xs-12.textcenter.well
     h3= msg
+    h5
+     small עוד תזכורת קטנה: יתכן והדואל שאשלח יכנס לתיקיית הספאם או הפרסום שלך, במיוחד אם אתה לקוח גימייל. כך שאם הדואל לא הגיע אליך כדאי לבדוק תקיות אלו.
  include frontpage-content
  
  
