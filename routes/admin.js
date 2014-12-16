@@ -97,7 +97,7 @@ router.get('/statistics_mail/:daydiff',ensureAuthenticated, function(req, res) {
         for(var i = 0; i < data.length; i++) {
           emails.push(data[i].email);
         }
-        res.json(data);
+        res.send(emails);
       };  
     
   });
