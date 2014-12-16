@@ -85,7 +85,7 @@ router.get('/statistics_mail/:daydiff',ensureAuthenticated, function(req, res) {
    
   var date = new Date(new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+Day+'T00:00:00.000Z')
   
-  User.find( {"isadmin":false,  "usersearchcontractors.createdate": {"$lt": date }},{"name":1,"email":1})
+  User.find( { userforwards: {$exists: true, $not: {$size: 0}}, "isadmin":false,  "usersearchcontractors.createdate": {"$lt": date }},{"name":1,"email":1,"userforwards":1})
   
    .where('usersearchcontractors.createdate').lt(date)
 
@@ -97,7 +97,7 @@ router.get('/statistics_mail/:daydiff',ensureAuthenticated, function(req, res) {
         for(var i = 0; i < data.length; i++) {
           emails.push(data[i].email);
         }
-        res.send(emails);
+        res.json(data);
       };  
     
   });
