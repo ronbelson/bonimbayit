@@ -92,7 +92,7 @@ function($stateProvider, $urlRouterProvider) {
 
 .factory("AdminService",['$http', function($http){
   var areas =[ {id: 'תל אביב', label: "תל אביב"}, {id: 'השרון', label: "השרון"}, {id: 'חדרה', label: "חדרה"}];
-  var contractor_status = [{label: 'פעיל ווטסאפ', id: '3333'},{label: 'פעיל, אך עדיין לא נוצר קשר עם הקבלן - אפיפיור', id: '5555'},{label: 'פעיל', id: '2222'},{label: 'רק הוכנס', id: '1111'},{label: 'מחוק', id: '3333'},{label: 'ממתין לממליצים מהקבלן', id: '4444'},{label: 'הקבלן בישק לחזור אליו', id: '6666'},{label: 'הקבלן אמור להתקשר להמשך הטיפול', id: '7777'}];
+  var contractor_status = [{label: 'פעיל ווטסאפ', id: '8888'},{label: 'פעיל, אך עדיין לא נוצר קשר עם הקבלן - אפיפיור', id: '5555'},{label: 'פעיל', id: '2222'},{label: 'רק הוכנס', id: '1111'},{label: 'מחוק', id: '3333'},{label: 'ממתין לממליצים מהקבלן', id: '4444'},{label: 'הקבלן בישק לחזור אליו', id: '6666'},{label: 'הקבלן אמור להתקשר להמשך הטיפול', id: '7777'}];
   var areas_customTexts = {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר אזורים',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}  
   var types_customTexts =  {buttonClasses: 'btn btn-default btn-md',buttonDefaultText: 'בחר סוג קבלן',checkAll: 'בחר את כולם',uncheckAll: 'הסר את כולם', dynamicButtonTextSuffix: 'נבחרו'}  
   return {
